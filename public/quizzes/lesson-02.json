@@ -1,0 +1,80 @@
+{
+  "id": "quiz-lesson-02",
+  "lessonId": "lesson-02",
+  "title": "How the Browser Loads a Page",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is the job of DNS during a page load?",
+      "options": [
+        { "id": "a", "text": "Encrypt the connection between browser and server" },
+        { "id": "b", "text": "Map the site's hostname to a numeric IP address" },
+        { "id": "c", "text": "Compress the HTML before sending it" },
+        { "id": "d", "text": "Decide which images to lazy-load" }
+      ],
+      "answer": "b",
+      "explanation": "DNS (Domain Name System) translates a hostname like shop.example.com into the IP address the browser actually connects to. If it isn't cached, that lookup costs a round trip."
+    },
+    {
+      "id": "q2",
+      "type": "ordering",
+      "prompt": "Order these steps of a first HTTPS request, from earliest to latest.",
+      "items": [
+        { "id": "dns", "text": "DNS lookup (hostname → IP)" },
+        { "id": "tcp", "text": "TCP handshake (open the connection)" },
+        { "id": "tls", "text": "TLS handshake (set up encryption)" },
+        { "id": "req", "text": "Send the HTTP request for the HTML" },
+        { "id": "byte", "text": "First response byte arrives (TTFB)" }
+      ],
+      "answer": ["dns", "tcp", "tls", "req", "byte"],
+      "explanation": "The browser must resolve the name, open a TCP connection, negotiate TLS, send the request, and then wait for the first byte. Each handshake costs a round trip."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "The time from navigation start to the first byte of the response is called ____ (three-letter abbreviation).",
+      "answer": ["TTFB", "time to first byte"],
+      "explanation": "TTFB (Time to First Byte) measures the delay until the first response byte, including DNS, connection setup, TLS, server think time, and travel."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which of these are part of TTFB? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "DNS lookup time" },
+        { "id": "b", "text": "TCP and TLS handshake time" },
+        { "id": "c", "text": "The server's processing (\"think\") time" },
+        { "id": "d", "text": "Downloading every image on the page" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "TTFB bundles redirects, DNS, TCP connect, TLS, server think time, and the first byte's travel. Downloading all images happens later and is not part of TTFB."
+    },
+    {
+      "id": "q5",
+      "type": "match-pair",
+      "prompt": "Match each step to what it does.",
+      "pairs": [
+        { "left": "DNS lookup", "right": "Turn a hostname into an IP address" },
+        { "left": "TCP handshake", "right": "Open a reliable connection to the server" },
+        { "left": "TLS handshake", "right": "Set up HTTPS encryption and verify the certificate" },
+        { "left": "TTFB", "right": "Time until the first response byte arrives" }
+      ],
+      "explanation": "Each stage has a distinct job; the two handshakes each cost roughly one network round trip before your HTML can even be requested."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "Why does adding a new third-party origin (a different hostname) cost more than it first appears?",
+      "options": [
+        { "id": "a", "text": "It always doubles your JavaScript size" },
+        { "id": "b", "text": "The browser must do a fresh DNS lookup, TCP handshake, and TLS handshake for that origin before any of its bytes download" },
+        { "id": "c", "text": "It disables HTTP caching for the whole page" },
+        { "id": "d", "text": "It forces the page to reload from scratch" }
+      ],
+      "answer": "b",
+      "explanation": "Every brand-new origin pays its own DNS + TCP + TLS setup cost. That's why consolidating origins and using preconnect on the critical ones helps."
+    }
+  ]
+}

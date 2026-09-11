@@ -1,0 +1,78 @@
+{
+  "id": "quiz-lesson-01",
+  "lessonId": "lesson-01",
+  "title": "Why Web Performance Matters",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "Which statement best describes what \"web performance\" covers?",
+      "options": [
+        { "id": "a", "text": "Only how long the page takes to finish loading" },
+        { "id": "b", "text": "Loading, rendering, and how responsive the page is to input after it loads" },
+        { "id": "c", "text": "How visually attractive the design is" },
+        { "id": "d", "text": "The number of features the site has" }
+      ],
+      "answer": "b",
+      "explanation": "Web performance spans loading (getting the bytes), rendering (turning them into pixels), and runtime responsiveness (reacting to taps, clicks, and scrolling) — not just the initial load time."
+    },
+    {
+      "id": "q2",
+      "type": "multiple-choice",
+      "prompt": "Which statements about PERCEIVED performance are true? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "It is how fast the experience feels to the user" },
+        { "id": "b", "text": "It can be improved without changing the raw timings (e.g. with skeletons and instant feedback)" },
+        { "id": "c", "text": "Reserving space so content doesn't jump can improve it" },
+        { "id": "d", "text": "It is exactly the same thing as the total load time" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Perceived performance is the subjective sense of speed; progressive rendering, instant tap feedback, and reserving space all improve it even if raw timings are unchanged. It is not identical to total load time."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "In the RAIL model, the letter \"R\" stands for ____ — handling user input quickly.",
+      "answer": ["Response", "response"],
+      "explanation": "RAIL stands for Response, Animation, Idle, and Load. Response is about handling user interactions fast enough that they feel immediate."
+    },
+    {
+      "id": "q4",
+      "type": "ordering",
+      "prompt": "Order these phases as a user experiences them for a fresh page view, from first to last.",
+      "items": [
+        { "id": "load", "text": "Bytes arrive from the server (loading)" },
+        { "id": "render", "text": "Pixels are drawn on screen (rendering)" },
+        { "id": "respond", "text": "The page reacts to a tap or click (runtime responsiveness)" }
+      ],
+      "answer": ["load", "render", "respond"],
+      "explanation": "At a high level the browser must receive bytes, render them into visible pixels, and only then can the loaded page respond to interaction."
+    },
+    {
+      "id": "q5",
+      "type": "match-pair",
+      "prompt": "Match each RAIL goal to what it is about.",
+      "pairs": [
+        { "left": "Response", "right": "Handle user input quickly so it feels immediate" },
+        { "left": "Animation", "right": "Produce each frame fast enough to stay smooth" },
+        { "left": "Idle", "right": "Do non-urgent work in small chunks during idle time" },
+        { "left": "Load", "right": "Deliver meaningful, interactive content quickly" }
+      ],
+      "explanation": "RAIL frames the experience from the user's side: respond to input fast, animate smoothly, use idle time in small pieces, and load meaningful content quickly."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "Whose experience should you primarily optimize for?",
+      "options": [
+        { "id": "a", "text": "Your own fast laptop on a fast office network" },
+        { "id": "b", "text": "The single fastest visit ever recorded" },
+        { "id": "c", "text": "A realistic 75th-percentile user, often on a mid-range phone and mobile network" },
+        { "id": "d", "text": "Search engine crawlers only" }
+      ],
+      "answer": "c",
+      "explanation": "A fast dev machine hides the CPU and network costs real users pay. Optimizing for the 75th-percentile real user (typically mobile) reflects what most people actually experience."
+    }
+  ]
+}

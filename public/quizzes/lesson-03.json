@@ -1,0 +1,80 @@
+{
+  "id": "quiz-lesson-03",
+  "lessonId": "lesson-03",
+  "title": "The Critical Rendering Path",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "Why is CSS described as \"render-blocking\"?",
+      "options": [
+        { "id": "a", "text": "Because the browser won't paint content until it has built the CSSOM, to avoid a flash of unstyled content" },
+        { "id": "b", "text": "Because CSS files are always larger than JavaScript files" },
+        { "id": "c", "text": "Because CSS runs on the GPU" },
+        { "id": "d", "text": "Because CSS can only load after all images" }
+      ],
+      "answer": "a",
+      "explanation": "The browser needs the full CSSOM before it can render, otherwise it would show unstyled content and then restyle it (a FOUC). So slow/large CSS delays the first paint."
+    },
+    {
+      "id": "q2",
+      "type": "ordering",
+      "prompt": "Put the critical rendering path steps in order.",
+      "items": [
+        { "id": "trees", "text": "Build the DOM and CSSOM" },
+        { "id": "render", "text": "Combine them into the render tree" },
+        { "id": "layout", "text": "Layout (compute geometry)" },
+        { "id": "paint", "text": "Paint (fill pixels)" },
+        { "id": "composite", "text": "Composite (combine layers)" }
+      ],
+      "answer": ["trees", "render", "layout", "paint", "composite"],
+      "explanation": "The browser builds the DOM and CSSOM, merges the visible parts into a render tree, computes layout, paints pixels, and composites the layers into the final frame."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "A plain synchronous <script> is called ____-blocking because it pauses building the DOM until it downloads and runs.",
+      "answer": ["parser", "parsing"],
+      "explanation": "A synchronous script is parser-blocking: the HTML parser stops constructing the DOM to fetch and execute the script, then resumes."
+    },
+    {
+      "id": "q4",
+      "type": "match-pair",
+      "prompt": "Match each script form to when it executes.",
+      "pairs": [
+        { "left": "<script> (sync)", "right": "Blocks parsing; runs immediately when reached" },
+        { "left": "<script defer>", "right": "Runs after parsing finishes, in document order" },
+        { "left": "<script async>", "right": "Runs as soon as it downloads, order not guaranteed" },
+        { "left": "<script type=module>", "right": "Deferred by default" }
+      ],
+      "explanation": "defer preserves order and waits for parsing; async runs opportunistically without order; modules behave like defer by default; a plain script blocks the parser."
+    },
+    {
+      "id": "q5",
+      "type": "multiple-choice",
+      "prompt": "Which changes help shorten the critical rendering path for the first paint? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Defer non-critical scripts instead of blocking in the head" },
+        { "id": "b", "text": "Inline the critical CSS and load the rest without blocking" },
+        { "id": "c", "text": "Add several more render-blocking stylesheets" },
+        { "id": "d", "text": "Reduce the number and size of render-blocking resources" }
+      ],
+      "answer": ["a", "b", "d"],
+      "explanation": "Fewer and smaller render-blocking resources, deferred non-critical JS, and inlined critical CSS all shorten the path. Adding more blocking stylesheets does the opposite."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "Which pair of properties can typically be animated at the composite step, without forcing layout or paint?",
+      "options": [
+        { "id": "a", "text": "width and top" },
+        { "id": "b", "text": "margin and height" },
+        { "id": "c", "text": "transform and opacity" },
+        { "id": "d", "text": "font-size and padding" }
+      ],
+      "answer": "c",
+      "explanation": "transform and opacity can usually be handled by the compositor (often on the GPU) without re-running layout or paint, so they animate smoothly."
+    }
+  ]
+}

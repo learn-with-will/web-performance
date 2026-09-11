@@ -1,0 +1,77 @@
+{
+  "id": "quiz-lesson-04",
+  "lessonId": "lesson-04",
+  "title": "Meet the Core Web Vitals",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is the \"good\" threshold for Largest Contentful Paint (LCP)?",
+      "options": [
+        { "id": "a", "text": "≤ 1.0 second" },
+        { "id": "b", "text": "≤ 2.5 seconds" },
+        { "id": "c", "text": "≤ 5.0 seconds" },
+        { "id": "d", "text": "≤ 200 milliseconds" }
+      ],
+      "answer": "b",
+      "explanation": "LCP is good at ≤ 2.5 s, needs improvement up to 4.0 s, and poor above 4.0 s — measured at the 75th percentile of real visits."
+    },
+    {
+      "id": "q2",
+      "type": "fill-blank",
+      "prompt": "INP became a Core Web Vital in March 2024, replacing the older metric ____ (three-letter abbreviation).",
+      "answer": ["FID", "first input delay"],
+      "explanation": "Interaction to Next Paint (INP) replaced First Input Delay (FID) on March 12, 2024. FID only measured the delay of the first interaction; INP is stricter."
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "prompt": "Which of these are the three Core Web Vitals? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Largest Contentful Paint (LCP)" },
+        { "id": "b", "text": "Interaction to Next Paint (INP)" },
+        { "id": "c", "text": "Cumulative Layout Shift (CLS)" },
+        { "id": "d", "text": "First Contentful Paint (FCP)" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "The Core Web Vitals are LCP, INP, and CLS. FCP and TTFB are useful related metrics but are not Core Web Vitals."
+    },
+    {
+      "id": "q4",
+      "type": "match-pair",
+      "prompt": "Match each Core Web Vital to its \"good\" threshold.",
+      "pairs": [
+        { "left": "LCP", "right": "≤ 2.5 seconds" },
+        { "left": "INP", "right": "≤ 200 milliseconds" },
+        { "left": "CLS", "right": "≤ 0.1" }
+      ],
+      "explanation": "Good bars: LCP ≤ 2.5 s (loading), INP ≤ 200 ms (responsiveness), CLS ≤ 0.1 (visual stability), all at the 75th percentile."
+    },
+    {
+      "id": "q5",
+      "type": "ordering",
+      "prompt": "An interaction's latency (measured by INP) is made of three parts. Order them as they happen.",
+      "items": [
+        { "id": "input", "text": "Input delay (before the handler runs)" },
+        { "id": "processing", "text": "Processing time (running the event handlers)" },
+        { "id": "presentation", "text": "Presentation delay (rendering the next frame)" }
+      ],
+      "answer": ["input", "processing", "presentation"],
+      "explanation": "INP = input delay + processing time + presentation delay: the wait before handlers run, the handler work, then painting the visual response."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "What are the units of Cumulative Layout Shift (CLS)?",
+      "options": [
+        { "id": "a", "text": "Milliseconds" },
+        { "id": "b", "text": "Pixels" },
+        { "id": "c", "text": "It is a unitless score (impact fraction × distance fraction)" },
+        { "id": "d", "text": "A percentage of the page" }
+      ],
+      "answer": "c",
+      "explanation": "CLS is unitless — each shift scores impact fraction × distance fraction, and CLS sums the shifts in the worst session window. Good is ≤ 0.1."
+    }
+  ]
+}

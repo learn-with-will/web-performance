@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-05",
+  "lessonId": "lesson-05",
+  "title": "Lab Data vs Field Data",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is \"field\" (RUM) data?",
+      "options": [
+        { "id": "a", "text": "Metrics collected from real users' browsers as they use the site" },
+        { "id": "b", "text": "A single scripted test on a fixed device in a lab" },
+        { "id": "c", "text": "The server's CPU usage" },
+        { "id": "d", "text": "The size of the HTML file" }
+      ],
+      "answer": "a",
+      "explanation": "Field data (Real User Monitoring) comes from actual users' browsers, reflecting the real spread of devices, networks, and interactions."
+    },
+    {
+      "id": "q2",
+      "type": "match-pair",
+      "prompt": "Match each tool/source to what it is.",
+      "pairs": [
+        { "left": "Lighthouse", "right": "A lab audit tool that produces a score and metrics" },
+        { "left": "WebPageTest", "right": "A lab tool with multi-location waterfalls and filmstrips" },
+        { "left": "CrUX", "right": "A public field dataset reported at the 75th percentile" },
+        { "left": "web-vitals library", "right": "Your own field RUM measured in real user sessions" }
+      ],
+      "explanation": "Lighthouse and WebPageTest are lab tools; CrUX and your own web-vitals RUM are field data sources."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "Google's public field dataset from opted-in Chrome users, reported at p75, is the Chrome UX Report, abbreviated ____.",
+      "answer": ["CrUX", "crux"],
+      "explanation": "CrUX (Chrome UX Report) is the public field dataset that powers PageSpeed Insights' field section and Google's page-experience assessment."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which statements about LAB data are true? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "It is controlled and repeatable" },
+        { "id": "b", "text": "It's great for debugging a cause and for catching regressions in CI" },
+        { "id": "c", "text": "It measures INP directly from real interactions" },
+        { "id": "d", "text": "It's collected from thousands of real users" }
+      ],
+      "answer": ["a", "b"],
+      "explanation": "Lab data is a repeatable synthetic test, ideal for debugging and CI. It doesn't measure INP directly (no real user) and isn't collected from real users — that's field data."
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "prompt": "Which Core Web Vital can a Lighthouse lab run NOT measure directly, using a proxy instead?",
+      "options": [
+        { "id": "a", "text": "LCP — it uses FCP instead" },
+        { "id": "b", "text": "CLS — it uses TTFB instead" },
+        { "id": "c", "text": "INP — it uses Total Blocking Time (TBT) as a proxy" },
+        { "id": "d", "text": "It measures all three directly" }
+      ],
+      "answer": "c",
+      "explanation": "Lighthouse has no real user interacting, so it can't measure INP; it reports TBT as a lab proxy for responsiveness. Confirm INP with field data."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order a healthy measure-and-fix workflow using both data types.",
+      "items": [
+        { "id": "judge", "text": "Judge the real experience with field data (p75)" },
+        { "id": "diagnose", "text": "Reproduce and diagnose the cause in the lab" },
+        { "id": "fix", "text": "Ship a fix" },
+        { "id": "confirm", "text": "Confirm the improvement later in the field" }
+      ],
+      "answer": ["judge", "diagnose", "fix", "confirm"],
+      "explanation": "Use field data to decide what's actually a problem, lab tools to diagnose and iterate quickly, then confirm the real-world effect back in the field."
+    }
+  ]
+}

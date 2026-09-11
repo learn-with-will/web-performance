@@ -1,0 +1,78 @@
+{
+  "id": "quiz-lesson-06",
+  "lessonId": "lesson-06",
+  "title": "Measuring with Lighthouse",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "As of writing, which metric carries the largest weight in the Lighthouse performance score?",
+      "options": [
+        { "id": "a", "text": "First Contentful Paint (10%)" },
+        { "id": "b", "text": "Total Blocking Time (30%)" },
+        { "id": "c", "text": "Cumulative Layout Shift (25%)" },
+        { "id": "d", "text": "Speed Index (10%)" }
+      ],
+      "answer": "b",
+      "explanation": "As of writing (Lighthouse 10/11) the weights are FCP 10, SI 10, LCP 25, TBT 30, CLS 25. TBT has the largest single weight, so heavy main-thread JavaScript hurts the score most."
+    },
+    {
+      "id": "q2",
+      "type": "fill-blank",
+      "prompt": "Total Blocking Time is the lab proxy for which Core Web Vital? ____ (three-letter abbreviation).",
+      "answer": ["INP", "interaction to next paint"],
+      "explanation": "Lighthouse can't measure INP without a real user, so it uses TBT (main-thread blocking during load) as the lab proxy for responsiveness."
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "prompt": "Which statements about Lighthouse are true? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "By default it emulates a mid-tier mobile device with throttling" },
+        { "id": "b", "text": "It is a lab tool and does not measure INP directly" },
+        { "id": "c", "text": "A score of 100 guarantees good field Core Web Vitals" },
+        { "id": "d", "text": "It can run in DevTools, from the CLI, or via PageSpeed Insights" }
+      ],
+      "answer": ["a", "b", "d"],
+      "explanation": "Lighthouse defaults to a throttled mobile profile, is a lab tool without direct INP, and runs in DevTools/CLI/PSI. A 100 is a lab result and doesn't guarantee good field vitals."
+    },
+    {
+      "id": "q4",
+      "type": "match-pair",
+      "prompt": "Match each Lighthouse report section to what it contains.",
+      "pairs": [
+        { "left": "Metrics", "right": "The measured values (LCP, TBT, CLS, …)" },
+        { "left": "Opportunities", "right": "Suggested fixes with estimated time savings" },
+        { "left": "Diagnostics", "right": "Supporting info like main-thread work and third-party cost" },
+        { "left": "Passed audits", "right": "Things the page already does well" }
+      ],
+      "explanation": "Metrics are the numbers; Opportunities estimate savings; Diagnostics give context; Passed audits list what's already good. Savings in Opportunities are estimates."
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "prompt": "Why doesn't a Lighthouse score of 100 guarantee a good real-world experience?",
+      "options": [
+        { "id": "a", "text": "Because Lighthouse only tests the homepage" },
+        { "id": "b", "text": "Because it is a lab test on one device profile and doesn't measure INP; real users differ" },
+        { "id": "c", "text": "Because the score ignores LCP" },
+        { "id": "d", "text": "Because 100 is impossible to reach" }
+      ],
+      "answer": "b",
+      "explanation": "The score reflects one throttled lab run and excludes INP (using TBT). Real users span many devices and networks, so field data must confirm the experience."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order the Lighthouse score bands from worst to best.",
+      "items": [
+        { "id": "red", "text": "0–49 (red, poor)" },
+        { "id": "orange", "text": "50–89 (orange, needs improvement)" },
+        { "id": "green", "text": "90–100 (green, good)" }
+      ],
+      "answer": ["red", "orange", "green"],
+      "explanation": "Lighthouse colours the score 0–49 red, 50–89 orange, and 90–100 green."
+    }
+  ]
+}

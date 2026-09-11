@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-08",
+  "lessonId": "lesson-08",
+  "title": "Setting Goals and Performance Budgets",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is a performance budget?",
+      "options": [
+        { "id": "a", "text": "The money spent on hosting" },
+        { "id": "b", "text": "An agreed limit on metrics and/or resource sizes that the team commits not to exceed" },
+        { "id": "c", "text": "The number of developers on the team" },
+        { "id": "d", "text": "A Lighthouse feature that speeds up the page" }
+      ],
+      "answer": "b",
+      "explanation": "A performance budget is an explicit, shared limit (on timings and/or bytes/requests) that turns speed into an enforceable target so regressions are caught deliberately."
+    },
+    {
+      "id": "q2",
+      "type": "match-pair",
+      "prompt": "Match each budget concept to its meaning.",
+      "pairs": [
+        { "left": "Metric budget", "right": "A limit on a timing like LCP or INP" },
+        { "left": "Quantity budget", "right": "A limit on bytes or request counts" },
+        { "left": "Score budget", "right": "A minimum tool score, e.g. Lighthouse ≥ 90" },
+        { "left": "Regression", "right": "An unintended slowdown introduced by a change" }
+      ],
+      "explanation": "Metric budgets limit outcomes (timings), quantity budgets limit inputs (bytes/requests), score budgets set a minimum tool score, and a regression is an unintended slowdown."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "A budget only sticks if it's enforced automatically in ____, so a pull request that exceeds a limit fails the build (two letters).",
+      "answer": ["CI", "continuous integration"],
+      "explanation": "Enforcing budgets in CI (e.g. Lighthouse CI or a bundle-size check) fails a pull request that breaches a limit, catching regressions before they ship."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which are good performance-budget practices? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Enforce the budget automatically in CI" },
+        { "id": "b", "text": "Budget JavaScript separately, not just total bytes" },
+        { "id": "c", "text": "Set an aspirational limit you routinely miss" },
+        { "id": "d", "text": "Anchor limits to the Core Web Vitals \"good\" thresholds and current data" }
+      ],
+      "answer": ["a", "b", "d"],
+      "explanation": "Enforce in CI, budget JS on its own, and anchor to CWV and your real numbers. An always-missed limit trains everyone to ignore the failing check."
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "prompt": "Why should JavaScript get its own, tighter budget rather than just counting total bytes?",
+      "options": [
+        { "id": "a", "text": "JavaScript files are always the largest files" },
+        { "id": "b", "text": "Because JS must be downloaded, parsed, compiled, and executed on the main thread, making it the most expensive kind of byte" },
+        { "id": "c", "text": "Because browsers refuse to cache JavaScript" },
+        { "id": "d", "text": "Because CSS has no cost" }
+      ],
+      "answer": "b",
+      "explanation": "Byte for byte, JavaScript costs more than images or fonts because after download it is parsed, compiled, and executed on the main thread — so it warrants a dedicated limit."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order the steps of establishing a workable performance budget.",
+      "items": [
+        { "id": "measure", "text": "Measure your current numbers (and competitors)" },
+        { "id": "set", "text": "Set a realistic limit anchored to the CWV \"good\" thresholds" },
+        { "id": "enforce", "text": "Enforce it in CI so breaches fail the build" },
+        { "id": "ratchet", "text": "Ratchet the limit tighter over time" }
+      ],
+      "answer": ["measure", "set", "enforce", "ratchet"],
+      "explanation": "Start from where you are, set a holdable target, enforce it automatically, then tighten it as the team improves."
+    }
+  ]
+}

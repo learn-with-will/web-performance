@@ -1,0 +1,80 @@
+{
+  "id": "quiz-lesson-07",
+  "lessonId": "lesson-07",
+  "title": "Reading the Network Panel",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "In the Network panel, what does the \"Transferred\" value represent?",
+      "options": [
+        { "id": "a", "text": "The uncompressed size of the resource on disk" },
+        { "id": "b", "text": "The bytes actually sent over the wire, after compression" },
+        { "id": "c", "text": "The time the request took" },
+        { "id": "d", "text": "The number of requests to that origin" }
+      ],
+      "answer": "b",
+      "explanation": "Transferred is the over-the-wire byte count (after compression); Size is the uncompressed resource. A big gap means good compression, and \"(from cache)\" means it wasn't downloaded."
+    },
+    {
+      "id": "q2",
+      "type": "fill-blank",
+      "prompt": "The Network column that shows WHAT caused a request (so you can trace dependency chains) is the ____ column.",
+      "answer": ["Initiator", "initiator"],
+      "explanation": "The Initiator column shows what triggered each request — the HTML or another script — revealing request chains where one resource gates another."
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "prompt": "Which settings help you test a realistic first-visit mobile experience? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Turn on \"Disable cache\"" },
+        { "id": "b", "text": "Apply network throttling (e.g. Slow 4G)" },
+        { "id": "c", "text": "Apply CPU throttling" },
+        { "id": "d", "text": "Test on office fibre with the cache warm" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Disabling the cache simulates a new visitor, and network/CPU throttling mimics a mid-range phone. A warm cache on fast fibre hides the real first-visit cost."
+    },
+    {
+      "id": "q4",
+      "type": "ordering",
+      "prompt": "Order these per-request timing phases as they occur.",
+      "items": [
+        { "id": "queue", "text": "Queueing / Stalled" },
+        { "id": "dns", "text": "DNS lookup" },
+        { "id": "conn", "text": "Initial connection + SSL" },
+        { "id": "wait", "text": "Waiting (TTFB)" },
+        { "id": "dl", "text": "Content Download" }
+      ],
+      "answer": ["queue", "dns", "conn", "wait", "dl"],
+      "explanation": "A request queues, resolves DNS, connects (TCP+TLS), waits for the first byte (TTFB), then downloads the content. Setup phases only appear on the first request to an origin."
+    },
+    {
+      "id": "q5",
+      "type": "match-pair",
+      "prompt": "Match each Network column to what it tells you.",
+      "pairs": [
+        { "left": "Status", "right": "The HTTP result (200, 304, from cache)" },
+        { "left": "Initiator", "right": "What requested this resource" },
+        { "left": "Transferred", "right": "Bytes sent over the wire (compressed)" },
+        { "left": "Priority", "right": "The browser's fetch order for the request" }
+      ],
+      "explanation": "Status is the HTTP outcome, Initiator traces chains, Transferred is compressed bytes, and Priority controls ordering."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "Why turn on \"Disable cache\" when profiling a page?",
+      "options": [
+        { "id": "a", "text": "To make the page load faster in the test" },
+        { "id": "b", "text": "To simulate a first-time visitor with an empty cache, revealing the true download cost" },
+        { "id": "c", "text": "To remove images from the page" },
+        { "id": "d", "text": "To disable JavaScript" }
+      ],
+      "answer": "b",
+      "explanation": "With the cache on, repeat visits show tiny \"(from cache)\" entries that hide the real cost new visitors pay. Disabling it forces a cold, first-visit load."
+    }
+  ]
+}
