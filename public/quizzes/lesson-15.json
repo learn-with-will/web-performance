@@ -1,0 +1,80 @@
+{
+  "id": "quiz-lesson-15",
+  "lessonId": "lesson-15",
+  "title": "Compression and Minification",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is the difference between minification and compression?",
+      "options": [
+        { "id": "a", "text": "They are the same thing with different names" },
+        { "id": "b", "text": "Minification removes source cruft at build time; compression shrinks the bytes in transit and is reversed by the browser" },
+        { "id": "c", "text": "Minification encrypts the file; compression signs it" },
+        { "id": "d", "text": "Compression happens at build time; minification happens on the server" }
+      ],
+      "answer": "b",
+      "explanation": "Minification strips whitespace/comments (and shortens JS names) at build time; compression (gzip/Brotli/zstd) reduces the transferred bytes and the browser decompresses them. They're independent and stack."
+    },
+    {
+      "id": "q2",
+      "type": "fill-blank",
+      "prompt": "The request header in which the browser advertises the compression algorithms it supports is ____.",
+      "answer": ["Accept-Encoding", "accept-encoding"],
+      "explanation": "The browser sends Accept-Encoding (e.g. gzip, br, zstd); the server replies with Content-Encoding naming the algorithm it actually used."
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "prompt": "Which files should you NOT re-compress because they're already compressed? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "JPEG images" },
+        { "id": "b", "text": "WebP/AVIF images" },
+        { "id": "c", "text": "WOFF2 fonts" },
+        { "id": "d", "text": "CSS files" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "JPEG, WebP/AVIF, and WOFF2 are already compressed — re-compressing wastes CPU for no gain. Text like CSS is highly compressible and should be compressed."
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "prompt": "Which algorithm usually compresses text smaller than gzip?",
+      "options": [
+        { "id": "a", "text": "Brotli (br)" },
+        { "id": "b", "text": "Base64" },
+        { "id": "c", "text": "ROT13" },
+        { "id": "d", "text": "PNG" }
+      ],
+      "answer": "a",
+      "explanation": "Brotli typically produces smaller text than gzip, especially when files are precompressed at a high level. zstd is a newer option with emerging support."
+    },
+    {
+      "id": "q5",
+      "type": "match-pair",
+      "prompt": "Match each term to what it is.",
+      "pairs": [
+        { "left": "Minification", "right": "Build-time removal of whitespace and comments" },
+        { "left": "Compression", "right": "Transfer-time byte reduction, reversed by the browser" },
+        { "left": "Accept-Encoding", "right": "Browser header listing supported algorithms" },
+        { "left": "Content-Encoding", "right": "Server header naming the algorithm it used" }
+      ],
+      "explanation": "Minification is a build step, compression is a transfer step, and the two encoding headers negotiate which algorithm is used."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order how a JavaScript file ends up small on the wire and usable in the browser.",
+      "items": [
+        { "id": "minify", "text": "Minify the source at build time" },
+        { "id": "precompress", "text": "Precompress it with Brotli at build" },
+        { "id": "accept", "text": "Browser requests it, sending Accept-Encoding: br" },
+        { "id": "serve", "text": "Server responds with Content-Encoding: br" },
+        { "id": "decompress", "text": "Browser decompresses to the original code" }
+      ],
+      "answer": ["minify", "precompress", "accept", "serve", "decompress"],
+      "explanation": "Minify then precompress at build; at request time the browser advertises support, the server sends the Brotli version, and the browser decompresses it."
+    }
+  ]
+}

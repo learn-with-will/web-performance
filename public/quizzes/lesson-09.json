@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-09",
+  "lessonId": "lesson-09",
+  "title": "Optimizing Largest Contentful Paint",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "ordering",
+      "prompt": "Order the four phases that make up LCP.",
+      "items": [
+        { "id": "ttfb", "text": "TTFB (first byte of the document)" },
+        { "id": "delay", "text": "Resource load delay (before the LCP resource starts loading)" },
+        { "id": "loadtime", "text": "Resource load time (the LCP resource downloads)" },
+        { "id": "render", "text": "Element render delay (loaded → painted)" }
+      ],
+      "answer": ["ttfb", "delay", "loadtime", "render"],
+      "explanation": "LCP = TTFB + resource load delay + resource load time + element render delay. Diagnosing which phase dominates points you to the right fix."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "Why should you never add loading=\"lazy\" to the LCP image?",
+      "options": [
+        { "id": "a", "text": "Because lazy loading corrupts the image" },
+        { "id": "b", "text": "Because it delays loading the very element LCP measures, making LCP worse" },
+        { "id": "c", "text": "Because lazy loading only works on videos" },
+        { "id": "d", "text": "Because it increases the image's file size" }
+      ],
+      "answer": "b",
+      "explanation": "loading=\"lazy\" defers an image until it's about to scroll into view. The LCP image is already in view and should load eagerly — lazy-loading it directly worsens LCP."
+    },
+    {
+      "id": "q3",
+      "type": "match-pair",
+      "prompt": "Match each slow LCP phase to the fix that targets it.",
+      "pairs": [
+        { "left": "Slow TTFB", "right": "Use a CDN and cache at the edge" },
+        { "left": "Resource load delay", "right": "Preload the image and make it discoverable in the HTML" },
+        { "left": "Resource load time", "right": "Use a modern format and correct dimensions" },
+        { "left": "Element render delay", "right": "Remove render-blocking CSS/JS" }
+      ],
+      "explanation": "Each phase has a matching fix: CDN for TTFB, early discovery/preload for load delay, image optimization for load time, and removing render-blocking resources for render delay."
+    },
+    {
+      "id": "q4",
+      "type": "fill-blank",
+      "prompt": "The HTML attribute that hints a resource should be fetched at high priority is ____ (write it as attribute=value).",
+      "answer": ["fetchpriority=high", "fetchpriority=\"high\"", "fetchpriority"],
+      "explanation": "fetchpriority=\"high\" raises a fetch's priority. On the LCP image it helps the browser download it ahead of less important resources."
+    },
+    {
+      "id": "q5",
+      "type": "multiple-choice",
+      "prompt": "Which techniques help the LCP image start downloading earlier? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Put it as a real <img> in the initial HTML" },
+        { "id": "b", "text": "Add <link rel=\"preload\" as=\"image\">" },
+        { "id": "c", "text": "Add fetchpriority=\"high\"" },
+        { "id": "d", "text": "Add loading=\"lazy\"" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Being in the HTML makes it discoverable, preload starts it early, and fetchpriority raises its priority. loading=\"lazy\" would do the opposite and delay it."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "If the LCP element is a block of text, what most commonly delays it?",
+      "options": [
+        { "id": "a", "text": "A slow-loading web font and/or render-blocking CSS" },
+        { "id": "b", "text": "The number of images elsewhere on the page" },
+        { "id": "c", "text": "The favicon" },
+        { "id": "d", "text": "Cookies" }
+      ],
+      "answer": "a",
+      "explanation": "For text LCP the 'resource' is effectively the font and CSS, so a slow web font or render-blocking CSS delays the text from painting."
+    }
+  ]
+}

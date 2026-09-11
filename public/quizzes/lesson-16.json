@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-16",
+  "lessonId": "lesson-16",
+  "title": "Eliminating Render-Blocking Resources",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "Why is a normal external stylesheet render-blocking?",
+      "options": [
+        { "id": "a", "text": "Because CSS files are always huge" },
+        { "id": "b", "text": "Because the browser won't paint content until it has built the CSSOM from all applicable CSS" },
+        { "id": "c", "text": "Because CSS must run before JavaScript" },
+        { "id": "d", "text": "Because stylesheets are downloaded last" }
+      ],
+      "answer": "b",
+      "explanation": "The browser needs the CSSOM before painting, so an applicable stylesheet blocks the first paint until it's downloaded and parsed — a big part of LCP's render-delay phase."
+    },
+    {
+      "id": "q2",
+      "type": "multiple-choice",
+      "prompt": "Which techniques keep resources off the critical path? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Inline critical CSS and load the rest asynchronously" },
+        { "id": "b", "text": "Mark print styles with media=\"print\"" },
+        { "id": "c", "text": "Add defer to app scripts" },
+        { "id": "d", "text": "Inline the entire stylesheet into every HTML page" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Inlining critical CSS, scoping non-matching CSS with media, and deferring scripts all unblock the first paint. Inlining all CSS bloats HTML and loses caching."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "The minimal set of above-the-fold styles you inline so the first paint doesn't wait on a request is called ____ CSS.",
+      "answer": ["critical", "critical css"],
+      "explanation": "Critical CSS is the small above-the-fold style set inlined in the head; the full stylesheet is then loaded asynchronously."
+    },
+    {
+      "id": "q4",
+      "type": "match-pair",
+      "prompt": "Match each technique to its effect.",
+      "pairs": [
+        { "left": "Inline critical CSS", "right": "First paint doesn't wait on a stylesheet request" },
+        { "left": "media=\"print\" on a stylesheet", "right": "It downloads without blocking the screen render" },
+        { "left": "defer on a script", "right": "Runs after parsing, in document order" },
+        { "left": "async on a script", "right": "Runs as soon as it downloads, order not guaranteed" }
+      ],
+      "explanation": "Inlining critical CSS and scoping non-matching CSS unblock painting; defer/async keep scripts from blocking the parser."
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "prompt": "Why is inlining ALL of your CSS into the HTML a bad idea?",
+      "options": [
+        { "id": "a", "text": "Inline CSS doesn't work in browsers" },
+        { "id": "b", "text": "It bloats every HTML response, can't be cached separately, and is re-sent on every navigation" },
+        { "id": "c", "text": "It disables JavaScript" },
+        { "id": "d", "text": "It forces the page to use dark mode" }
+      ],
+      "answer": "b",
+      "explanation": "Only the small critical set should be inlined. Inlining everything makes each HTML response large and uncacheable, hurting multi-page visits."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order the timeline of an optimized, non-blocking head as the page paints.",
+      "items": [
+        { "id": "html", "text": "HTML arrives and is parsed" },
+        { "id": "critical", "text": "Inline critical CSS lets the browser paint above-the-fold" },
+        { "id": "full", "text": "The full stylesheet finishes loading asynchronously and applies" },
+        { "id": "defer", "text": "The deferred script runs after parsing" }
+      ],
+      "answer": ["html", "critical", "full", "defer"],
+      "explanation": "With critical CSS inline and the rest async plus a deferred script, the browser paints early and the non-critical resources apply/run off the critical path."
+    }
+  ]
+}

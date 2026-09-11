@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-14",
+  "lessonId": "lesson-14",
+  "title": "HTTP Caching",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What does the Cache-Control directive `no-cache` actually mean?",
+      "options": [
+        { "id": "a", "text": "Never store the response anywhere" },
+        { "id": "b", "text": "The response may be stored, but must be revalidated with the server before reuse" },
+        { "id": "c", "text": "Cache the response forever" },
+        { "id": "d", "text": "Only cache on the server" }
+      ],
+      "answer": "b",
+      "explanation": "`no-cache` still stores the response but requires a revalidation (a conditional request) before reusing it. The directive that means 'never store' is `no-store`."
+    },
+    {
+      "id": "q2",
+      "type": "match-pair",
+      "prompt": "Match each Cache-Control directive to its meaning.",
+      "pairs": [
+        { "left": "max-age=N", "right": "Fresh (reusable without the network) for N seconds" },
+        { "left": "no-store", "right": "Never store the response at all" },
+        { "left": "immutable", "right": "Don't revalidate even on reload — content won't change" },
+        { "left": "public", "right": "Shared caches (CDNs/proxies) may store it" }
+      ],
+      "explanation": "max-age sets freshness, no-store forbids storing, immutable skips revalidation, and public allows shared caches to store the response."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "When a revalidation shows the cached copy is still valid, the server responds with status ____ (the number), sending no body.",
+      "answer": ["304", "304 not modified"],
+      "explanation": "A 304 Not Modified tells the browser its cached copy is still good, so it reuses it without re-downloading the body (though a round trip still happens)."
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "prompt": "What's the recommended caching for a fingerprinted asset like app.9f2a1c.js?",
+      "options": [
+        { "id": "a", "text": "no-store" },
+        { "id": "b", "text": "max-age=60" },
+        { "id": "c", "text": "public, max-age=31536000, immutable" },
+        { "id": "d", "text": "no-cache" }
+      ],
+      "answer": "c",
+      "explanation": "A hashed filename changes when its content changes, so the URL is effectively permanent — cache it for a year and mark it immutable so it's never revalidated."
+    },
+    {
+      "id": "q5",
+      "type": "multiple-choice",
+      "prompt": "Which are good HTTP caching practices? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Serve fingerprinted assets as immutable for a long time" },
+        { "id": "b", "text": "Serve HTML with no-cache (or a short max-age)" },
+        { "id": "c", "text": "Cache HTML with max-age of one year" },
+        { "id": "d", "text": "Use public + a CDN for shared static assets" }
+      ],
+      "answer": ["a", "b", "d"],
+      "explanation": "Cache fingerprinted assets long-term, revalidate HTML so deploys are seen, and use public + CDN for shared assets. Caching HTML for a year strands users on old pages."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order what happens when a stale cached file is revalidated and hasn't changed.",
+      "items": [
+        { "id": "stale", "text": "The cached copy becomes stale (or is no-cache)" },
+        { "id": "cond", "text": "The browser sends a conditional request (If-None-Match with the ETag)" },
+        { "id": "compare", "text": "The server sees the content is unchanged" },
+        { "id": "reuse", "text": "The server returns 304 and the browser reuses its copy" }
+      ],
+      "answer": ["stale", "cond", "compare", "reuse"],
+      "explanation": "A stale/no-cache resource triggers a conditional request; if the ETag still matches, the server answers 304 and the browser reuses its stored copy without re-downloading."
+    }
+  ]
+}

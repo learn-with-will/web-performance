@@ -1,0 +1,78 @@
+{
+  "id": "quiz-lesson-11",
+  "lessonId": "lesson-11",
+  "title": "Optimizing Interaction to Next Paint",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What does INP measure?",
+      "options": [
+        { "id": "a", "text": "How long the page takes to finish loading" },
+        { "id": "b", "text": "How quickly the page visually responds to interactions like clicks, taps, and key presses" },
+        { "id": "c", "text": "How much the layout shifts" },
+        { "id": "d", "text": "The size of the JavaScript bundle" }
+      ],
+      "answer": "b",
+      "explanation": "INP (Interaction to Next Paint) is the responsiveness vital: it measures the latency from an interaction to the next visual update, reporting near the worst interaction of the visit."
+    },
+    {
+      "id": "q2",
+      "type": "match-pair",
+      "prompt": "Match each part of an interaction's latency to a fix that targets it.",
+      "pairs": [
+        { "left": "Input delay", "right": "Break up long tasks and yield to the main thread" },
+        { "left": "Processing time", "right": "Do less in the handler; defer non-urgent work" },
+        { "left": "Presentation delay", "right": "Shrink the DOM and make rendering cheaper" }
+      ],
+      "explanation": "Input delay is fixed by keeping the main thread free, processing time by doing less work, and presentation delay by making the next frame cheaper to render."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "Main-thread work that runs for more than 50 ms and blocks the page from responding is called a ____ task.",
+      "answer": ["long", "long task"],
+      "explanation": "A long task exceeds 50 ms on the main thread. Because JavaScript is single-threaded there, a long task blocks input until it finishes — the main cause of input delay."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which techniques help reduce INP? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Break up long tasks and yield to the main thread" },
+        { "id": "b", "text": "Update the visible UI first, then defer analytics/logging" },
+        { "id": "c", "text": "Debounce or throttle frequently-firing events" },
+        { "id": "d", "text": "Do all work synchronously inside the event handler" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Breaking up tasks, deferring non-urgent work, and debouncing all keep interactions cheap. Doing everything synchronously in the handler inflates processing time and delays the response."
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "prompt": "Inside an event handler, which work should run synchronously?",
+      "options": [
+        { "id": "a", "text": "Only the visible response the user is waiting for; defer the rest" },
+        { "id": "b", "text": "All analytics and logging first, then the UI update" },
+        { "id": "c", "text": "Every possible task, to get it out of the way" },
+        { "id": "d", "text": "Nothing — handlers should be empty" }
+      ],
+      "answer": "a",
+      "explanation": "Do just the visible response synchronously so the user sees a fast reaction, then yield and run non-urgent work (analytics, logging) after the browser paints."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order a responsive click handler that avoids blocking the interaction.",
+      "items": [
+        { "id": "feedback", "text": "Show immediate visual feedback (e.g. a spinner)" },
+        { "id": "yield", "text": "Yield so the browser can paint that feedback" },
+        { "id": "work", "text": "Do the heavy work in yielding chunks" },
+        { "id": "defer", "text": "Run non-urgent work (analytics) last" }
+      ],
+      "answer": ["feedback", "yield", "work", "defer"],
+      "explanation": "Give feedback first, let the browser paint it, then do heavy work in chunks that yield, and finally run non-urgent work — so the interaction never blocks."
+    }
+  ]
+}

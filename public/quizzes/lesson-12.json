@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-12",
+  "lessonId": "lesson-12",
+  "title": "Image Optimization",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "Which format is usually the smallest for photographs (with a fallback still recommended)?",
+      "options": [
+        { "id": "a", "text": "PNG" },
+        { "id": "b", "text": "AVIF" },
+        { "id": "c", "text": "BMP" },
+        { "id": "d", "text": "Animated GIF" }
+      ],
+      "answer": "b",
+      "explanation": "AVIF usually gives the smallest files for photos, with WebP and JPEG as fallbacks (served via <picture>). PNG is for graphics/transparency; GIF should be replaced by video."
+    },
+    {
+      "id": "q2",
+      "type": "match-pair",
+      "prompt": "Match each image feature to what it does.",
+      "pairs": [
+        { "left": "srcset", "right": "Lists image sources with width descriptors" },
+        { "left": "sizes", "right": "Tells the browser how wide the image will display" },
+        { "left": "<picture>", "right": "Provides format fallback or art direction" },
+        { "left": "loading=lazy", "right": "Defers loading a below-the-fold image" }
+      ],
+      "explanation": "srcset + sizes let the browser pick the right resolution; <picture> handles format/crop fallback; loading=lazy defers off-screen images."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "The HTML element used to offer multiple image formats (with a fallback) or different crops per breakpoint is the ____ element.",
+      "answer": ["picture", "<picture>"],
+      "explanation": "The <picture> element wraps several <source> options (by type for format, or media for art direction) plus an <img> fallback."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which are good image-optimization practices? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Serve responsive sizes with srcset/sizes" },
+        { "id": "b", "text": "Use AVIF/WebP with a JPEG fallback" },
+        { "id": "c", "text": "Always set width and height (or aspect-ratio)" },
+        { "id": "d", "text": "Add loading=\"lazy\" to the LCP image" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Responsive sizes, modern formats with fallback, and set dimensions all help. Lazy-loading the LCP image is the one thing to avoid — it delays LCP."
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "prompt": "Why is PNG a poor choice for photographs?",
+      "options": [
+        { "id": "a", "text": "PNG can't be shown in browsers" },
+        { "id": "b", "text": "PNG is lossless and produces very large files for photos; it's meant for graphics/transparency" },
+        { "id": "c", "text": "PNG doesn't support colour" },
+        { "id": "d", "text": "PNG images always cause layout shift" }
+      ],
+      "answer": "b",
+      "explanation": "PNG is lossless, which bloats photographic content. Photos belong in AVIF/WebP/JPEG; reserve PNG for graphics needing sharp edges or transparency."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order the steps to prepare an optimized photo for the web.",
+      "items": [
+        { "id": "format", "text": "Choose an efficient format (AVIF/WebP with fallback)" },
+        { "id": "resize", "text": "Generate the sizes actually needed (responsive)" },
+        { "id": "compress", "text": "Compress to a sensible quality" },
+        { "id": "markup", "text": "Add width/height and the right loading/priority attributes" }
+      ],
+      "answer": ["format", "resize", "compress", "markup"],
+      "explanation": "Pick the format, produce right-sized variants, compress, then write markup that reserves space and sets loading/priority appropriately."
+    }
+  ]
+}

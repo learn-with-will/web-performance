@@ -1,0 +1,80 @@
+{
+  "id": "quiz-lesson-10",
+  "lessonId": "lesson-10",
+  "title": "Optimizing Cumulative Layout Shift",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is the most effective way to prevent images from causing layout shift?",
+      "options": [
+        { "id": "a", "text": "Load all images with JavaScript" },
+        { "id": "b", "text": "Give each image its width and height attributes (or a CSS aspect-ratio) so space is reserved before it loads" },
+        { "id": "c", "text": "Make every image a background-image" },
+        { "id": "d", "text": "Add loading=\"lazy\" to every image" }
+      ],
+      "answer": "b",
+      "explanation": "With width/height (or aspect-ratio) the browser knows the aspect ratio and reserves the right space before the image loads, so content below never jumps. Keep height:auto in CSS for responsiveness."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "Which layout shifts do NOT count toward CLS?",
+      "options": [
+        { "id": "a", "text": "Shifts that happen within 500 ms of a user interaction" },
+        { "id": "b", "text": "Shifts caused by images" },
+        { "id": "c", "text": "Shifts on mobile devices" },
+        { "id": "d", "text": "Shifts in the first second of load" }
+      ],
+      "answer": "a",
+      "explanation": "Shifts within 500 ms of a user interaction are flagged hadRecentInput and treated as expected (e.g. opening an accordion you clicked), so they're excluded from CLS."
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "prompt": "Which of these are common causes of layout shift? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Images or videos without dimensions" },
+        { "id": "b", "text": "Ad or embed slots that grow from zero height" },
+        { "id": "c", "text": "Content injected above existing content on load" },
+        { "id": "d", "text": "Animating with transform and opacity" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Unsized media, growing slots, and content inserted above existing content all shift the layout. transform/opacity animations do not move other content, so they don't cause shifts."
+    },
+    {
+      "id": "q4",
+      "type": "fill-blank",
+      "prompt": "The CSS property that reserves space for a box in a given width:height ratio (e.g. 16 / 9) is ____.",
+      "answer": ["aspect-ratio", "aspect ratio"],
+      "explanation": "CSS aspect-ratio reserves correctly proportioned space for elements without an intrinsic size, such as video embeds, preventing a shift when they load."
+    },
+    {
+      "id": "q5",
+      "type": "match-pair",
+      "prompt": "Match each cause of layout shift to its fix.",
+      "pairs": [
+        { "left": "Image with no dimensions", "right": "Add width and height attributes" },
+        { "left": "Ad/embed slot", "right": "Reserve space with a min-height" },
+        { "left": "Banner injected at top on load", "right": "Use a fixed overlay or reserve its space" },
+        { "left": "Web font swap reflow", "right": "Match fallback metrics or use font-display: optional" }
+      ],
+      "explanation": "Every CLS fix comes down to reserving space (dimensions, min-height) or not displacing existing content (overlays, matched font metrics)."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order the steps to diagnose and fix a layout shift.",
+      "items": [
+        { "id": "record", "text": "Record the page load in DevTools" },
+        { "id": "find", "text": "Identify the element that shifts" },
+        { "id": "cause", "text": "Determine the cause (unsized media, injected content, font)" },
+        { "id": "fix", "text": "Reserve space or apply the matching fix" },
+        { "id": "verify", "text": "Re-measure CLS to confirm" }
+      ],
+      "answer": ["record", "find", "cause", "fix", "verify"],
+      "explanation": "Record, locate the shifting element, find its cause, apply the reserve-space fix, and confirm CLS improved."
+    }
+  ]
+}

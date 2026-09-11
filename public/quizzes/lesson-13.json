@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-13",
+  "lessonId": "lesson-13",
+  "title": "Font Loading Strategy",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "Which web font format should you ship as your primary format?",
+      "options": [
+        { "id": "a", "text": "TTF" },
+        { "id": "b", "text": "EOT" },
+        { "id": "c", "text": "WOFF2" },
+        { "id": "d", "text": "SVG fonts" }
+      ],
+      "answer": "c",
+      "explanation": "WOFF2 has the best compression and is supported across modern browsers, so it's the format to ship — you rarely need others anymore."
+    },
+    {
+      "id": "q2",
+      "type": "match-pair",
+      "prompt": "Match each font-display value to its behaviour.",
+      "pairs": [
+        { "left": "block", "right": "Hide text briefly (FOIT), then swap in the web font" },
+        { "left": "swap", "right": "Show the fallback immediately, then swap (FOUT)" },
+        { "left": "optional", "right": "Use the fallback and keep it if the font is slow (best for CLS)" },
+        { "left": "fallback", "right": "Very short block, short swap window, else keep the fallback" }
+      ],
+      "explanation": "block risks invisible text; swap avoids invisible text but can reflow; optional avoids the shift; fallback is a compromise between them."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "A font <link rel=\"preload\"> must include the ____ attribute, or the font downloads twice.",
+      "answer": ["crossorigin", "crossOrigin"],
+      "explanation": "Fonts are fetched in anonymous CORS mode, so a preload without crossorigin doesn't match the real request and causes a duplicate download."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which practices reduce the performance impact of web fonts? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Ship WOFF2" },
+        { "id": "b", "text": "Subset to only the glyphs you use (unicode-range)" },
+        { "id": "c", "text": "Preload the critical font with crossorigin" },
+        { "id": "d", "text": "Use font-display: block on all text so nothing shows until fonts load" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "WOFF2, subsetting, and a correct preload all help. font-display: block leaves text invisible (FOIT) while fonts load, which hurts perceived speed."
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "prompt": "How can you reduce the layout shift (CLS) caused when a fallback font swaps to the web font?",
+      "options": [
+        { "id": "a", "text": "Match the fallback's metrics with size-adjust/ascent-override, or use font-display: optional" },
+        { "id": "b", "text": "Make the font file larger" },
+        { "id": "c", "text": "Remove all fallback fonts" },
+        { "id": "d", "text": "Load the font with JavaScript after everything else" }
+      ],
+      "answer": "a",
+      "explanation": "Matching the fallback's metrics keeps line lengths and heights the same across the swap, and font-display: optional avoids the swap entirely — both cut swap-driven CLS."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order the steps to add a web font with good performance.",
+      "items": [
+        { "id": "format", "text": "Choose WOFF2 and subset it to needed glyphs" },
+        { "id": "face", "text": "Declare @font-face with a font-display value" },
+        { "id": "preload", "text": "Preload the critical font with crossorigin" },
+        { "id": "fallback", "text": "Add a metric-matched fallback to reduce swap shift" }
+      ],
+      "answer": ["format", "face", "preload", "fallback"],
+      "explanation": "Prepare an efficient, subset WOFF2; declare it with a chosen font-display; preload the critical one (with crossorigin); and stabilize the swap with matched fallback metrics."
+    }
+  ]
+}
