@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-21",
+  "lessonId": "lesson-21",
+  "title": "Rendering Strategies",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "match-pair",
+      "prompt": "Match each rendering strategy to its description.",
+      "pairs": [
+        { "left": "CSR", "right": "The browser builds the UI from JavaScript" },
+        { "left": "SSR", "right": "The server renders full HTML per request" },
+        { "left": "SSG / prerender", "right": "HTML is generated at build time and served static" },
+        { "left": "Streaming SSR", "right": "The server flushes HTML in chunks as it's ready" }
+      ],
+      "explanation": "CSR renders in the browser, SSR renders per request on the server, SSG prebuilds HTML, and streaming SSR sends HTML incrementally to paint sooner."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "What is hydration?",
+      "options": [
+        { "id": "a", "text": "Compressing the HTML before sending it" },
+        { "id": "b", "text": "Downloading JavaScript to attach state and event listeners to already-rendered HTML, making it interactive" },
+        { "id": "c", "text": "Caching the page at the edge" },
+        { "id": "d", "text": "Converting images to WebP" }
+      ],
+      "answer": "b",
+      "explanation": "After SSR/SSG HTML arrives, the framework hydrates it — reconstructing state and wiring up events on the existing DOM so it becomes interactive. That's main-thread work."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "Generating HTML at build time and serving it as static files (ideal for blogs/docs) is called ____ (three-letter abbreviation).",
+      "answer": ["SSG", "static site generation", "static generation"],
+      "explanation": "SSG (Static Site Generation) prebuilds pages at build time; served from a CDN it gives the best TTFB and FCP for content that rarely changes."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which statements about rendering strategies are true? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "SSG is usually best for mostly-static content like blogs and docs" },
+        { "id": "b", "text": "SSR puts content in the HTML earlier than CSR, but adds hydration cost" },
+        { "id": "c", "text": "CSR shows content instantly with no JavaScript" },
+        { "id": "d", "text": "Islands/partial hydration ship the least JavaScript" }
+      ],
+      "answer": ["a", "b", "d"],
+      "explanation": "SSG suits static content, SSR paints earlier than CSR but must hydrate, and islands minimize JS. CSR shows nothing until its JavaScript downloads and runs."
+    },
+    {
+      "id": "q5",
+      "type": "ordering",
+      "prompt": "Order what happens with server-side rendering plus hydration.",
+      "items": [
+        { "id": "render", "text": "Server renders full HTML for the request" },
+        { "id": "paint", "text": "Browser receives the HTML and paints the content" },
+        { "id": "download", "text": "The framework's JavaScript downloads" },
+        { "id": "hydrate", "text": "Hydration attaches interactivity; the page becomes responsive" }
+      ],
+      "answer": ["render", "paint", "download", "hydrate"],
+      "explanation": "SSR paints content early from server HTML, but the page isn't interactive until its JS downloads and hydration runs — the gap where INP can suffer."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "Is there a single best rendering strategy for all sites?",
+      "options": [
+        { "id": "a", "text": "Yes — always use CSR" },
+        { "id": "b", "text": "Yes — always use SSR" },
+        { "id": "c", "text": "No — each trades off TTFB, first paint, JS cost, and interactivity, so you choose per content type" },
+        { "id": "d", "text": "Yes — always use SSG, even for personalized data" }
+      ],
+      "answer": "c",
+      "explanation": "There's no universal winner: static content favors SSG, per-request content favors SSR/streaming, and app-like surfaces may use CSR/islands. Different pages can use different strategies."
+    }
+  ]
+}

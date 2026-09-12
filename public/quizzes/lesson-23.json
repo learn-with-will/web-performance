@@ -1,0 +1,80 @@
+{
+  "id": "quiz-lesson-23",
+  "lessonId": "lesson-23",
+  "title": "Monitoring Performance in Production",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What does the web-vitals JavaScript library do?",
+      "options": [
+        { "id": "a", "text": "Runs a Lighthouse audit on the server" },
+        { "id": "b", "text": "Measures the Core Web Vitals (LCP/INP/CLS, plus FCP/TTFB) in real user sessions and reports final values" },
+        { "id": "c", "text": "Compresses images at build time" },
+        { "id": "d", "text": "Blocks slow third-party scripts" }
+      ],
+      "answer": "b",
+      "explanation": "web-vitals is a field/RUM tool: it measures the vitals in real sessions and calls back with each final value so you can send it to analytics."
+    },
+    {
+      "id": "q2",
+      "type": "fill-blank",
+      "prompt": "To reliably send a metric to analytics as the page is unloading, use navigator.____().",
+      "answer": ["sendBeacon", "sendbeacon"],
+      "explanation": "navigator.sendBeacon (or fetch with keepalive) reliably delivers the report even as the page unloads, when a normal request might be cancelled."
+    },
+    {
+      "id": "q3",
+      "type": "match-pair",
+      "prompt": "Match each monitoring concept to what it is.",
+      "pairs": [
+        { "left": "RUM", "right": "Performance measured from real users' sessions" },
+        { "left": "CrUX", "right": "Google's public p75 field dataset" },
+        { "left": "Attribution", "right": "The cause behind a slow metric (element, target, phase)" },
+        { "left": "Lighthouse CI", "right": "A pipeline gate that catches regressions before shipping" }
+      ],
+      "explanation": "RUM is your own field data, CrUX is the public benchmark, attribution explains why, and Lighthouse CI prevents regressions from shipping."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which are good production-monitoring practices? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Judge with percentiles (p75) and segment by device/route" },
+        { "id": "b", "text": "Know CrUX is Chrome-only, 28-day, and traffic-gated" },
+        { "id": "c", "text": "Treat a launch-day Lighthouse score as sufficient monitoring" },
+        { "id": "d", "text": "Use your own RUM to cover pages and browsers CrUX misses" }
+      ],
+      "answer": ["a", "b", "d"],
+      "explanation": "Reason in percentiles and segments, understand CrUX's limits, and use your own RUM for coverage. A one-off launch score misses the decay that follows."
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "prompt": "Why segment metrics instead of looking only at the overall p75?",
+      "options": [
+        { "id": "a", "text": "Segmenting makes the numbers look better" },
+        { "id": "b", "text": "A healthy overall p75 can hide a badly failing segment (e.g. low-end Android or one route)" },
+        { "id": "c", "text": "Because p75 is not a real percentile" },
+        { "id": "d", "text": "Segmenting is required to run Lighthouse" }
+      ],
+      "answer": "b",
+      "explanation": "Blended numbers mask trouble; slicing by device, connection, and route reveals the group that's actually suffering so you can fix the right thing."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order the continuous measure-and-fix loop.",
+      "items": [
+        { "id": "find", "text": "RUM reveals a failing metric/segment in the field" },
+        { "id": "why", "text": "Attribution names the cause" },
+        { "id": "fix", "text": "Ship a fix" },
+        { "id": "guard", "text": "A Lighthouse CI budget guards against the regression returning" },
+        { "id": "confirm", "text": "Field data confirms the recovery" }
+      ],
+      "answer": ["find", "why", "fix", "guard", "confirm"],
+      "explanation": "Field data finds the problem, attribution explains it, you fix it, CI prevents its return, and the field confirms the improvement."
+    }
+  ]
+}

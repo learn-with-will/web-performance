@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-18",
+  "lessonId": "lesson-18",
+  "title": "Reducing Main-Thread Work",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "Which of these run on the browser's single main thread?",
+      "options": [
+        { "id": "a", "text": "Only JavaScript" },
+        { "id": "b", "text": "JavaScript, style calculation, layout, paint, and event handling — all serialized" },
+        { "id": "c", "text": "Only network requests" },
+        { "id": "d", "text": "Only image decoding" }
+      ],
+      "answer": "b",
+      "explanation": "The main thread serializes JS execution, style/layout/paint, and event handling, so a long task on it blocks rendering and input alike."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "What can a Web Worker NOT do?",
+      "options": [
+        { "id": "a", "text": "Run JavaScript on a separate thread" },
+        { "id": "b", "text": "Access the DOM directly" },
+        { "id": "c", "text": "Receive data via postMessage" },
+        { "id": "d", "text": "Do heavy computation" }
+      ],
+      "answer": "b",
+      "explanation": "Workers run JS off the main thread and communicate via postMessage, but they cannot touch the DOM — DOM updates must happen back on the main thread."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "Reading a layout property (like offsetHeight) immediately after a style write forces the browser to do a synchronous ____ (recompute the layout).",
+      "answer": ["reflow", "layout", "forced synchronous layout"],
+      "explanation": "That pattern is forced synchronous layout (layout thrashing); doing it in a loop causes repeated reflows and turns a quick update into a long task."
+    },
+    {
+      "id": "q4",
+      "type": "match-pair",
+      "prompt": "Match each tool to its best use.",
+      "pairs": [
+        { "left": "requestAnimationFrame", "right": "Visual updates just before the next paint" },
+        { "left": "requestIdleCallback", "right": "Low-priority background work during idle time" },
+        { "left": "Web Worker", "right": "Heavy, DOM-free computation off the main thread" },
+        { "left": "postMessage", "right": "Send data between the page and a worker" }
+      ],
+      "explanation": "rAF aligns with the frame, rIC uses idle time, a Web Worker offloads computation, and postMessage is how they communicate."
+    },
+    {
+      "id": "q5",
+      "type": "multiple-choice",
+      "prompt": "Which techniques reduce pressure on the main thread? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Break up long tasks and yield between chunks" },
+        { "id": "b", "text": "Move heavy DOM-free computation to a Web Worker" },
+        { "id": "c", "text": "Batch DOM reads, then writes" },
+        { "id": "d", "text": "Read and write layout properties interleaved in a loop" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Chunking, offloading to workers, and batching reads/writes all free the main thread. Interleaving reads and writes causes layout thrashing."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order the steps to fix a resize handler that thrashes layout.",
+      "items": [
+        { "id": "reads", "text": "Collect all layout reads first" },
+        { "id": "writes", "text": "Then perform all the writes" },
+        { "id": "raf", "text": "Run the update inside requestAnimationFrame" },
+        { "id": "throttle", "text": "Throttle so it runs at most once per frame" }
+      ],
+      "answer": ["reads", "writes", "raf", "throttle"],
+      "explanation": "Batch reads then writes to avoid forced reflows, align the update to the frame with rAF, and throttle so it runs at most once per frame."
+    }
+  ]
+}

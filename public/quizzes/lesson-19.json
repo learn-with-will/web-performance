@@ -1,0 +1,78 @@
+{
+  "id": "quiz-lesson-19",
+  "lessonId": "lesson-19",
+  "title": "Resource Hints and Priorities",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "match-pair",
+      "prompt": "Match each resource hint to what it does.",
+      "pairs": [
+        { "left": "preconnect", "right": "Do DNS + TCP + TLS to an origin in advance" },
+        { "left": "dns-prefetch", "right": "Resolve an origin's DNS only" },
+        { "left": "preload", "right": "Fetch a critical current-page resource early" },
+        { "left": "prefetch", "right": "Fetch a likely future-navigation resource at low priority" }
+      ],
+      "explanation": "preconnect warms a full connection, dns-prefetch just resolves DNS, preload pulls a current-page resource forward, and prefetch prepares a future navigation."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "What is `preload` for?",
+      "options": [
+        { "id": "a", "text": "Fetching a resource the CURRENT page needs, earlier than the browser would discover it" },
+        { "id": "b", "text": "Fetching a page the user will visit next" },
+        { "id": "c", "text": "Compressing resources" },
+        { "id": "d", "text": "Deleting cached files" }
+      ],
+      "answer": "a",
+      "explanation": "preload pulls a critical current-page resource (LCP image, font, critical CSS/JS) forward. prefetch, by contrast, prepares a future navigation."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "A font <link rel=\"preload\"> must include the ____ attribute (fonts are fetched anonymously), or it's wasted.",
+      "answer": ["crossorigin", "crossOrigin"],
+      "explanation": "Because fonts fetch in anonymous CORS mode, a preload without crossorigin doesn't match the real request and downloads the font twice. Also set the correct `as`."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which are correct uses of hints and priorities? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "preconnect a few critical origins you'll use immediately" },
+        { "id": "b", "text": "preload only genuinely critical, late-discovered resources" },
+        { "id": "c", "text": "Mark a dozen resources fetchpriority=\"high\"" },
+        { "id": "d", "text": "Use fetchpriority=\"high\" on the LCP image" }
+      ],
+      "answer": ["a", "b", "d"],
+      "explanation": "Precise hints help. Marking many resources high flattens the priority order and can delay the real LCP resource — the opposite of the goal."
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "prompt": "What can the Speculation Rules API do that a plain prefetch cannot?",
+      "options": [
+        { "id": "a", "text": "Compress the current page" },
+        { "id": "b", "text": "Prerender an entire likely-next page in the background for near-instant navigation" },
+        { "id": "c", "text": "Encrypt the connection" },
+        { "id": "d", "text": "Remove render-blocking CSS automatically" }
+      ],
+      "answer": "b",
+      "explanation": "Speculation Rules can prerender a whole next page (not just fetch resources), so clicking through is near-instant — with an eagerness setting to balance benefit against wasted work."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order the steps that `preconnect` performs ahead of time.",
+      "items": [
+        { "id": "dns", "text": "DNS lookup" },
+        { "id": "tcp", "text": "TCP handshake" },
+        { "id": "tls", "text": "TLS handshake" }
+      ],
+      "answer": ["dns", "tcp", "tls"],
+      "explanation": "preconnect completes the full setup — DNS, then TCP, then TLS — so the eventual request to that origin doesn't pay for it."
+    }
+  ]
+}

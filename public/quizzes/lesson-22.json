@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-22",
+  "lessonId": "lesson-22",
+  "title": "Service Workers and the Cache API",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is a service worker?",
+      "options": [
+        { "id": "a", "text": "A background script that acts as a programmable network proxy, intercepting fetch requests" },
+        { "id": "b", "text": "A faster kind of web server" },
+        { "id": "c", "text": "A CSS feature for offline styling" },
+        { "id": "d", "text": "A browser extension users install" }
+      ],
+      "answer": "a",
+      "explanation": "A service worker runs in the background as a programmable proxy between the page and the network, handling requests via the fetch event. It requires HTTPS and has no DOM access."
+    },
+    {
+      "id": "q2",
+      "type": "match-pair",
+      "prompt": "Match each caching strategy to its behaviour.",
+      "pairs": [
+        { "left": "Cache-first", "right": "Serve from cache, fall back to the network" },
+        { "left": "Network-first", "right": "Try the network, fall back to the cache" },
+        { "left": "Stale-while-revalidate", "right": "Serve cache now, update it in the background" },
+        { "left": "Cache-only", "right": "Never hit the network" }
+      ],
+      "explanation": "Cache-first suits immutable assets, network-first suits fresh content, stale-while-revalidate balances the two, and cache-only serves fixed content offline."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "A service worker will only register over ____ (except on localhost).",
+      "answer": ["HTTPS", "https"],
+      "explanation": "Because a service worker can intercept all requests, it requires a secure context (HTTPS); localhost is exempted for development."
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "prompt": "Does a service worker speed up the FIRST visit to a site?",
+      "options": [
+        { "id": "a", "text": "Yes, it caches everything before the page loads" },
+        { "id": "b", "text": "No — it installs during or after the first load, so it accelerates subsequent visits" },
+        { "id": "c", "text": "Yes, but only on mobile" },
+        { "id": "d", "text": "Only if the page uses HTTP/3" }
+      ],
+      "answer": "b",
+      "explanation": "The service worker installs during/after the first load, so the first visit sees no benefit; it speeds up repeat visits and enables offline."
+    },
+    {
+      "id": "q5",
+      "type": "multiple-choice",
+      "prompt": "Which statements about service workers are true? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "You should version caches and delete old ones on activate" },
+        { "id": "b", "text": "A service worker cannot access the DOM directly" },
+        { "id": "c", "text": "A service worker makes the first visit instant" },
+        { "id": "d", "text": "With the Cache API it can serve content offline" }
+      ],
+      "answer": ["a", "b", "d"],
+      "explanation": "Version and clean up caches, remember there's no DOM access, and use the Cache API for offline. It does not speed the first visit."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order the main stages of the service worker lifecycle.",
+      "items": [
+        { "id": "register", "text": "Register the service worker from the page" },
+        { "id": "install", "text": "Install (precache assets)" },
+        { "id": "activate", "text": "Activate (clean up old caches)" },
+        { "id": "fetch", "text": "Intercept fetch events for controlled pages" }
+      ],
+      "answer": ["register", "install", "activate", "fetch"],
+      "explanation": "The page registers it; it installs (precaching), activates (cleaning old caches), then begins handling fetch events for the pages it controls."
+    }
+  ]
+}

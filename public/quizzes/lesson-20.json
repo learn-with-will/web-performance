@@ -1,0 +1,78 @@
+{
+  "id": "quiz-lesson-20",
+  "lessonId": "lesson-20",
+  "title": "HTTP/2, HTTP/3, and CDNs",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is multiplexing in HTTP/2?",
+      "options": [
+        { "id": "a", "text": "Encrypting requests twice" },
+        { "id": "b", "text": "Sending many concurrent request/response streams over a single connection" },
+        { "id": "c", "text": "Opening one connection per file" },
+        { "id": "d", "text": "Compressing images automatically" }
+      ],
+      "answer": "b",
+      "explanation": "HTTP/2 interleaves many streams over one connection, so requests no longer wait one-at-a-time as they did in HTTP/1.1 — which is why sharding/concatenation matter less."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "What problem does HTTP/3 (over QUIC) solve that HTTP/2 still has?",
+      "options": [
+        { "id": "a", "text": "TCP-level head-of-line blocking, where one lost packet stalls all streams" },
+        { "id": "b", "text": "Images being too large" },
+        { "id": "c", "text": "CSS being render-blocking" },
+        { "id": "d", "text": "JavaScript needing to be parsed" }
+      ],
+      "answer": "a",
+      "explanation": "HTTP/2 rides on TCP, so a single lost packet stalls every stream on the connection. QUIC's independent streams (over UDP) prevent one loss from stalling the others, and set up connections faster."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "HTTP/3 runs over a UDP-based transport protocol called ____.",
+      "answer": ["QUIC", "quic"],
+      "explanation": "QUIC is the transport under HTTP/3; it provides independent streams, integrated TLS 1.3 (faster setup), and connection migration."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which statements are true? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "HTTP/2 multiplexes many streams over one connection" },
+        { "id": "b", "text": "Domain sharding can hurt on HTTP/2 by fragmenting multiplexing" },
+        { "id": "c", "text": "A CDN caches content on edge servers near users to cut latency" },
+        { "id": "d", "text": "HTTP/2 removed all head-of-line blocking" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "HTTP/2 multiplexes, sharding fragments that benefit, and CDNs cut latency at the edge. But HTTP/2 still has TCP-level head-of-line blocking, which HTTP/3 addresses."
+    },
+    {
+      "id": "q5",
+      "type": "match-pair",
+      "prompt": "Match each technology to its description.",
+      "pairs": [
+        { "left": "HTTP/1.1", "right": "One in-flight request per connection" },
+        { "left": "HTTP/2", "right": "Multiplexing plus HPACK header compression" },
+        { "left": "HTTP/3", "right": "Runs over QUIC with independent streams" },
+        { "left": "CDN", "right": "Edge caches near users that offload the origin" }
+      ],
+      "explanation": "HTTP evolved from one-at-a-time (1.1) to multiplexed (2) to QUIC-based (3); a CDN is orthogonal, cutting distance by caching at the edge."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order the HTTP protocols by version, oldest to newest.",
+      "items": [
+        { "id": "h1", "text": "HTTP/1.1" },
+        { "id": "h2", "text": "HTTP/2" },
+        { "id": "h3", "text": "HTTP/3" }
+      ],
+      "answer": ["h1", "h2", "h3"],
+      "explanation": "The web moved from HTTP/1.1 (serial) to HTTP/2 (multiplexed over TCP) to HTTP/3 (multiplexed over QUIC/UDP)."
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-17",
+  "lessonId": "lesson-17",
+  "title": "The Real Cost of JavaScript",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "Why is 200 KB of JavaScript more expensive than 200 KB of image?",
+      "options": [
+        { "id": "a", "text": "JavaScript can't be cached" },
+        { "id": "b", "text": "JavaScript must be parsed, compiled, and executed on the main thread, while an image is mostly just decoded" },
+        { "id": "c", "text": "Images are always compressed and JavaScript never is" },
+        { "id": "d", "text": "JavaScript downloads more slowly than images" }
+      ],
+      "answer": "b",
+      "explanation": "Byte-for-byte, JS costs more because after download it is parsed, compiled, and executed on the main thread — work that blocks interactivity — whereas an image is largely decoded and painted."
+    },
+    {
+      "id": "q2",
+      "type": "ordering",
+      "prompt": "Order the four cost stages a script goes through.",
+      "items": [
+        { "id": "download", "text": "Download (over the network)" },
+        { "id": "parse", "text": "Parse (read the code)" },
+        { "id": "compile", "text": "Compile (to machine code)" },
+        { "id": "execute", "text": "Execute (run it on the main thread)" }
+      ],
+      "answer": ["download", "parse", "compile", "execute"],
+      "explanation": "A script is downloaded, parsed, compiled, and executed. The last three are CPU work on the main thread — the part that's uniquely expensive about JavaScript."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "To load a module on demand at runtime (enabling code splitting) you use dynamic ____().",
+      "answer": ["import", "import()"],
+      "explanation": "Dynamic import() fetches a module at runtime, so heavy or rarely-used code can be split into a separate chunk loaded only when needed."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which techniques reduce the amount of JavaScript users must process? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Code-split with dynamic import() so features load on demand" },
+        { "id": "b", "text": "Tree-shake to drop unused exports" },
+        { "id": "c", "text": "Import only the functions you use, not whole libraries" },
+        { "id": "d", "text": "Ship a broad polyfill bundle to every browser" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Code splitting, tree shaking, and granular imports all ship less JS. Sending polyfills to modern browsers that don't need them adds wasted parse/execute cost."
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "prompt": "What does tree shaking require in order to work?",
+      "options": [
+        { "id": "a", "text": "Static ES module import/export (and correct sideEffects metadata)" },
+        { "id": "b", "text": "That all code be in one file" },
+        { "id": "c", "text": "Disabling minification" },
+        { "id": "d", "text": "Using only CommonJS require()" }
+      ],
+      "answer": "a",
+      "explanation": "Tree shaking analyzes static ES module imports/exports to safely drop unused code; dynamic require() and importing whole libraries can defeat it."
+    },
+    {
+      "id": "q6",
+      "type": "match-pair",
+      "prompt": "Match each term to its meaning.",
+      "pairs": [
+        { "left": "Code splitting", "right": "Break the bundle into chunks loaded on demand" },
+        { "left": "Tree shaking", "right": "Remove unused exports at build time" },
+        { "left": "Polyfill", "right": "Code that adds a missing feature for old browsers" },
+        { "left": "Hydration", "right": "Re-running JS to make server-rendered HTML interactive" }
+      ],
+      "explanation": "Code splitting and tree shaking reduce shipped JS; polyfills add features for old browsers; hydration is main-thread work that can hurt INP."
+    }
+  ]
+}

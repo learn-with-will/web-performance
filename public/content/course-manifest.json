@@ -1,0 +1,410 @@
+[
+  {
+    "id": "lesson-01",
+    "slug": "why-web-performance-matters",
+    "title": "Why Web Performance Matters",
+    "level": "beginner",
+    "order": 1,
+    "duration": 14,
+    "file": "beginner/why-web-performance-matters.md",
+    "summary": "What web performance really means — loading, rendering, and runtime responsiveness — and why speed shapes user experience, conversions, accessibility, and reach, plus the user-centric RAIL model and the difference between actual and perceived speed.",
+    "tags": [
+      "performance",
+      "user-experience",
+      "business-impact",
+      "perceived-performance",
+      "rail"
+    ]
+  },
+  {
+    "id": "lesson-02",
+    "slug": "how-the-browser-loads-a-page",
+    "title": "How the Browser Loads a Page",
+    "level": "beginner",
+    "order": 2,
+    "duration": 17,
+    "file": "beginner/how-the-browser-loads-a-page.md",
+    "summary": "The journey from a URL to the first byte of HTML — DNS lookup, the TCP and TLS handshakes, the HTTP request and response, and why network round trips and Time to First Byte dominate the start of every page load.",
+    "tags": [
+      "browsers",
+      "networking",
+      "dns",
+      "tls",
+      "ttfb"
+    ]
+  },
+  {
+    "id": "lesson-03",
+    "slug": "the-critical-rendering-path",
+    "title": "The Critical Rendering Path",
+    "level": "beginner",
+    "order": 3,
+    "duration": 19,
+    "file": "beginner/the-critical-rendering-path.md",
+    "summary": "How the browser turns HTML, CSS, and JavaScript into pixels — building the DOM and CSSOM, the render tree, layout, paint, and compositing — and why CSS is render-blocking while synchronous scripts are parser-blocking.",
+    "tags": [
+      "critical-rendering-path",
+      "dom",
+      "cssom",
+      "render-blocking",
+      "layout"
+    ]
+  },
+  {
+    "id": "lesson-04",
+    "slug": "core-web-vitals",
+    "title": "Meet the Core Web Vitals",
+    "level": "beginner",
+    "order": 4,
+    "duration": 19,
+    "file": "beginner/core-web-vitals.md",
+    "summary": "The three Core Web Vitals — Largest Contentful Paint (loading), Interaction to Next Paint (responsiveness), and Cumulative Layout Shift (visual stability) — with their exact good/poor thresholds, the 75th-percentile rule, and why INP replaced FID.",
+    "tags": [
+      "core-web-vitals",
+      "lcp",
+      "inp",
+      "cls",
+      "thresholds"
+    ]
+  },
+  {
+    "id": "lesson-05",
+    "slug": "lab-vs-field-data",
+    "title": "Lab Data vs Field Data",
+    "level": "beginner",
+    "order": 5,
+    "duration": 16,
+    "file": "beginner/lab-vs-field-data.md",
+    "summary": "The two ways to measure performance — synthetic lab tests (Lighthouse, DevTools, WebPageTest) versus real-user field data (RUM and the Chrome UX Report) — why they legitimately disagree, and when to trust each.",
+    "tags": [
+      "measurement",
+      "lab-data",
+      "field-data",
+      "rum",
+      "crux"
+    ]
+  },
+  {
+    "id": "lesson-06",
+    "slug": "measuring-with-lighthouse",
+    "title": "Measuring with Lighthouse",
+    "level": "beginner",
+    "order": 6,
+    "duration": 18,
+    "file": "beginner/measuring-with-lighthouse.md",
+    "summary": "How to run Lighthouse and read its performance report — the five lab metrics and their weights, the 0–100 score bands, opportunities versus diagnostics, simulated throttling, and why the score is a debugging aid, not the goal.",
+    "tags": [
+      "lighthouse",
+      "performance-score",
+      "tbt",
+      "audits",
+      "throttling"
+    ]
+  },
+  {
+    "id": "lesson-07",
+    "slug": "reading-the-network-panel",
+    "title": "Reading the Network Panel",
+    "level": "beginner",
+    "order": 7,
+    "duration": 17,
+    "file": "beginner/reading-the-network-panel.md",
+    "summary": "Reading the browser's Network panel and its request waterfall — the timing phases of each request, the size-versus-transferred and priority columns, throttling and cache options, and how to spot blocking, oversized, or late-loading resources.",
+    "tags": [
+      "devtools",
+      "network-panel",
+      "waterfall",
+      "request-timing",
+      "throttling"
+    ]
+  },
+  {
+    "id": "lesson-08",
+    "slug": "performance-budgets",
+    "title": "Setting Goals and Performance Budgets",
+    "level": "beginner",
+    "order": 8,
+    "duration": 16,
+    "file": "beginner/performance-budgets.md",
+    "summary": "Turning performance into an enforceable target with performance budgets — metric budgets tied to Core Web Vitals, quantity budgets for bytes and requests, how to set realistic limits, and how to enforce them automatically in CI so speed doesn't decay.",
+    "tags": [
+      "performance-budget",
+      "goals",
+      "ci",
+      "bundle-size",
+      "regression"
+    ]
+  },
+  {
+    "id": "lesson-09",
+    "slug": "optimizing-lcp",
+    "title": "Optimizing Largest Contentful Paint",
+    "level": "intermediate",
+    "order": 9,
+    "duration": 20,
+    "file": "intermediate/optimizing-lcp.md",
+    "summary": "A systematic way to improve LCP by breaking it into four phases — TTFB, resource load delay, resource load time, and element render delay — and applying the right fix to each, including preloading the LCP image, fetchpriority, and never lazy-loading it.",
+    "tags": [
+      "lcp",
+      "images",
+      "preload",
+      "fetchpriority",
+      "ttfb"
+    ]
+  },
+  {
+    "id": "lesson-10",
+    "slug": "optimizing-cls",
+    "title": "Optimizing Cumulative Layout Shift",
+    "level": "intermediate",
+    "order": 10,
+    "duration": 18,
+    "file": "intermediate/optimizing-cls.md",
+    "summary": "Why content jumps around and how to stop it — setting image and video dimensions, reserving space for ads and embeds, avoiding content injected above existing content, and taming font-swap reflow — to keep Cumulative Layout Shift under 0.1.",
+    "tags": [
+      "cls",
+      "layout-shift",
+      "aspect-ratio",
+      "images",
+      "fonts"
+    ]
+  },
+  {
+    "id": "lesson-11",
+    "slug": "optimizing-inp",
+    "title": "Optimizing Interaction to Next Paint",
+    "level": "intermediate",
+    "order": 11,
+    "duration": 20,
+    "file": "intermediate/optimizing-inp.md",
+    "summary": "Making interactions feel instant by attacking INP's three parts — input delay, processing time, and presentation delay — through breaking up long tasks, yielding to the main thread, minimizing handler work, and giving immediate visual feedback.",
+    "tags": [
+      "inp",
+      "responsiveness",
+      "long-tasks",
+      "main-thread",
+      "event-handlers"
+    ]
+  },
+  {
+    "id": "lesson-12",
+    "slug": "image-optimization",
+    "title": "Image Optimization",
+    "level": "intermediate",
+    "order": 12,
+    "duration": 21,
+    "file": "intermediate/image-optimization.md",
+    "summary": "Cutting image weight — the biggest payload on most pages — with modern formats (AVIF, WebP), responsive srcset/sizes and the picture element, always-set dimensions, native lazy loading, and the right priority and decoding hints.",
+    "tags": [
+      "images",
+      "avif-webp",
+      "responsive-images",
+      "lazy-loading",
+      "srcset"
+    ]
+  },
+  {
+    "id": "lesson-13",
+    "slug": "font-loading",
+    "title": "Font Loading Strategy",
+    "level": "intermediate",
+    "order": 13,
+    "duration": 19,
+    "file": "intermediate/font-loading.md",
+    "summary": "Loading web fonts without blocking or shifting text — using WOFF2, choosing a font-display strategy, preloading critical fonts with crossorigin, subsetting to ship fewer glyphs, and matching fallback metrics to cut swap-driven layout shift.",
+    "tags": [
+      "fonts",
+      "font-display",
+      "woff2",
+      "preload",
+      "subsetting"
+    ]
+  },
+  {
+    "id": "lesson-14",
+    "slug": "http-caching",
+    "title": "HTTP Caching",
+    "level": "intermediate",
+    "order": 14,
+    "duration": 19,
+    "file": "intermediate/http-caching.md",
+    "summary": "Making repeat visits nearly free with HTTP caching — the Cache-Control directives (max-age, no-cache, no-store, immutable), ETag/Last-Modified revalidation and 304 responses, and the fingerprint-plus-immutable pattern for static assets with no-cache HTML.",
+    "tags": [
+      "caching",
+      "cache-control",
+      "etag",
+      "immutable",
+      "cache-busting"
+    ]
+  },
+  {
+    "id": "lesson-15",
+    "slug": "compression-and-minification",
+    "title": "Compression and Minification",
+    "level": "intermediate",
+    "order": 15,
+    "duration": 17,
+    "file": "intermediate/compression-and-minification.md",
+    "summary": "Two different ways to shrink text assets — build-time minification that strips source cruft, and transfer-time compression (gzip, Brotli, zstd) negotiated via Accept-Encoding — plus which files to compress and which already-compressed ones to leave alone.",
+    "tags": [
+      "compression",
+      "brotli",
+      "gzip",
+      "minification",
+      "text-assets"
+    ]
+  },
+  {
+    "id": "lesson-16",
+    "slug": "render-blocking-resources",
+    "title": "Eliminating Render-Blocking Resources",
+    "level": "intermediate",
+    "order": 16,
+    "duration": 18,
+    "file": "intermediate/render-blocking-resources.md",
+    "summary": "Clearing CSS and JavaScript off the critical path — inlining critical CSS and loading the rest asynchronously, scoping stylesheets with the media attribute, and deferring scripts — so the first paint (and LCP) happen sooner.",
+    "tags": [
+      "render-blocking",
+      "critical-css",
+      "css",
+      "defer",
+      "first-paint"
+    ]
+  },
+  {
+    "id": "lesson-17",
+    "slug": "the-cost-of-javascript",
+    "title": "The Real Cost of JavaScript",
+    "level": "advanced",
+    "order": 17,
+    "duration": 20,
+    "file": "advanced/the-cost-of-javascript.md",
+    "summary": "Why JavaScript is the most expensive kind of byte — it must be downloaded, parsed, compiled, and executed on the main thread — and how to ship less of it with code splitting, tree shaking, dependency audits, and dropping unused polyfills.",
+    "tags": [
+      "javascript",
+      "bundle-size",
+      "code-splitting",
+      "tree-shaking",
+      "main-thread"
+    ]
+  },
+  {
+    "id": "lesson-18",
+    "slug": "reducing-main-thread-work",
+    "title": "Reducing Main-Thread Work",
+    "level": "advanced",
+    "order": 18,
+    "duration": 20,
+    "file": "advanced/reducing-main-thread-work.md",
+    "summary": "Keeping the browser's single main thread free — understanding what it does, breaking up long tasks and scheduling work with the right API, moving heavy computation to Web Workers, and avoiding forced synchronous layout (layout thrashing).",
+    "tags": [
+      "main-thread",
+      "long-tasks",
+      "web-workers",
+      "scheduling",
+      "tbt"
+    ]
+  },
+  {
+    "id": "lesson-19",
+    "slug": "resource-hints-and-priorities",
+    "title": "Resource Hints and Priorities",
+    "level": "advanced",
+    "order": 19,
+    "duration": 19,
+    "file": "advanced/resource-hints-and-priorities.md",
+    "summary": "Steering the browser's loading with hints — preconnect and dns-prefetch to warm connections, preload and fetchpriority to pull critical resources forward, and prefetch and the Speculation Rules API to prepare future navigations — without over-hinting.",
+    "tags": [
+      "resource-hints",
+      "preload",
+      "preconnect",
+      "prefetch",
+      "priority-hints"
+    ]
+  },
+  {
+    "id": "lesson-20",
+    "slug": "http2-http3-and-cdns",
+    "title": "HTTP/2, HTTP/3, and CDNs",
+    "level": "advanced",
+    "order": 20,
+    "duration": 19,
+    "file": "advanced/http2-http3-and-cdns.md",
+    "summary": "How the transport layer affects speed — HTTP/2 multiplexing over one connection, HTTP/3 over QUIC removing head-of-line blocking with faster setup, and CDNs caching content at the edge near users — plus which old HTTP/1.1 workarounds to retire.",
+    "tags": [
+      "http2",
+      "http3",
+      "quic",
+      "cdn",
+      "multiplexing"
+    ]
+  },
+  {
+    "id": "lesson-21",
+    "slug": "rendering-strategies",
+    "title": "Rendering Strategies",
+    "level": "advanced",
+    "order": 21,
+    "duration": 20,
+    "file": "advanced/rendering-strategies.md",
+    "summary": "Where and when HTML is generated — client-side rendering, server-side rendering, static generation, and hybrids like streaming SSR and islands — and how each trades off TTFB, first paint, JavaScript cost, and interactivity, with hydration as the hidden tax.",
+    "tags": [
+      "rendering",
+      "ssr",
+      "ssg",
+      "csr",
+      "hydration"
+    ]
+  },
+  {
+    "id": "lesson-22",
+    "slug": "service-workers-and-caching",
+    "title": "Service Workers and the Cache API",
+    "level": "advanced",
+    "order": 22,
+    "duration": 20,
+    "file": "advanced/service-workers-and-caching.md",
+    "summary": "Programmable caching with service workers — a network proxy that intercepts fetches, the Cache API for storing responses, runtime strategies (cache-first, network-first, stale-while-revalidate), offline support, and the cache-versioning discipline that avoids serving stale assets forever.",
+    "tags": [
+      "service-workers",
+      "cache-api",
+      "offline",
+      "stale-while-revalidate",
+      "prpl"
+    ]
+  },
+  {
+    "id": "lesson-23",
+    "slug": "monitoring-performance-in-production",
+    "title": "Monitoring Performance in Production",
+    "level": "advanced",
+    "order": 23,
+    "duration": 19,
+    "file": "advanced/monitoring-performance-in-production.md",
+    "summary": "Keeping a site fast over time — collecting real-user field data with the web-vitals library, using CrUX for context, segmenting by device and route, adding attribution to debug, and gating regressions with Lighthouse CI so performance doesn't quietly decay.",
+    "tags": [
+      "rum",
+      "web-vitals",
+      "monitoring",
+      "ci",
+      "crux"
+    ]
+  },
+  {
+    "id": "lesson-24",
+    "slug": "performance-audit-capstone",
+    "title": "Capstone: Auditing and Optimizing a Page",
+    "level": "advanced",
+    "order": 24,
+    "duration": 24,
+    "file": "advanced/performance-audit-capstone.md",
+    "summary": "A repeatable end-to-end workflow that ties the whole course together — set goals, measure field then lab, triage by user impact, fix across every layer (critical path, LCP/CLS/INP, assets, JavaScript, architecture), verify, and guard with a budget and monitoring.",
+    "tags": [
+      "capstone",
+      "audit",
+      "workflow",
+      "core-web-vitals",
+      "optimization"
+    ]
+  }
+]

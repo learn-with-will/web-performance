@@ -1,0 +1,81 @@
+{
+  "id": "quiz-lesson-24",
+  "lessonId": "lesson-24",
+  "title": "Capstone: Auditing and Optimizing a Page",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "ordering",
+      "prompt": "Order the six steps of the performance audit workflow.",
+      "items": [
+        { "id": "goals", "text": "Set goals and a budget" },
+        { "id": "measure", "text": "Measure (field first, then lab)" },
+        { "id": "triage", "text": "Triage by user impact" },
+        { "id": "fix", "text": "Fix the biggest bottleneck first" },
+        { "id": "verify", "text": "Verify (before/after in lab, confirm in field)" },
+        { "id": "guard", "text": "Guard with a CI budget and monitoring" }
+      ],
+      "answer": ["goals", "measure", "triage", "fix", "verify", "guard"],
+      "explanation": "Set goals, measure what real users hit (then diagnose in the lab), triage by impact, fix the biggest bottleneck, verify, and guard against regression."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "Why measure field data before lab data in an audit?",
+      "options": [
+        { "id": "a", "text": "Field data is always faster to collect" },
+        { "id": "b", "text": "Field data shows what real users actually experience and how bad it is; lab tools are then used to reproduce and diagnose the cause" },
+        { "id": "c", "text": "Lab data is never useful" },
+        { "id": "d", "text": "Field data measures the server only" }
+      ],
+      "answer": "b",
+      "explanation": "Field (p75, segmented) tells you what and how bad; lab tells you why. Judging by field keeps you honest, then lab helps you find and fix the cause."
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "prompt": "How should you decide which problem to fix first?",
+      "options": [
+        { "id": "a", "text": "Whatever is easiest to change" },
+        { "id": "b", "text": "By user impact × reach — the biggest bottleneck for the most users — then re-measure" },
+        { "id": "c", "text": "Alphabetically by file name" },
+        { "id": "d", "text": "Whatever the newest tool suggests" }
+      ],
+      "answer": "b",
+      "explanation": "Prioritize by user impact and reach, not ease. Fix the biggest bottleneck first, then re-measure because the bottleneck usually moves."
+    },
+    {
+      "id": "q4",
+      "type": "match-pair",
+      "prompt": "Match each audit finding to the fix that addresses it.",
+      "pairs": [
+        { "left": "LCP image discovered late / oversized", "right": "Preload it, fetchpriority=high, AVIF/responsive" },
+        { "left": "Content jumps around (CLS)", "right": "Set dimensions and reserve space" },
+        { "left": "Sluggish taps (INP)", "right": "Break up long tasks and ship less JS" },
+        { "left": "Repeat visits re-download assets", "right": "Fingerprint + immutable caching" }
+      ],
+      "explanation": "Each finding maps to a specific technique from the course — the heart of a good audit is matching the fix to the cause."
+    },
+    {
+      "id": "q5",
+      "type": "multiple-choice",
+      "prompt": "Which are good audit practices? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Measure before optimizing" },
+        { "id": "b", "text": "Prioritize fixes by user impact" },
+        { "id": "c", "text": "Verify a before/after for the metric you targeted" },
+        { "id": "d", "text": "Stop as soon as metrics look good, with no budget or monitoring" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Measure, prioritize by impact, and verify. Stopping without a regression guard lets the next change quietly erase the win."
+    },
+    {
+      "id": "q6",
+      "type": "fill-blank",
+      "prompt": "To keep an optimization from regressing, enforce a performance ____ in CI (and keep RUM running).",
+      "answer": ["budget", "budget in ci"],
+      "explanation": "A performance budget enforced in CI fails a pull request that breaches a limit, and ongoing RUM confirms the field stays healthy — together they guard the win."
+    }
+  ]
+}
