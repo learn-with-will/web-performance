@@ -1,0 +1,74 @@
+[
+  {
+    "id": "foundations",
+    "title": "Performance Foundations",
+    "blurb": "Core definitions, the human and business impact of speed, perceived performance, and the RAIL model.",
+    "order": 1
+  },
+  {
+    "id": "network-and-browsers",
+    "title": "Networking & Browser Loading",
+    "blurb": "The journey from a URL to server bytes: DNS resolution, TCP and TLS handshakes, TTFB, and network waterfalls.",
+    "order": 2
+  },
+  {
+    "id": "rendering-path",
+    "title": "The Critical Rendering Path",
+    "blurb": "How the browser constructs the DOM, CSSOM, and render tree to paint pixels, and eliminating render blockers.",
+    "order": 3
+  },
+  {
+    "id": "core-web-vitals",
+    "title": "Core Web Vitals & Metrics",
+    "blurb": "The three Core Web Vitals (LCP, INP, CLS), their exact thresholds, the 75th percentile, and diagnostic vitals.",
+    "order": 4
+  },
+  {
+    "id": "measurement-and-tooling",
+    "title": "Measurement & Lab Tooling",
+    "blurb": "Synthetic lab tests versus real-user field data, Lighthouse scoring, and Network panel request waterfalls.",
+    "order": 5
+  },
+  {
+    "id": "optimizing-vitals",
+    "title": "Optimizing Core Web Vitals",
+    "blurb": "Targeted strategies to optimize LCP, eliminate layout shifts for CLS, and minimize main-thread delays for INP.",
+    "order": 6
+  },
+  {
+    "id": "media-and-fonts",
+    "title": "Images & Web Fonts",
+    "blurb": "Modern image formats (AVIF, WebP), responsive markup, lazy loading, and web font optimization with WOFF2.",
+    "order": 7
+  },
+  {
+    "id": "caching-and-compression",
+    "title": "Caching, Compression & Delivery",
+    "blurb": "HTTP caching headers, gzip/Brotli compression, HTTP/2 multiplexing, HTTP/3 QUIC, and edge CDNs.",
+    "order": 8
+  },
+  {
+    "id": "javascript-performance",
+    "title": "JavaScript & Main-Thread Execution",
+    "blurb": "The cost of JavaScript bytes, code splitting, tree shaking, long tasks, scheduler.yield(), and Web Workers.",
+    "order": 9
+  },
+  {
+    "id": "loading-strategies",
+    "title": "Resource Hints & Service Workers",
+    "blurb": "Steering the browser with preconnect, preload, fetchpriority, and programmable caching with Service Workers.",
+    "order": 10
+  },
+  {
+    "id": "architecture-and-rendering",
+    "title": "Rendering Architectures",
+    "blurb": "Client-side rendering, server-side rendering, static generation, streaming, islands, and the hydration tax.",
+    "order": 11
+  },
+  {
+    "id": "monitoring-and-auditing",
+    "title": "Budgets, Monitoring & Auditing",
+    "blurb": "Performance budgets, CI automation, field monitoring with web-vitals, and end-to-end audit capstone.",
+    "order": 12
+  }
+]

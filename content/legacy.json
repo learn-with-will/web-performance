@@ -1,0 +1,285 @@
+[
+  {
+    "id": "lesson-01",
+    "slug": "why-web-performance-matters",
+    "title": "Why Web Performance Matters",
+    "lessons": [
+      "what-web-performance-means",
+      "perceived-performance",
+      "business-and-human-impact",
+      "rail-model",
+      "optimizing-for-real-users"
+    ]
+  },
+  {
+    "id": "lesson-02",
+    "slug": "how-the-browser-loads-a-page",
+    "title": "How the Browser Loads a Page",
+    "lessons": [
+      "anatomy-of-a-navigation",
+      "dns-resolution",
+      "tcp-and-tls-handshakes",
+      "ttfb-and-first-byte",
+      "secondary-resources-waterfall"
+    ]
+  },
+  {
+    "id": "lesson-03",
+    "slug": "the-critical-rendering-path",
+    "title": "The Critical Rendering Path",
+    "lessons": [
+      "dom-construction",
+      "cssom-and-render-blocking-css",
+      "parser-blocking-javascript",
+      "render-tree-layout-paint",
+      "critical-path-metrics"
+    ]
+  },
+  {
+    "id": "lesson-04",
+    "slug": "core-web-vitals",
+    "title": "Meet the Core Web Vitals",
+    "lessons": [
+      "core-web-vitals-overview",
+      "largest-contentful-paint-metric",
+      "interaction-to-next-paint-metric",
+      "cumulative-layout-shift-metric",
+      "diagnostic-web-vitals"
+    ]
+  },
+  {
+    "id": "lesson-05",
+    "slug": "lab-vs-field-data",
+    "title": "Lab Data vs Field Data",
+    "lessons": [
+      "lab-data-characteristics",
+      "field-data-and-rum",
+      "why-lab-and-field-differ",
+      "pagespeed-insights-analysis"
+    ]
+  },
+  {
+    "id": "lesson-06",
+    "slug": "measuring-with-lighthouse",
+    "title": "Measuring with Lighthouse",
+    "lessons": [
+      "running-lighthouse",
+      "lighthouse-score-weights",
+      "opportunities-vs-diagnostics",
+      "lighthouse-score-traps"
+    ]
+  },
+  {
+    "id": "lesson-07",
+    "slug": "reading-the-network-panel",
+    "title": "Reading the Network Panel",
+    "lessons": [
+      "recording-network-traces",
+      "network-panel-columns",
+      "reading-the-waterfall",
+      "spotting-loading-bottlenecks"
+    ]
+  },
+  {
+    "id": "lesson-08",
+    "slug": "performance-budgets",
+    "title": "Setting Goals and Performance Budgets",
+    "lessons": [
+      "performance-budget-types",
+      "setting-realistic-targets",
+      "enforcing-budgets-in-ci",
+      "budget-governance-and-culture"
+    ]
+  },
+  {
+    "id": "lesson-09",
+    "slug": "optimizing-lcp",
+    "title": "Optimizing Largest Contentful Paint",
+    "lessons": [
+      "identifying-the-lcp-element",
+      "the-four-phases-of-lcp",
+      "prioritizing-the-lcp-resource",
+      "never-lazy-load-lcp",
+      "optimizing-text-lcp"
+    ]
+  },
+  {
+    "id": "lesson-10",
+    "slug": "optimizing-cls",
+    "title": "Optimizing Cumulative Layout Shift",
+    "lessons": [
+      "anatomy-of-a-layout-shift",
+      "setting-explicit-image-dimensions",
+      "reserving-space-for-dynamic-content",
+      "preventing-font-layout-shifts",
+      "shift-free-css-animations"
+    ]
+  },
+  {
+    "id": "lesson-11",
+    "slug": "optimizing-inp",
+    "title": "Optimizing Interaction to Next Paint",
+    "lessons": [
+      "anatomy-of-an-interaction",
+      "reducing-input-delay",
+      "optimizing-event-handlers",
+      "yielding-to-the-main-thread",
+      "minimizing-presentation-delay"
+    ]
+  },
+  {
+    "id": "lesson-12",
+    "slug": "image-optimization",
+    "title": "Image Optimization",
+    "lessons": [
+      "modern-image-formats",
+      "responsive-images-srcset-sizes",
+      "the-picture-element-art-direction",
+      "native-lazy-loading",
+      "image-decoding-and-compression"
+    ]
+  },
+  {
+    "id": "lesson-13",
+    "slug": "font-loading",
+    "title": "Font Loading Strategy",
+    "lessons": [
+      "shipping-woff2",
+      "font-display-strategies",
+      "preloading-critical-fonts",
+      "font-subsetting",
+      "font-fallback-metric-overrides"
+    ]
+  },
+  {
+    "id": "lesson-14",
+    "slug": "http-caching",
+    "title": "HTTP Caching",
+    "lessons": [
+      "cache-control-fundamentals",
+      "no-cache-versus-no-store",
+      "validation-with-etags",
+      "the-immutable-cache-pattern",
+      "html-caching-rules"
+    ]
+  },
+  {
+    "id": "lesson-15",
+    "slug": "compression-and-minification",
+    "title": "Compression and Minification",
+    "lessons": [
+      "build-time-minification",
+      "gzip-versus-brotli",
+      "static-versus-dynamic-compression",
+      "what-not-to-compress"
+    ]
+  },
+  {
+    "id": "lesson-16",
+    "slug": "render-blocking-resources",
+    "title": "Eliminating Render-Blocking Resources",
+    "lessons": [
+      "identifying-render-blockers",
+      "inlining-critical-css",
+      "async-non-critical-css",
+      "media-queries-for-stylesheets",
+      "defer-and-async-scripts"
+    ]
+  },
+  {
+    "id": "lesson-17",
+    "slug": "the-cost-of-javascript",
+    "title": "The Real Cost of JavaScript",
+    "lessons": [
+      "the-javascript-cost-model",
+      "auditing-bundle-dependencies",
+      "code-splitting-with-dynamic-import",
+      "tree-shaking-dead-code",
+      "removing-legacy-polyfills"
+    ]
+  },
+  {
+    "id": "lesson-18",
+    "slug": "reducing-main-thread-work",
+    "title": "Reducing Main-Thread Work",
+    "lessons": [
+      "the-single-threaded-event-loop",
+      "identifying-long-tasks",
+      "scheduling-with-scheduler-yield",
+      "offloading-to-web-workers",
+      "avoiding-layout-thrashing"
+    ]
+  },
+  {
+    "id": "lesson-19",
+    "slug": "resource-hints-and-priorities",
+    "title": "Resource Hints and Priorities",
+    "lessons": [
+      "connection-hints-dns-and-preconnect",
+      "preloading-critical-assets",
+      "fetchpriority-attribute",
+      "prefetch-and-speculation-rules",
+      "priority-budget-and-over-hinting"
+    ]
+  },
+  {
+    "id": "lesson-20",
+    "slug": "http2-http3-and-cdns",
+    "title": "HTTP/2, HTTP/3, and CDNs",
+    "lessons": [
+      "http1-limitations-and-workarounds",
+      "http2-multiplexing",
+      "http3-and-quic",
+      "cdn-edge-caching"
+    ]
+  },
+  {
+    "id": "lesson-21",
+    "slug": "rendering-strategies",
+    "title": "Rendering Strategies",
+    "lessons": [
+      "client-side-rendering",
+      "server-side-rendering",
+      "the-hydration-cost",
+      "static-site-generation",
+      "streaming-ssr-and-islands",
+      "choosing-a-rendering-strategy"
+    ]
+  },
+  {
+    "id": "lesson-22",
+    "slug": "service-workers-and-caching",
+    "title": "Service Workers and the Cache API",
+    "lessons": [
+      "service-worker-architecture",
+      "service-worker-lifecycle",
+      "the-cache-api",
+      "runtime-caching-strategies",
+      "cache-versioning-and-cleanup"
+    ]
+  },
+  {
+    "id": "lesson-23",
+    "slug": "monitoring-performance-in-production",
+    "title": "Monitoring Performance in Production",
+    "lessons": [
+      "rum-with-web-vitals-library",
+      "chrome-ux-report-crux",
+      "segmenting-field-data",
+      "debugging-with-attribution-data",
+      "preventing-performance-regressions"
+    ]
+  },
+  {
+    "id": "lesson-24",
+    "slug": "performance-audit-capstone",
+    "title": "Capstone: Auditing and Optimizing a Page",
+    "lessons": [
+      "the-audit-workflow-overview",
+      "triage-by-user-impact",
+      "fixing-the-critical-path-in-practice",
+      "fixing-core-vitals-in-practice",
+      "verifying-and-measuring-gains"
+    ]
+  }
+]

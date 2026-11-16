@@ -1,0 +1,4163 @@
+[
+  {
+    "id": "foundations-01",
+    "topic": "foundations",
+    "lesson": "what-web-performance-means",
+    "type": "single-choice",
+    "prompt": "Which statement best describes what \"web performance\" covers?",
+    "explanation": "Web performance spans loading (getting the bytes), rendering (turning them into pixels), and runtime responsiveness (reacting to taps, clicks, and scrolling) — not just the initial load time.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Only how long the page takes to finish loading"
+      },
+      {
+        "id": "b",
+        "text": "Loading, rendering, and how responsive the page is to input after it loads"
+      },
+      {
+        "id": "c",
+        "text": "How visually attractive the design is"
+      },
+      {
+        "id": "d",
+        "text": "The number of features the site has"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "foundations-02",
+    "topic": "foundations",
+    "lesson": "perceived-performance",
+    "type": "multiple-choice",
+    "prompt": "Which statements about PERCEIVED performance are true? Select all that apply.",
+    "explanation": "Perceived performance is the subjective sense of speed; progressive rendering, instant tap feedback, and reserving space all improve it even if raw timings are unchanged. It is not identical to total load time.",
+    "options": [
+      {
+        "id": "a",
+        "text": "It is how fast the experience feels to the user"
+      },
+      {
+        "id": "b",
+        "text": "It can be improved without changing the raw timings (e.g. with skeletons and instant feedback)"
+      },
+      {
+        "id": "c",
+        "text": "Reserving space so content doesn't jump can improve it"
+      },
+      {
+        "id": "d",
+        "text": "It is exactly the same thing as the total load time"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ]
+  },
+  {
+    "id": "foundations-03",
+    "topic": "foundations",
+    "lesson": "rail-model",
+    "type": "fill-blank",
+    "prompt": "In the RAIL model, the letter \"R\" stands for ____ — handling user input quickly.",
+    "explanation": "RAIL stands for Response, Animation, Idle, and Load. Response is about handling user interactions fast enough that they feel immediate.",
+    "answer": [
+      "Response",
+      "response"
+    ]
+  },
+  {
+    "id": "foundations-04",
+    "topic": "foundations",
+    "lesson": "what-web-performance-means",
+    "type": "ordering",
+    "prompt": "Order these phases as a user experiences them for a fresh page view, from first to last.",
+    "explanation": "At a high level the browser must receive bytes, render them into visible pixels, and only then can the loaded page respond to interaction.",
+    "answer": [
+      "load",
+      "render",
+      "respond"
+    ],
+    "items": [
+      {
+        "id": "load",
+        "text": "Bytes arrive from the server (loading)"
+      },
+      {
+        "id": "render",
+        "text": "Pixels are drawn on screen (rendering)"
+      },
+      {
+        "id": "respond",
+        "text": "The page reacts to a tap or click (runtime responsiveness)"
+      }
+    ]
+  },
+  {
+    "id": "foundations-05",
+    "topic": "foundations",
+    "lesson": "rail-model",
+    "type": "match-pair",
+    "prompt": "Match each RAIL goal to what it is about.",
+    "explanation": "RAIL frames the experience from the user's side: respond to input fast, animate smoothly, use idle time in small pieces, and load meaningful content quickly.",
+    "pairs": [
+      {
+        "left": "Response",
+        "right": "Handle user input quickly so it feels immediate"
+      },
+      {
+        "left": "Animation",
+        "right": "Produce each frame fast enough to stay smooth"
+      },
+      {
+        "left": "Idle",
+        "right": "Do non-urgent work in small chunks during idle time"
+      },
+      {
+        "left": "Load",
+        "right": "Deliver meaningful, interactive content quickly"
+      }
+    ]
+  },
+  {
+    "id": "foundations-06",
+    "topic": "foundations",
+    "lesson": "optimizing-for-real-users",
+    "type": "single-choice",
+    "prompt": "Whose experience should you primarily optimize for?",
+    "explanation": "A fast dev machine hides the CPU and network costs real users pay. Optimizing for the 75th-percentile real user (typically mobile) reflects what most people actually experience.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Your own fast laptop on a fast office network"
+      },
+      {
+        "id": "b",
+        "text": "The single fastest visit ever recorded"
+      },
+      {
+        "id": "c",
+        "text": "A realistic 75th-percentile user, often on a mid-range phone and mobile network"
+      },
+      {
+        "id": "d",
+        "text": "Search engine crawlers only"
+      }
+    ],
+    "answer": "c"
+  },
+  {
+    "id": "network-and-browsers-01",
+    "topic": "network-and-browsers",
+    "lesson": "dns-resolution",
+    "type": "single-choice",
+    "prompt": "What is the job of DNS during a page load?",
+    "explanation": "DNS (Domain Name System) translates a hostname like shop.example.com into the IP address the browser actually connects to. If it isn't cached, that lookup costs a round trip.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Encrypt the connection between browser and server"
+      },
+      {
+        "id": "b",
+        "text": "Map the site's hostname to a numeric IP address"
+      },
+      {
+        "id": "c",
+        "text": "Compress the HTML before sending it"
+      },
+      {
+        "id": "d",
+        "text": "Decide which images to lazy-load"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "network-and-browsers-02",
+    "topic": "network-and-browsers",
+    "lesson": "anatomy-of-a-navigation",
+    "type": "ordering",
+    "prompt": "Order these steps of a first HTTPS request, from earliest to latest.",
+    "explanation": "The browser must resolve the name, open a TCP connection, negotiate TLS, send the request, and then wait for the first byte. Each handshake costs a round trip.",
+    "answer": [
+      "dns",
+      "tcp",
+      "tls",
+      "req",
+      "byte"
+    ],
+    "items": [
+      {
+        "id": "dns",
+        "text": "DNS lookup (hostname → IP)"
+      },
+      {
+        "id": "tcp",
+        "text": "TCP handshake (open the connection)"
+      },
+      {
+        "id": "tls",
+        "text": "TLS handshake (set up encryption)"
+      },
+      {
+        "id": "req",
+        "text": "Send the HTTP request for the HTML"
+      },
+      {
+        "id": "byte",
+        "text": "First response byte arrives (TTFB)"
+      }
+    ]
+  },
+  {
+    "id": "network-and-browsers-03",
+    "topic": "network-and-browsers",
+    "lesson": "ttfb-and-first-byte",
+    "type": "fill-blank",
+    "prompt": "The time from navigation start to the first byte of the response is called ____ (three-letter abbreviation).",
+    "explanation": "TTFB (Time to First Byte) measures the delay until the first response byte, including DNS, connection setup, TLS, server think time, and travel.",
+    "answer": [
+      "TTFB",
+      "time to first byte"
+    ]
+  },
+  {
+    "id": "network-and-browsers-04",
+    "topic": "network-and-browsers",
+    "lesson": "ttfb-and-first-byte",
+    "type": "multiple-choice",
+    "prompt": "Which of these are part of TTFB? Select all that apply.",
+    "explanation": "TTFB bundles redirects, DNS, TCP connect, TLS, server think time, and the first byte's travel. Downloading all images happens later and is not part of TTFB.",
+    "options": [
+      {
+        "id": "a",
+        "text": "DNS lookup time"
+      },
+      {
+        "id": "b",
+        "text": "TCP and TLS handshake time"
+      },
+      {
+        "id": "c",
+        "text": "The server's processing (\"think\") time"
+      },
+      {
+        "id": "d",
+        "text": "Downloading every image on the page"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ]
+  },
+  {
+    "id": "network-and-browsers-05",
+    "topic": "network-and-browsers",
+    "lesson": "tcp-and-tls-handshakes",
+    "type": "match-pair",
+    "prompt": "Match each step to what it does.",
+    "explanation": "Each stage has a distinct job; the two handshakes each cost roughly one network round trip before your HTML can even be requested.",
+    "pairs": [
+      {
+        "left": "DNS lookup",
+        "right": "Turn a hostname into an IP address"
+      },
+      {
+        "left": "TCP handshake",
+        "right": "Open a reliable connection to the server"
+      },
+      {
+        "left": "TLS handshake",
+        "right": "Set up HTTPS encryption and verify the certificate"
+      },
+      {
+        "left": "TTFB",
+        "right": "Time until the first response byte arrives"
+      }
+    ]
+  },
+  {
+    "id": "network-and-browsers-06",
+    "topic": "network-and-browsers",
+    "lesson": "secondary-resources-waterfall",
+    "type": "single-choice",
+    "prompt": "Why does adding a new third-party origin (a different hostname) cost more than it first appears?",
+    "explanation": "Every brand-new origin pays its own DNS + TCP + TLS setup cost. That's why consolidating origins and using preconnect on the critical ones helps.",
+    "options": [
+      {
+        "id": "a",
+        "text": "It always doubles your JavaScript size"
+      },
+      {
+        "id": "b",
+        "text": "The browser must do a fresh DNS lookup, TCP handshake, and TLS handshake for that origin before any of its bytes download"
+      },
+      {
+        "id": "c",
+        "text": "It disables HTTP caching for the whole page"
+      },
+      {
+        "id": "d",
+        "text": "It forces the page to reload from scratch"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "rendering-path-01",
+    "topic": "rendering-path",
+    "lesson": "cssom-and-render-blocking-css",
+    "type": "single-choice",
+    "prompt": "Why is CSS described as \"render-blocking\"?",
+    "explanation": "The browser needs the full CSSOM before it can render, otherwise it would show unstyled content and then restyle it (a FOUC). So slow/large CSS delays the first paint.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because the browser won't paint content until it has built the CSSOM, to avoid a flash of unstyled content"
+      },
+      {
+        "id": "b",
+        "text": "Because CSS files are always larger than JavaScript files"
+      },
+      {
+        "id": "c",
+        "text": "Because CSS runs on the GPU"
+      },
+      {
+        "id": "d",
+        "text": "Because CSS can only load after all images"
+      }
+    ],
+    "answer": "a"
+  },
+  {
+    "id": "rendering-path-02",
+    "topic": "rendering-path",
+    "lesson": "render-tree-layout-paint",
+    "type": "ordering",
+    "prompt": "Put the critical rendering path steps in order.",
+    "explanation": "The browser builds the DOM and CSSOM, merges the visible parts into a render tree, computes layout, paints pixels, and composites the layers into the final frame.",
+    "answer": [
+      "trees",
+      "render",
+      "layout",
+      "paint",
+      "composite"
+    ],
+    "items": [
+      {
+        "id": "trees",
+        "text": "Build the DOM and CSSOM"
+      },
+      {
+        "id": "render",
+        "text": "Combine them into the render tree"
+      },
+      {
+        "id": "layout",
+        "text": "Layout (compute geometry)"
+      },
+      {
+        "id": "paint",
+        "text": "Paint (fill pixels)"
+      },
+      {
+        "id": "composite",
+        "text": "Composite (combine layers)"
+      }
+    ]
+  },
+  {
+    "id": "rendering-path-03",
+    "topic": "rendering-path",
+    "lesson": "parser-blocking-javascript",
+    "type": "fill-blank",
+    "prompt": "A plain synchronous <script> is called ____-blocking because it pauses building the DOM until it downloads and runs.",
+    "explanation": "A synchronous script is parser-blocking: the HTML parser stops constructing the DOM to fetch and execute the script, then resumes.",
+    "answer": [
+      "parser",
+      "parsing"
+    ]
+  },
+  {
+    "id": "rendering-path-04",
+    "topic": "rendering-path",
+    "lesson": "defer-and-async-scripts",
+    "type": "match-pair",
+    "prompt": "Match each script form to when it executes.",
+    "explanation": "defer preserves order and waits for parsing; async runs opportunistically without order; modules behave like defer by default; a plain script blocks the parser.",
+    "pairs": [
+      {
+        "left": "<script> (sync)",
+        "right": "Blocks parsing; runs immediately when reached"
+      },
+      {
+        "left": "<script defer>",
+        "right": "Runs after parsing finishes, in document order"
+      },
+      {
+        "left": "<script async>",
+        "right": "Runs as soon as it downloads, order not guaranteed"
+      },
+      {
+        "left": "<script type=module>",
+        "right": "Deferred by default"
+      }
+    ]
+  },
+  {
+    "id": "rendering-path-05",
+    "topic": "rendering-path",
+    "lesson": "critical-path-metrics",
+    "type": "multiple-choice",
+    "prompt": "Which changes help shorten the critical rendering path for the first paint? Select all that apply.",
+    "explanation": "Fewer and smaller render-blocking resources, deferred non-critical JS, and inlined critical CSS all shorten the path. Adding more blocking stylesheets does the opposite.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Defer non-critical scripts instead of blocking in the head"
+      },
+      {
+        "id": "b",
+        "text": "Inline the critical CSS and load the rest without blocking"
+      },
+      {
+        "id": "c",
+        "text": "Add several more render-blocking stylesheets"
+      },
+      {
+        "id": "d",
+        "text": "Reduce the number and size of render-blocking resources"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "d"
+    ]
+  },
+  {
+    "id": "rendering-path-06",
+    "topic": "rendering-path",
+    "lesson": "render-tree-layout-paint",
+    "type": "single-choice",
+    "prompt": "Which pair of properties can typically be animated at the composite step, without forcing layout or paint?",
+    "explanation": "transform and opacity can usually be handled by the compositor (often on the GPU) without re-running layout or paint, so they animate smoothly.",
+    "options": [
+      {
+        "id": "a",
+        "text": "width and top"
+      },
+      {
+        "id": "b",
+        "text": "margin and height"
+      },
+      {
+        "id": "c",
+        "text": "transform and opacity"
+      },
+      {
+        "id": "d",
+        "text": "font-size and padding"
+      }
+    ],
+    "answer": "c"
+  },
+  {
+    "id": "core-web-vitals-01",
+    "topic": "core-web-vitals",
+    "lesson": "largest-contentful-paint-metric",
+    "type": "single-choice",
+    "prompt": "What is the \"good\" threshold for Largest Contentful Paint (LCP)?",
+    "explanation": "LCP is good at ≤ 2.5 s, needs improvement up to 4.0 s, and poor above 4.0 s — measured at the 75th percentile of real visits.",
+    "options": [
+      {
+        "id": "a",
+        "text": "≤ 1.0 second"
+      },
+      {
+        "id": "b",
+        "text": "≤ 2.5 seconds"
+      },
+      {
+        "id": "c",
+        "text": "≤ 5.0 seconds"
+      },
+      {
+        "id": "d",
+        "text": "≤ 200 milliseconds"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "core-web-vitals-02",
+    "topic": "core-web-vitals",
+    "lesson": "interaction-to-next-paint-metric",
+    "type": "fill-blank",
+    "prompt": "INP became a Core Web Vital in March 2024, replacing the older metric ____ (three-letter abbreviation).",
+    "explanation": "Interaction to Next Paint (INP) replaced First Input Delay (FID) on March 12, 2024. FID only measured the delay of the first interaction; INP is stricter.",
+    "answer": [
+      "FID",
+      "first input delay"
+    ]
+  },
+  {
+    "id": "core-web-vitals-03",
+    "topic": "core-web-vitals",
+    "lesson": "core-web-vitals-overview",
+    "type": "multiple-choice",
+    "prompt": "Which of these are the three Core Web Vitals? Select all that apply.",
+    "explanation": "The Core Web Vitals are LCP, INP, and CLS. FCP and TTFB are useful related metrics but are not Core Web Vitals.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Largest Contentful Paint (LCP)"
+      },
+      {
+        "id": "b",
+        "text": "Interaction to Next Paint (INP)"
+      },
+      {
+        "id": "c",
+        "text": "Cumulative Layout Shift (CLS)"
+      },
+      {
+        "id": "d",
+        "text": "First Contentful Paint (FCP)"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ]
+  },
+  {
+    "id": "core-web-vitals-04",
+    "topic": "core-web-vitals",
+    "lesson": "core-web-vitals-overview",
+    "type": "match-pair",
+    "prompt": "Match each Core Web Vital to its \"good\" threshold.",
+    "explanation": "Good bars: LCP ≤ 2.5 s (loading), INP ≤ 200 ms (responsiveness), CLS ≤ 0.1 (visual stability), all at the 75th percentile.",
+    "pairs": [
+      {
+        "left": "LCP",
+        "right": "≤ 2.5 seconds"
+      },
+      {
+        "left": "INP",
+        "right": "≤ 200 milliseconds"
+      },
+      {
+        "left": "CLS",
+        "right": "≤ 0.1"
+      }
+    ]
+  },
+  {
+    "id": "core-web-vitals-05",
+    "topic": "core-web-vitals",
+    "lesson": "interaction-to-next-paint-metric",
+    "type": "ordering",
+    "prompt": "An interaction's latency (measured by INP) is made of three parts. Order them as they happen.",
+    "explanation": "INP = input delay + processing time + presentation delay: the wait before handlers run, the handler work, then painting the visual response.",
+    "answer": [
+      "input",
+      "processing",
+      "presentation"
+    ],
+    "items": [
+      {
+        "id": "input",
+        "text": "Input delay (before the handler runs)"
+      },
+      {
+        "id": "processing",
+        "text": "Processing time (running the event handlers)"
+      },
+      {
+        "id": "presentation",
+        "text": "Presentation delay (rendering the next frame)"
+      }
+    ]
+  },
+  {
+    "id": "core-web-vitals-06",
+    "topic": "core-web-vitals",
+    "lesson": "cumulative-layout-shift-metric",
+    "type": "single-choice",
+    "prompt": "What are the units of Cumulative Layout Shift (CLS)?",
+    "explanation": "CLS is unitless — each shift scores impact fraction × distance fraction, and CLS sums the shifts in the worst session window. Good is ≤ 0.1.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Milliseconds"
+      },
+      {
+        "id": "b",
+        "text": "Pixels"
+      },
+      {
+        "id": "c",
+        "text": "It is a unitless score (impact fraction × distance fraction)"
+      },
+      {
+        "id": "d",
+        "text": "A percentage of the page"
+      }
+    ],
+    "answer": "c"
+  },
+  {
+    "id": "measurement-and-tooling-01",
+    "topic": "measurement-and-tooling",
+    "lesson": "field-data-and-rum",
+    "type": "single-choice",
+    "prompt": "What is \"field\" (RUM) data?",
+    "explanation": "Field data (Real User Monitoring) comes from actual users' browsers, reflecting the real spread of devices, networks, and interactions.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Metrics collected from real users' browsers as they use the site"
+      },
+      {
+        "id": "b",
+        "text": "A single scripted test on a fixed device in a lab"
+      },
+      {
+        "id": "c",
+        "text": "The server's CPU usage"
+      },
+      {
+        "id": "d",
+        "text": "The size of the HTML file"
+      }
+    ],
+    "answer": "a"
+  },
+  {
+    "id": "measurement-and-tooling-02",
+    "topic": "measurement-and-tooling",
+    "lesson": "pagespeed-insights-analysis",
+    "type": "match-pair",
+    "prompt": "Match each tool/source to what it is.",
+    "explanation": "Lighthouse and WebPageTest are lab tools; CrUX and your own web-vitals RUM are field data sources.",
+    "pairs": [
+      {
+        "left": "Lighthouse",
+        "right": "A lab audit tool that produces a score and metrics"
+      },
+      {
+        "left": "WebPageTest",
+        "right": "A lab tool with multi-location waterfalls and filmstrips"
+      },
+      {
+        "left": "CrUX",
+        "right": "A public field dataset reported at the 75th percentile"
+      },
+      {
+        "left": "web-vitals library",
+        "right": "Your own field RUM measured in real user sessions"
+      }
+    ]
+  },
+  {
+    "id": "measurement-and-tooling-03",
+    "topic": "measurement-and-tooling",
+    "lesson": "field-data-and-rum",
+    "type": "fill-blank",
+    "prompt": "Google's public field dataset from opted-in Chrome users, reported at p75, is the Chrome UX Report, abbreviated ____.",
+    "explanation": "CrUX (Chrome UX Report) is the public field dataset that powers PageSpeed Insights' field section and Google's page-experience assessment.",
+    "answer": [
+      "CrUX",
+      "crux"
+    ]
+  },
+  {
+    "id": "measurement-and-tooling-04",
+    "topic": "measurement-and-tooling",
+    "lesson": "lab-data-characteristics",
+    "type": "multiple-choice",
+    "prompt": "Which statements about LAB data are true? Select all that apply.",
+    "explanation": "Lab data is a repeatable synthetic test, ideal for debugging and CI. It doesn't measure INP directly (no real user) and isn't collected from real users — that's field data.",
+    "options": [
+      {
+        "id": "a",
+        "text": "It is controlled and repeatable"
+      },
+      {
+        "id": "b",
+        "text": "It's great for debugging a cause and for catching regressions in CI"
+      },
+      {
+        "id": "c",
+        "text": "It measures INP directly from real interactions"
+      },
+      {
+        "id": "d",
+        "text": "It's collected from thousands of real users"
+      }
+    ],
+    "answer": [
+      "a",
+      "b"
+    ]
+  },
+  {
+    "id": "measurement-and-tooling-05",
+    "topic": "measurement-and-tooling",
+    "lesson": "why-lab-and-field-differ",
+    "type": "single-choice",
+    "prompt": "Which Core Web Vital can a Lighthouse lab run NOT measure directly, using a proxy instead?",
+    "explanation": "Lighthouse has no real user interacting, so it can't measure INP; it reports TBT as a lab proxy for responsiveness. Confirm INP with field data.",
+    "options": [
+      {
+        "id": "a",
+        "text": "LCP — it uses FCP instead"
+      },
+      {
+        "id": "b",
+        "text": "CLS — it uses TTFB instead"
+      },
+      {
+        "id": "c",
+        "text": "INP — it uses Total Blocking Time (TBT) as a proxy"
+      },
+      {
+        "id": "d",
+        "text": "It measures all three directly"
+      }
+    ],
+    "answer": "c"
+  },
+  {
+    "id": "measurement-and-tooling-06",
+    "topic": "measurement-and-tooling",
+    "lesson": "why-lab-and-field-differ",
+    "type": "ordering",
+    "prompt": "Order a healthy measure-and-fix workflow using both data types.",
+    "explanation": "Use field data to decide what's actually a problem, lab tools to diagnose and iterate quickly, then confirm the real-world effect back in the field.",
+    "answer": [
+      "judge",
+      "diagnose",
+      "fix",
+      "confirm"
+    ],
+    "items": [
+      {
+        "id": "judge",
+        "text": "Judge the real experience with field data (p75)"
+      },
+      {
+        "id": "diagnose",
+        "text": "Reproduce and diagnose the cause in the lab"
+      },
+      {
+        "id": "fix",
+        "text": "Ship a fix"
+      },
+      {
+        "id": "confirm",
+        "text": "Confirm the improvement later in the field"
+      }
+    ]
+  },
+  {
+    "id": "measurement-and-tooling-07",
+    "topic": "measurement-and-tooling",
+    "lesson": "lighthouse-score-weights",
+    "type": "single-choice",
+    "prompt": "As of writing, which metric carries the largest weight in the Lighthouse performance score?",
+    "explanation": "As of writing (Lighthouse 10/11) the weights are FCP 10, SI 10, LCP 25, TBT 30, CLS 25. TBT has the largest single weight, so heavy main-thread JavaScript hurts the score most.",
+    "options": [
+      {
+        "id": "a",
+        "text": "First Contentful Paint (10%)"
+      },
+      {
+        "id": "b",
+        "text": "Total Blocking Time (30%)"
+      },
+      {
+        "id": "c",
+        "text": "Cumulative Layout Shift (25%)"
+      },
+      {
+        "id": "d",
+        "text": "Speed Index (10%)"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "measurement-and-tooling-08",
+    "topic": "measurement-and-tooling",
+    "lesson": "lighthouse-score-weights",
+    "type": "fill-blank",
+    "prompt": "Total Blocking Time is the lab proxy for which Core Web Vital? ____ (three-letter abbreviation).",
+    "explanation": "Lighthouse can't measure INP without a real user, so it uses TBT (main-thread blocking during load) as the lab proxy for responsiveness.",
+    "answer": [
+      "INP",
+      "interaction to next paint"
+    ]
+  },
+  {
+    "id": "measurement-and-tooling-09",
+    "topic": "measurement-and-tooling",
+    "lesson": "running-lighthouse",
+    "type": "multiple-choice",
+    "prompt": "Which statements about Lighthouse are true? Select all that apply.",
+    "explanation": "Lighthouse defaults to a throttled mobile profile, is a lab tool without direct INP, and runs in DevTools/CLI/PSI. A 100 is a lab result and doesn't guarantee good field vitals.",
+    "options": [
+      {
+        "id": "a",
+        "text": "By default it emulates a mid-tier mobile device with throttling"
+      },
+      {
+        "id": "b",
+        "text": "It is a lab tool and does not measure INP directly"
+      },
+      {
+        "id": "c",
+        "text": "A score of 100 guarantees good field Core Web Vitals"
+      },
+      {
+        "id": "d",
+        "text": "It can run in DevTools, from the CLI, or via PageSpeed Insights"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "d"
+    ]
+  },
+  {
+    "id": "measurement-and-tooling-10",
+    "topic": "measurement-and-tooling",
+    "lesson": "opportunities-vs-diagnostics",
+    "type": "match-pair",
+    "prompt": "Match each Lighthouse report section to what it contains.",
+    "explanation": "Metrics are the numbers; Opportunities estimate savings; Diagnostics give context; Passed audits list what's already good. Savings in Opportunities are estimates.",
+    "pairs": [
+      {
+        "left": "Metrics",
+        "right": "The measured values (LCP, TBT, CLS, …)"
+      },
+      {
+        "left": "Opportunities",
+        "right": "Suggested fixes with estimated time savings"
+      },
+      {
+        "left": "Diagnostics",
+        "right": "Supporting info like main-thread work and third-party cost"
+      },
+      {
+        "left": "Passed audits",
+        "right": "Things the page already does well"
+      }
+    ]
+  },
+  {
+    "id": "measurement-and-tooling-11",
+    "topic": "measurement-and-tooling",
+    "lesson": "lighthouse-score-traps",
+    "type": "single-choice",
+    "prompt": "Why doesn't a Lighthouse score of 100 guarantee a good real-world experience?",
+    "explanation": "The score reflects one throttled lab run and excludes INP (using TBT). Real users span many devices and networks, so field data must confirm the experience.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because Lighthouse only tests the homepage"
+      },
+      {
+        "id": "b",
+        "text": "Because it is a lab test on one device profile and doesn't measure INP; real users differ"
+      },
+      {
+        "id": "c",
+        "text": "Because the score ignores LCP"
+      },
+      {
+        "id": "d",
+        "text": "Because 100 is impossible to reach"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "measurement-and-tooling-12",
+    "topic": "measurement-and-tooling",
+    "lesson": "running-lighthouse",
+    "type": "ordering",
+    "prompt": "Order the Lighthouse score bands from worst to best.",
+    "explanation": "Lighthouse colours the score 0–49 red, 50–89 orange, and 90–100 green.",
+    "answer": [
+      "red",
+      "orange",
+      "green"
+    ],
+    "items": [
+      {
+        "id": "red",
+        "text": "0–49 (red, poor)"
+      },
+      {
+        "id": "orange",
+        "text": "50–89 (orange, needs improvement)"
+      },
+      {
+        "id": "green",
+        "text": "90–100 (green, good)"
+      }
+    ]
+  },
+  {
+    "id": "measurement-and-tooling-13",
+    "topic": "measurement-and-tooling",
+    "lesson": "network-panel-columns",
+    "type": "single-choice",
+    "prompt": "In the Network panel, what does the \"Transferred\" value represent?",
+    "explanation": "Transferred is the over-the-wire byte count (after compression); Size is the uncompressed resource. A big gap means good compression, and \"(from cache)\" means it wasn't downloaded.",
+    "options": [
+      {
+        "id": "a",
+        "text": "The uncompressed size of the resource on disk"
+      },
+      {
+        "id": "b",
+        "text": "The bytes actually sent over the wire, after compression"
+      },
+      {
+        "id": "c",
+        "text": "The time the request took"
+      },
+      {
+        "id": "d",
+        "text": "The number of requests to that origin"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "measurement-and-tooling-14",
+    "topic": "measurement-and-tooling",
+    "lesson": "network-panel-columns",
+    "type": "fill-blank",
+    "prompt": "The Network column that shows WHAT caused a request (so you can trace dependency chains) is the ____ column.",
+    "explanation": "The Initiator column shows what triggered each request — the HTML or another script — revealing request chains where one resource gates another.",
+    "answer": [
+      "Initiator",
+      "initiator"
+    ]
+  },
+  {
+    "id": "measurement-and-tooling-15",
+    "topic": "measurement-and-tooling",
+    "lesson": "recording-network-traces",
+    "type": "multiple-choice",
+    "prompt": "Which settings help you test a realistic first-visit mobile experience? Select all that apply.",
+    "explanation": "Disabling the cache simulates a new visitor, and network/CPU throttling mimics a mid-range phone. A warm cache on fast fibre hides the real first-visit cost.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Turn on \"Disable cache\""
+      },
+      {
+        "id": "b",
+        "text": "Apply network throttling (e.g. Slow 4G)"
+      },
+      {
+        "id": "c",
+        "text": "Apply CPU throttling"
+      },
+      {
+        "id": "d",
+        "text": "Test on office fibre with the cache warm"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ]
+  },
+  {
+    "id": "measurement-and-tooling-16",
+    "topic": "measurement-and-tooling",
+    "lesson": "reading-the-waterfall",
+    "type": "ordering",
+    "prompt": "Order these per-request timing phases as they occur.",
+    "explanation": "A request queues, resolves DNS, connects (TCP+TLS), waits for the first byte (TTFB), then downloads the content. Setup phases only appear on the first request to an origin.",
+    "answer": [
+      "queue",
+      "dns",
+      "conn",
+      "wait",
+      "dl"
+    ],
+    "items": [
+      {
+        "id": "queue",
+        "text": "Queueing / Stalled"
+      },
+      {
+        "id": "dns",
+        "text": "DNS lookup"
+      },
+      {
+        "id": "conn",
+        "text": "Initial connection + SSL"
+      },
+      {
+        "id": "wait",
+        "text": "Waiting (TTFB)"
+      },
+      {
+        "id": "dl",
+        "text": "Content Download"
+      }
+    ]
+  },
+  {
+    "id": "measurement-and-tooling-17",
+    "topic": "measurement-and-tooling",
+    "lesson": "network-panel-columns",
+    "type": "match-pair",
+    "prompt": "Match each Network column to what it tells you.",
+    "explanation": "Status is the HTTP outcome, Initiator traces chains, Transferred is compressed bytes, and Priority controls ordering.",
+    "pairs": [
+      {
+        "left": "Status",
+        "right": "The HTTP result (200, 304, from cache)"
+      },
+      {
+        "left": "Initiator",
+        "right": "What requested this resource"
+      },
+      {
+        "left": "Transferred",
+        "right": "Bytes sent over the wire (compressed)"
+      },
+      {
+        "left": "Priority",
+        "right": "The browser's fetch order for the request"
+      }
+    ]
+  },
+  {
+    "id": "measurement-and-tooling-18",
+    "topic": "measurement-and-tooling",
+    "lesson": "recording-network-traces",
+    "type": "single-choice",
+    "prompt": "Why turn on \"Disable cache\" when profiling a page?",
+    "explanation": "With the cache on, repeat visits show tiny \"(from cache)\" entries that hide the real cost new visitors pay. Disabling it forces a cold, first-visit load.",
+    "options": [
+      {
+        "id": "a",
+        "text": "To make the page load faster in the test"
+      },
+      {
+        "id": "b",
+        "text": "To simulate a first-time visitor with an empty cache, revealing the true download cost"
+      },
+      {
+        "id": "c",
+        "text": "To remove images from the page"
+      },
+      {
+        "id": "d",
+        "text": "To disable JavaScript"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "monitoring-and-auditing-01",
+    "topic": "monitoring-and-auditing",
+    "lesson": "performance-budget-types",
+    "type": "single-choice",
+    "prompt": "What is a performance budget?",
+    "explanation": "A performance budget is an explicit, shared limit (on timings and/or bytes/requests) that turns speed into an enforceable target so regressions are caught deliberately.",
+    "options": [
+      {
+        "id": "a",
+        "text": "The money spent on hosting"
+      },
+      {
+        "id": "b",
+        "text": "An agreed limit on metrics and/or resource sizes that the team commits not to exceed"
+      },
+      {
+        "id": "c",
+        "text": "The number of developers on the team"
+      },
+      {
+        "id": "d",
+        "text": "A Lighthouse feature that speeds up the page"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "monitoring-and-auditing-02",
+    "topic": "monitoring-and-auditing",
+    "lesson": "performance-budget-types",
+    "type": "match-pair",
+    "prompt": "Match each budget concept to its meaning.",
+    "explanation": "Metric budgets limit outcomes (timings), quantity budgets limit inputs (bytes/requests), score budgets set a minimum tool score, and a regression is an unintended slowdown.",
+    "pairs": [
+      {
+        "left": "Metric budget",
+        "right": "A limit on a timing like LCP or INP"
+      },
+      {
+        "left": "Quantity budget",
+        "right": "A limit on bytes or request counts"
+      },
+      {
+        "left": "Score budget",
+        "right": "A minimum tool score, e.g. Lighthouse ≥ 90"
+      },
+      {
+        "left": "Regression",
+        "right": "An unintended slowdown introduced by a change"
+      }
+    ]
+  },
+  {
+    "id": "monitoring-and-auditing-03",
+    "topic": "monitoring-and-auditing",
+    "lesson": "enforcing-budgets-in-ci",
+    "type": "fill-blank",
+    "prompt": "A budget only sticks if it's enforced automatically in ____, so a pull request that exceeds a limit fails the build (two letters).",
+    "explanation": "Enforcing budgets in CI (e.g. Lighthouse CI or a bundle-size check) fails a pull request that breaches a limit, catching regressions before they ship.",
+    "answer": [
+      "CI",
+      "continuous integration"
+    ]
+  },
+  {
+    "id": "monitoring-and-auditing-04",
+    "topic": "monitoring-and-auditing",
+    "lesson": "budget-governance-and-culture",
+    "type": "multiple-choice",
+    "prompt": "Which are good performance-budget practices? Select all that apply.",
+    "explanation": "Enforce in CI, budget JS on its own, and anchor to CWV and your real numbers. An always-missed limit trains everyone to ignore the failing check.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Enforce the budget automatically in CI"
+      },
+      {
+        "id": "b",
+        "text": "Budget JavaScript separately, not just total bytes"
+      },
+      {
+        "id": "c",
+        "text": "Set an aspirational limit you routinely miss"
+      },
+      {
+        "id": "d",
+        "text": "Anchor limits to the Core Web Vitals \"good\" thresholds and current data"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "d"
+    ]
+  },
+  {
+    "id": "monitoring-and-auditing-05",
+    "topic": "monitoring-and-auditing",
+    "lesson": "performance-budget-types",
+    "type": "single-choice",
+    "prompt": "Why should JavaScript get its own, tighter budget rather than just counting total bytes?",
+    "explanation": "Byte for byte, JavaScript costs more than images or fonts because after download it is parsed, compiled, and executed on the main thread — so it warrants a dedicated limit.",
+    "options": [
+      {
+        "id": "a",
+        "text": "JavaScript files are always the largest files"
+      },
+      {
+        "id": "b",
+        "text": "Because JS must be downloaded, parsed, compiled, and executed on the main thread, making it the most expensive kind of byte"
+      },
+      {
+        "id": "c",
+        "text": "Because browsers refuse to cache JavaScript"
+      },
+      {
+        "id": "d",
+        "text": "Because CSS has no cost"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "monitoring-and-auditing-06",
+    "topic": "monitoring-and-auditing",
+    "lesson": "setting-realistic-targets",
+    "type": "ordering",
+    "prompt": "Order the steps of establishing a workable performance budget.",
+    "explanation": "Start from where you are, set a holdable target, enforce it automatically, then tighten it as the team improves.",
+    "answer": [
+      "measure",
+      "set",
+      "enforce",
+      "ratchet"
+    ],
+    "items": [
+      {
+        "id": "measure",
+        "text": "Measure your current numbers (and competitors)"
+      },
+      {
+        "id": "set",
+        "text": "Set a realistic limit anchored to the CWV \"good\" thresholds"
+      },
+      {
+        "id": "enforce",
+        "text": "Enforce it in CI so breaches fail the build"
+      },
+      {
+        "id": "ratchet",
+        "text": "Ratchet the limit tighter over time"
+      }
+    ]
+  },
+  {
+    "id": "optimizing-vitals-01",
+    "topic": "optimizing-vitals",
+    "lesson": "the-four-phases-of-lcp",
+    "type": "ordering",
+    "prompt": "Order the four phases that make up LCP.",
+    "explanation": "LCP = TTFB + resource load delay + resource load time + element render delay. Diagnosing which phase dominates points you to the right fix.",
+    "answer": [
+      "ttfb",
+      "delay",
+      "loadtime",
+      "render"
+    ],
+    "items": [
+      {
+        "id": "ttfb",
+        "text": "TTFB (first byte of the document)"
+      },
+      {
+        "id": "delay",
+        "text": "Resource load delay (before the LCP resource starts loading)"
+      },
+      {
+        "id": "loadtime",
+        "text": "Resource load time (the LCP resource downloads)"
+      },
+      {
+        "id": "render",
+        "text": "Element render delay (loaded → painted)"
+      }
+    ]
+  },
+  {
+    "id": "optimizing-vitals-02",
+    "topic": "optimizing-vitals",
+    "lesson": "never-lazy-load-lcp",
+    "type": "single-choice",
+    "prompt": "Why should you never add loading=\"lazy\" to the LCP image?",
+    "explanation": "loading=\"lazy\" defers an image until it's about to scroll into view. The LCP image is already in view and should load eagerly — lazy-loading it directly worsens LCP.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because lazy loading corrupts the image"
+      },
+      {
+        "id": "b",
+        "text": "Because it delays loading the very element LCP measures, making LCP worse"
+      },
+      {
+        "id": "c",
+        "text": "Because lazy loading only works on videos"
+      },
+      {
+        "id": "d",
+        "text": "Because it increases the image's file size"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "optimizing-vitals-03",
+    "topic": "optimizing-vitals",
+    "lesson": "the-four-phases-of-lcp",
+    "type": "match-pair",
+    "prompt": "Match each slow LCP phase to the fix that targets it.",
+    "explanation": "Each phase has a matching fix: CDN for TTFB, early discovery/preload for load delay, image optimization for load time, and removing render-blocking resources for render delay.",
+    "pairs": [
+      {
+        "left": "Slow TTFB",
+        "right": "Use a CDN and cache at the edge"
+      },
+      {
+        "left": "Resource load delay",
+        "right": "Preload the image and make it discoverable in the HTML"
+      },
+      {
+        "left": "Resource load time",
+        "right": "Use a modern format and correct dimensions"
+      },
+      {
+        "left": "Element render delay",
+        "right": "Remove render-blocking CSS/JS"
+      }
+    ]
+  },
+  {
+    "id": "optimizing-vitals-04",
+    "topic": "optimizing-vitals",
+    "lesson": "prioritizing-the-lcp-resource",
+    "type": "fill-blank",
+    "prompt": "The HTML attribute that hints a resource should be fetched at high priority is ____ (write it as attribute=value).",
+    "explanation": "fetchpriority=\"high\" raises a fetch's priority. On the LCP image it helps the browser download it ahead of less important resources.",
+    "answer": [
+      "fetchpriority=high",
+      "fetchpriority=\"high\"",
+      "fetchpriority"
+    ]
+  },
+  {
+    "id": "optimizing-vitals-05",
+    "topic": "optimizing-vitals",
+    "lesson": "prioritizing-the-lcp-resource",
+    "type": "multiple-choice",
+    "prompt": "Which techniques help the LCP image start downloading earlier? Select all that apply.",
+    "explanation": "Being in the HTML makes it discoverable, preload starts it early, and fetchpriority raises its priority. loading=\"lazy\" would do the opposite and delay it.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Put it as a real <img> in the initial HTML"
+      },
+      {
+        "id": "b",
+        "text": "Add <link rel=\"preload\" as=\"image\">"
+      },
+      {
+        "id": "c",
+        "text": "Add fetchpriority=\"high\""
+      },
+      {
+        "id": "d",
+        "text": "Add loading=\"lazy\""
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ]
+  },
+  {
+    "id": "optimizing-vitals-06",
+    "topic": "optimizing-vitals",
+    "lesson": "identifying-the-lcp-element",
+    "type": "single-choice",
+    "prompt": "If the LCP element is a block of text, what most commonly delays it?",
+    "explanation": "For text LCP the 'resource' is effectively the font and CSS, so a slow web font or render-blocking CSS delays the text from painting.",
+    "options": [
+      {
+        "id": "a",
+        "text": "A slow-loading web font and/or render-blocking CSS"
+      },
+      {
+        "id": "b",
+        "text": "The number of images elsewhere on the page"
+      },
+      {
+        "id": "c",
+        "text": "The favicon"
+      },
+      {
+        "id": "d",
+        "text": "Cookies"
+      }
+    ],
+    "answer": "a"
+  },
+  {
+    "id": "optimizing-vitals-07",
+    "topic": "optimizing-vitals",
+    "lesson": "setting-explicit-image-dimensions",
+    "type": "single-choice",
+    "prompt": "What is the most effective way to prevent images from causing layout shift?",
+    "explanation": "With width/height (or aspect-ratio) the browser knows the aspect ratio and reserves the right space before the image loads, so content below never jumps. Keep height:auto in CSS for responsiveness.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Load all images with JavaScript"
+      },
+      {
+        "id": "b",
+        "text": "Give each image its width and height attributes (or a CSS aspect-ratio) so space is reserved before it loads"
+      },
+      {
+        "id": "c",
+        "text": "Make every image a background-image"
+      },
+      {
+        "id": "d",
+        "text": "Add loading=\"lazy\" to every image"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "optimizing-vitals-08",
+    "topic": "optimizing-vitals",
+    "lesson": "anatomy-of-a-layout-shift",
+    "type": "single-choice",
+    "prompt": "Which layout shifts do NOT count toward CLS?",
+    "explanation": "Shifts within 500 ms of a user interaction are flagged hadRecentInput and treated as expected (e.g. opening an accordion you clicked), so they're excluded from CLS.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Shifts that happen within 500 ms of a user interaction"
+      },
+      {
+        "id": "b",
+        "text": "Shifts caused by images"
+      },
+      {
+        "id": "c",
+        "text": "Shifts on mobile devices"
+      },
+      {
+        "id": "d",
+        "text": "Shifts in the first second of load"
+      }
+    ],
+    "answer": "a"
+  },
+  {
+    "id": "optimizing-vitals-09",
+    "topic": "optimizing-vitals",
+    "lesson": "reserving-space-for-dynamic-content",
+    "type": "multiple-choice",
+    "prompt": "Which of these are common causes of layout shift? Select all that apply.",
+    "explanation": "Unsized media, growing slots, and content inserted above existing content all shift the layout. transform/opacity animations do not move other content, so they don't cause shifts.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Images or videos without dimensions"
+      },
+      {
+        "id": "b",
+        "text": "Ad or embed slots that grow from zero height"
+      },
+      {
+        "id": "c",
+        "text": "Content injected above existing content on load"
+      },
+      {
+        "id": "d",
+        "text": "Animating with transform and opacity"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ]
+  },
+  {
+    "id": "optimizing-vitals-10",
+    "topic": "optimizing-vitals",
+    "lesson": "preventing-font-layout-shifts",
+    "type": "fill-blank",
+    "prompt": "The CSS property that reserves space for a box in a given width:height ratio (e.g. 16 / 9) is ____.",
+    "explanation": "CSS aspect-ratio reserves correctly proportioned space for elements without an intrinsic size, such as video embeds, preventing a shift when they load.",
+    "answer": [
+      "aspect-ratio",
+      "aspect ratio"
+    ]
+  },
+  {
+    "id": "optimizing-vitals-11",
+    "topic": "optimizing-vitals",
+    "lesson": "shift-free-css-animations",
+    "type": "match-pair",
+    "prompt": "Match each cause of layout shift to its fix.",
+    "explanation": "Every CLS fix comes down to reserving space (dimensions, min-height) or not displacing existing content (overlays, matched font metrics).",
+    "pairs": [
+      {
+        "left": "Image with no dimensions",
+        "right": "Add width and height attributes"
+      },
+      {
+        "left": "Ad/embed slot",
+        "right": "Reserve space with a min-height"
+      },
+      {
+        "left": "Banner injected at top on load",
+        "right": "Use a fixed overlay or reserve its space"
+      },
+      {
+        "left": "Web font swap reflow",
+        "right": "Match fallback metrics or use font-display: optional"
+      }
+    ]
+  },
+  {
+    "id": "optimizing-vitals-12",
+    "topic": "optimizing-vitals",
+    "lesson": "reserving-space-for-dynamic-content",
+    "type": "ordering",
+    "prompt": "Order the steps to diagnose and fix a layout shift.",
+    "explanation": "Record, locate the shifting element, find its cause, apply the reserve-space fix, and confirm CLS improved.",
+    "answer": [
+      "record",
+      "find",
+      "cause",
+      "fix",
+      "verify"
+    ],
+    "items": [
+      {
+        "id": "record",
+        "text": "Record the page load in DevTools"
+      },
+      {
+        "id": "find",
+        "text": "Identify the element that shifts"
+      },
+      {
+        "id": "cause",
+        "text": "Determine the cause (unsized media, injected content, font)"
+      },
+      {
+        "id": "fix",
+        "text": "Reserve space or apply the matching fix"
+      },
+      {
+        "id": "verify",
+        "text": "Re-measure CLS to confirm"
+      }
+    ]
+  },
+  {
+    "id": "optimizing-vitals-13",
+    "topic": "optimizing-vitals",
+    "lesson": "anatomy-of-an-interaction",
+    "type": "single-choice",
+    "prompt": "What does INP measure?",
+    "explanation": "INP (Interaction to Next Paint) is the responsiveness vital: it measures the latency from an interaction to the next visual update, reporting near the worst interaction of the visit.",
+    "options": [
+      {
+        "id": "a",
+        "text": "How long the page takes to finish loading"
+      },
+      {
+        "id": "b",
+        "text": "How quickly the page visually responds to interactions like clicks, taps, and key presses"
+      },
+      {
+        "id": "c",
+        "text": "How much the layout shifts"
+      },
+      {
+        "id": "d",
+        "text": "The size of the JavaScript bundle"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "optimizing-vitals-14",
+    "topic": "optimizing-vitals",
+    "lesson": "reducing-input-delay",
+    "type": "match-pair",
+    "prompt": "Match each part of an interaction's latency to a fix that targets it.",
+    "explanation": "Input delay is fixed by keeping the main thread free, processing time by doing less work, and presentation delay by making the next frame cheaper to render.",
+    "pairs": [
+      {
+        "left": "Input delay",
+        "right": "Break up long tasks and yield to the main thread"
+      },
+      {
+        "left": "Processing time",
+        "right": "Do less in the handler; defer non-urgent work"
+      },
+      {
+        "left": "Presentation delay",
+        "right": "Shrink the DOM and make rendering cheaper"
+      }
+    ]
+  },
+  {
+    "id": "optimizing-vitals-15",
+    "topic": "optimizing-vitals",
+    "lesson": "optimizing-event-handlers",
+    "type": "fill-blank",
+    "prompt": "Main-thread work that runs for more than 50 ms and blocks the page from responding is called a ____ task.",
+    "explanation": "A long task exceeds 50 ms on the main thread. Because JavaScript is single-threaded there, a long task blocks input until it finishes — the main cause of input delay.",
+    "answer": [
+      "long",
+      "long task"
+    ]
+  },
+  {
+    "id": "optimizing-vitals-16",
+    "topic": "optimizing-vitals",
+    "lesson": "yielding-to-the-main-thread",
+    "type": "multiple-choice",
+    "prompt": "Which techniques help reduce INP? Select all that apply.",
+    "explanation": "Breaking up tasks, deferring non-urgent work, and debouncing all keep interactions cheap. Doing everything synchronously in the handler inflates processing time and delays the response.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Break up long tasks and yield to the main thread"
+      },
+      {
+        "id": "b",
+        "text": "Update the visible UI first, then defer analytics/logging"
+      },
+      {
+        "id": "c",
+        "text": "Debounce or throttle frequently-firing events"
+      },
+      {
+        "id": "d",
+        "text": "Do all work synchronously inside the event handler"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ]
+  },
+  {
+    "id": "optimizing-vitals-17",
+    "topic": "optimizing-vitals",
+    "lesson": "minimizing-presentation-delay",
+    "type": "single-choice",
+    "prompt": "Inside an event handler, which work should run synchronously?",
+    "explanation": "Do just the visible response synchronously so the user sees a fast reaction, then yield and run non-urgent work (analytics, logging) after the browser paints.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Only the visible response the user is waiting for; defer the rest"
+      },
+      {
+        "id": "b",
+        "text": "All analytics and logging first, then the UI update"
+      },
+      {
+        "id": "c",
+        "text": "Every possible task, to get it out of the way"
+      },
+      {
+        "id": "d",
+        "text": "Nothing — handlers should be empty"
+      }
+    ],
+    "answer": "a"
+  },
+  {
+    "id": "optimizing-vitals-18",
+    "topic": "optimizing-vitals",
+    "lesson": "anatomy-of-an-interaction",
+    "type": "ordering",
+    "prompt": "Order a responsive click handler that avoids blocking the interaction.",
+    "explanation": "Give feedback first, let the browser paint it, then do heavy work in chunks that yield, and finally run non-urgent work — so the interaction never blocks.",
+    "answer": [
+      "feedback",
+      "yield",
+      "work",
+      "defer"
+    ],
+    "items": [
+      {
+        "id": "feedback",
+        "text": "Show immediate visual feedback (e.g. a spinner)"
+      },
+      {
+        "id": "yield",
+        "text": "Yield so the browser can paint that feedback"
+      },
+      {
+        "id": "work",
+        "text": "Do the heavy work in yielding chunks"
+      },
+      {
+        "id": "defer",
+        "text": "Run non-urgent work (analytics) last"
+      }
+    ]
+  },
+  {
+    "id": "media-and-fonts-01",
+    "topic": "media-and-fonts",
+    "lesson": "modern-image-formats",
+    "type": "single-choice",
+    "prompt": "Which format is usually the smallest for photographs (with a fallback still recommended)?",
+    "explanation": "AVIF usually gives the smallest files for photos, with WebP and JPEG as fallbacks (served via <picture>). PNG is for graphics/transparency; GIF should be replaced by video.",
+    "options": [
+      {
+        "id": "a",
+        "text": "PNG"
+      },
+      {
+        "id": "b",
+        "text": "AVIF"
+      },
+      {
+        "id": "c",
+        "text": "BMP"
+      },
+      {
+        "id": "d",
+        "text": "Animated GIF"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "media-and-fonts-02",
+    "topic": "media-and-fonts",
+    "lesson": "responsive-images-srcset-sizes",
+    "type": "match-pair",
+    "prompt": "Match each image feature to what it does.",
+    "explanation": "srcset + sizes let the browser pick the right resolution; <picture> handles format/crop fallback; loading=lazy defers off-screen images.",
+    "pairs": [
+      {
+        "left": "srcset",
+        "right": "Lists image sources with width descriptors"
+      },
+      {
+        "left": "sizes",
+        "right": "Tells the browser how wide the image will display"
+      },
+      {
+        "left": "<picture>",
+        "right": "Provides format fallback or art direction"
+      },
+      {
+        "left": "loading=lazy",
+        "right": "Defers loading a below-the-fold image"
+      }
+    ]
+  },
+  {
+    "id": "media-and-fonts-03",
+    "topic": "media-and-fonts",
+    "lesson": "the-picture-element-art-direction",
+    "type": "fill-blank",
+    "prompt": "The HTML element used to offer multiple image formats (with a fallback) or different crops per breakpoint is the ____ element.",
+    "explanation": "The <picture> element wraps several <source> options (by type for format, or media for art direction) plus an <img> fallback.",
+    "answer": [
+      "picture",
+      "<picture>"
+    ]
+  },
+  {
+    "id": "media-and-fonts-04",
+    "topic": "media-and-fonts",
+    "lesson": "native-lazy-loading",
+    "type": "multiple-choice",
+    "prompt": "Which are good image-optimization practices? Select all that apply.",
+    "explanation": "Responsive sizes, modern formats with fallback, and set dimensions all help. Lazy-loading the LCP image is the one thing to avoid — it delays LCP.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Serve responsive sizes with srcset/sizes"
+      },
+      {
+        "id": "b",
+        "text": "Use AVIF/WebP with a JPEG fallback"
+      },
+      {
+        "id": "c",
+        "text": "Always set width and height (or aspect-ratio)"
+      },
+      {
+        "id": "d",
+        "text": "Add loading=\"lazy\" to the LCP image"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ]
+  },
+  {
+    "id": "media-and-fonts-05",
+    "topic": "media-and-fonts",
+    "lesson": "image-decoding-and-compression",
+    "type": "single-choice",
+    "prompt": "Why is PNG a poor choice for photographs?",
+    "explanation": "PNG is lossless, which bloats photographic content. Photos belong in AVIF/WebP/JPEG; reserve PNG for graphics needing sharp edges or transparency.",
+    "options": [
+      {
+        "id": "a",
+        "text": "PNG can't be shown in browsers"
+      },
+      {
+        "id": "b",
+        "text": "PNG is lossless and produces very large files for photos; it's meant for graphics/transparency"
+      },
+      {
+        "id": "c",
+        "text": "PNG doesn't support colour"
+      },
+      {
+        "id": "d",
+        "text": "PNG images always cause layout shift"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "media-and-fonts-06",
+    "topic": "media-and-fonts",
+    "lesson": "modern-image-formats",
+    "type": "ordering",
+    "prompt": "Order the steps to prepare an optimized photo for the web.",
+    "explanation": "Pick the format, produce right-sized variants, compress, then write markup that reserves space and sets loading/priority appropriately.",
+    "answer": [
+      "format",
+      "resize",
+      "compress",
+      "markup"
+    ],
+    "items": [
+      {
+        "id": "format",
+        "text": "Choose an efficient format (AVIF/WebP with fallback)"
+      },
+      {
+        "id": "resize",
+        "text": "Generate the sizes actually needed (responsive)"
+      },
+      {
+        "id": "compress",
+        "text": "Compress to a sensible quality"
+      },
+      {
+        "id": "markup",
+        "text": "Add width/height and the right loading/priority attributes"
+      }
+    ]
+  },
+  {
+    "id": "media-and-fonts-07",
+    "topic": "media-and-fonts",
+    "lesson": "shipping-woff2",
+    "type": "single-choice",
+    "prompt": "Which web font format should you ship as your primary format?",
+    "explanation": "WOFF2 has the best compression and is supported across modern browsers, so it's the format to ship — you rarely need others anymore.",
+    "options": [
+      {
+        "id": "a",
+        "text": "TTF"
+      },
+      {
+        "id": "b",
+        "text": "EOT"
+      },
+      {
+        "id": "c",
+        "text": "WOFF2"
+      },
+      {
+        "id": "d",
+        "text": "SVG fonts"
+      }
+    ],
+    "answer": "c"
+  },
+  {
+    "id": "media-and-fonts-08",
+    "topic": "media-and-fonts",
+    "lesson": "font-display-strategies",
+    "type": "match-pair",
+    "prompt": "Match each font-display value to its behaviour.",
+    "explanation": "block risks invisible text; swap avoids invisible text but can reflow; optional avoids the shift; fallback is a compromise between them.",
+    "pairs": [
+      {
+        "left": "block",
+        "right": "Hide text briefly (FOIT), then swap in the web font"
+      },
+      {
+        "left": "swap",
+        "right": "Show the fallback immediately, then swap (FOUT)"
+      },
+      {
+        "left": "optional",
+        "right": "Use the fallback and keep it if the font is slow (best for CLS)"
+      },
+      {
+        "left": "fallback",
+        "right": "Very short block, short swap window, else keep the fallback"
+      }
+    ]
+  },
+  {
+    "id": "media-and-fonts-09",
+    "topic": "media-and-fonts",
+    "lesson": "preloading-critical-fonts",
+    "type": "fill-blank",
+    "prompt": "A font <link rel=\"preload\"> must include the ____ attribute, or the font downloads twice.",
+    "explanation": "Fonts are fetched in anonymous CORS mode, so a preload without crossorigin doesn't match the real request and causes a duplicate download.",
+    "answer": [
+      "crossorigin",
+      "crossOrigin"
+    ]
+  },
+  {
+    "id": "media-and-fonts-10",
+    "topic": "media-and-fonts",
+    "lesson": "font-subsetting",
+    "type": "multiple-choice",
+    "prompt": "Which practices reduce the performance impact of web fonts? Select all that apply.",
+    "explanation": "WOFF2, subsetting, and a correct preload all help. font-display: block leaves text invisible (FOIT) while fonts load, which hurts perceived speed.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ship WOFF2"
+      },
+      {
+        "id": "b",
+        "text": "Subset to only the glyphs you use (unicode-range)"
+      },
+      {
+        "id": "c",
+        "text": "Preload the critical font with crossorigin"
+      },
+      {
+        "id": "d",
+        "text": "Use font-display: block on all text so nothing shows until fonts load"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ]
+  },
+  {
+    "id": "media-and-fonts-11",
+    "topic": "media-and-fonts",
+    "lesson": "font-fallback-metric-overrides",
+    "type": "single-choice",
+    "prompt": "How can you reduce the layout shift (CLS) caused when a fallback font swaps to the web font?",
+    "explanation": "Matching the fallback's metrics keeps line lengths and heights the same across the swap, and font-display: optional avoids the swap entirely — both cut swap-driven CLS.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Match the fallback's metrics with size-adjust/ascent-override, or use font-display: optional"
+      },
+      {
+        "id": "b",
+        "text": "Make the font file larger"
+      },
+      {
+        "id": "c",
+        "text": "Remove all fallback fonts"
+      },
+      {
+        "id": "d",
+        "text": "Load the font with JavaScript after everything else"
+      }
+    ],
+    "answer": "a"
+  },
+  {
+    "id": "media-and-fonts-12",
+    "topic": "media-and-fonts",
+    "lesson": "font-display-strategies",
+    "type": "ordering",
+    "prompt": "Order the steps to add a web font with good performance.",
+    "explanation": "Prepare an efficient, subset WOFF2; declare it with a chosen font-display; preload the critical one (with crossorigin); and stabilize the swap with matched fallback metrics.",
+    "answer": [
+      "format",
+      "face",
+      "preload",
+      "fallback"
+    ],
+    "items": [
+      {
+        "id": "format",
+        "text": "Choose WOFF2 and subset it to needed glyphs"
+      },
+      {
+        "id": "face",
+        "text": "Declare @font-face with a font-display value"
+      },
+      {
+        "id": "preload",
+        "text": "Preload the critical font with crossorigin"
+      },
+      {
+        "id": "fallback",
+        "text": "Add a metric-matched fallback to reduce swap shift"
+      }
+    ]
+  },
+  {
+    "id": "caching-and-compression-01",
+    "topic": "caching-and-compression",
+    "lesson": "cache-control-fundamentals",
+    "type": "single-choice",
+    "prompt": "What does the Cache-Control directive `no-cache` actually mean?",
+    "explanation": "`no-cache` still stores the response but requires a revalidation (a conditional request) before reusing it. The directive that means 'never store' is `no-store`.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Never store the response anywhere"
+      },
+      {
+        "id": "b",
+        "text": "The response may be stored, but must be revalidated with the server before reuse"
+      },
+      {
+        "id": "c",
+        "text": "Cache the response forever"
+      },
+      {
+        "id": "d",
+        "text": "Only cache on the server"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "caching-and-compression-02",
+    "topic": "caching-and-compression",
+    "lesson": "no-cache-versus-no-store",
+    "type": "match-pair",
+    "prompt": "Match each Cache-Control directive to its meaning.",
+    "explanation": "max-age sets freshness, no-store forbids storing, immutable skips revalidation, and public allows shared caches to store the response.",
+    "pairs": [
+      {
+        "left": "max-age=N",
+        "right": "Fresh (reusable without the network) for N seconds"
+      },
+      {
+        "left": "no-store",
+        "right": "Never store the response at all"
+      },
+      {
+        "left": "immutable",
+        "right": "Don't revalidate even on reload — content won't change"
+      },
+      {
+        "left": "public",
+        "right": "Shared caches (CDNs/proxies) may store it"
+      }
+    ]
+  },
+  {
+    "id": "caching-and-compression-03",
+    "topic": "caching-and-compression",
+    "lesson": "validation-with-etags",
+    "type": "fill-blank",
+    "prompt": "When a revalidation shows the cached copy is still valid, the server responds with status ____ (the number), sending no body.",
+    "explanation": "A 304 Not Modified tells the browser its cached copy is still good, so it reuses it without re-downloading the body (though a round trip still happens).",
+    "answer": [
+      "304",
+      "304 not modified"
+    ]
+  },
+  {
+    "id": "caching-and-compression-04",
+    "topic": "caching-and-compression",
+    "lesson": "the-immutable-cache-pattern",
+    "type": "single-choice",
+    "prompt": "What's the recommended caching for a fingerprinted asset like app.9f2a1c.js?",
+    "explanation": "A hashed filename changes when its content changes, so the URL is effectively permanent — cache it for a year and mark it immutable so it's never revalidated.",
+    "options": [
+      {
+        "id": "a",
+        "text": "no-store"
+      },
+      {
+        "id": "b",
+        "text": "max-age=60"
+      },
+      {
+        "id": "c",
+        "text": "public, max-age=31536000, immutable"
+      },
+      {
+        "id": "d",
+        "text": "no-cache"
+      }
+    ],
+    "answer": "c"
+  },
+  {
+    "id": "caching-and-compression-05",
+    "topic": "caching-and-compression",
+    "lesson": "html-caching-rules",
+    "type": "multiple-choice",
+    "prompt": "Which are good HTTP caching practices? Select all that apply.",
+    "explanation": "Cache fingerprinted assets long-term, revalidate HTML so deploys are seen, and use public + CDN for shared assets. Caching HTML for a year strands users on old pages.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Serve fingerprinted assets as immutable for a long time"
+      },
+      {
+        "id": "b",
+        "text": "Serve HTML with no-cache (or a short max-age)"
+      },
+      {
+        "id": "c",
+        "text": "Cache HTML with max-age of one year"
+      },
+      {
+        "id": "d",
+        "text": "Use public + a CDN for shared static assets"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "d"
+    ]
+  },
+  {
+    "id": "caching-and-compression-06",
+    "topic": "caching-and-compression",
+    "lesson": "cache-control-fundamentals",
+    "type": "ordering",
+    "prompt": "Order what happens when a stale cached file is revalidated and hasn't changed.",
+    "explanation": "A stale/no-cache resource triggers a conditional request; if the ETag still matches, the server answers 304 and the browser reuses its stored copy without re-downloading.",
+    "answer": [
+      "stale",
+      "cond",
+      "compare",
+      "reuse"
+    ],
+    "items": [
+      {
+        "id": "stale",
+        "text": "The cached copy becomes stale (or is no-cache)"
+      },
+      {
+        "id": "cond",
+        "text": "The browser sends a conditional request (If-None-Match with the ETag)"
+      },
+      {
+        "id": "compare",
+        "text": "The server sees the content is unchanged"
+      },
+      {
+        "id": "reuse",
+        "text": "The server returns 304 and the browser reuses its copy"
+      }
+    ]
+  },
+  {
+    "id": "caching-and-compression-07",
+    "topic": "caching-and-compression",
+    "lesson": "build-time-minification",
+    "type": "single-choice",
+    "prompt": "What is the difference between minification and compression?",
+    "explanation": "Minification strips whitespace/comments (and shortens JS names) at build time; compression (gzip/Brotli/zstd) reduces the transferred bytes and the browser decompresses them. They're independent and stack.",
+    "options": [
+      {
+        "id": "a",
+        "text": "They are the same thing with different names"
+      },
+      {
+        "id": "b",
+        "text": "Minification removes source cruft at build time; compression shrinks the bytes in transit and is reversed by the browser"
+      },
+      {
+        "id": "c",
+        "text": "Minification encrypts the file; compression signs it"
+      },
+      {
+        "id": "d",
+        "text": "Compression happens at build time; minification happens on the server"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "caching-and-compression-08",
+    "topic": "caching-and-compression",
+    "lesson": "static-versus-dynamic-compression",
+    "type": "fill-blank",
+    "prompt": "The request header in which the browser advertises the compression algorithms it supports is ____.",
+    "explanation": "The browser sends Accept-Encoding (e.g. gzip, br, zstd); the server replies with Content-Encoding naming the algorithm it actually used.",
+    "answer": [
+      "Accept-Encoding",
+      "accept-encoding"
+    ]
+  },
+  {
+    "id": "caching-and-compression-09",
+    "topic": "caching-and-compression",
+    "lesson": "what-not-to-compress",
+    "type": "multiple-choice",
+    "prompt": "Which files should you NOT re-compress because they're already compressed? Select all that apply.",
+    "explanation": "JPEG, WebP/AVIF, and WOFF2 are already compressed — re-compressing wastes CPU for no gain. Text like CSS is highly compressible and should be compressed.",
+    "options": [
+      {
+        "id": "a",
+        "text": "JPEG images"
+      },
+      {
+        "id": "b",
+        "text": "WebP/AVIF images"
+      },
+      {
+        "id": "c",
+        "text": "WOFF2 fonts"
+      },
+      {
+        "id": "d",
+        "text": "CSS files"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ]
+  },
+  {
+    "id": "caching-and-compression-10",
+    "topic": "caching-and-compression",
+    "lesson": "gzip-versus-brotli",
+    "type": "single-choice",
+    "prompt": "Which algorithm usually compresses text smaller than gzip?",
+    "explanation": "Brotli typically produces smaller text than gzip, especially when files are precompressed at a high level. zstd is a newer option with emerging support.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Brotli (br)"
+      },
+      {
+        "id": "b",
+        "text": "Base64"
+      },
+      {
+        "id": "c",
+        "text": "ROT13"
+      },
+      {
+        "id": "d",
+        "text": "PNG"
+      }
+    ],
+    "answer": "a"
+  },
+  {
+    "id": "caching-and-compression-11",
+    "topic": "caching-and-compression",
+    "lesson": "build-time-minification",
+    "type": "match-pair",
+    "prompt": "Match each term to what it is.",
+    "explanation": "Minification is a build step, compression is a transfer step, and the two encoding headers negotiate which algorithm is used.",
+    "pairs": [
+      {
+        "left": "Minification",
+        "right": "Build-time removal of whitespace and comments"
+      },
+      {
+        "left": "Compression",
+        "right": "Transfer-time byte reduction, reversed by the browser"
+      },
+      {
+        "left": "Accept-Encoding",
+        "right": "Browser header listing supported algorithms"
+      },
+      {
+        "left": "Content-Encoding",
+        "right": "Server header naming the algorithm it used"
+      }
+    ]
+  },
+  {
+    "id": "caching-and-compression-12",
+    "topic": "caching-and-compression",
+    "lesson": "gzip-versus-brotli",
+    "type": "ordering",
+    "prompt": "Order how a JavaScript file ends up small on the wire and usable in the browser.",
+    "explanation": "Minify then precompress at build; at request time the browser advertises support, the server sends the Brotli version, and the browser decompresses it.",
+    "answer": [
+      "minify",
+      "precompress",
+      "accept",
+      "serve",
+      "decompress"
+    ],
+    "items": [
+      {
+        "id": "minify",
+        "text": "Minify the source at build time"
+      },
+      {
+        "id": "precompress",
+        "text": "Precompress it with Brotli at build"
+      },
+      {
+        "id": "accept",
+        "text": "Browser requests it, sending Accept-Encoding: br"
+      },
+      {
+        "id": "serve",
+        "text": "Server responds with Content-Encoding: br"
+      },
+      {
+        "id": "decompress",
+        "text": "Browser decompresses to the original code"
+      }
+    ]
+  },
+  {
+    "id": "rendering-path-07",
+    "topic": "rendering-path",
+    "lesson": "cssom-and-render-blocking-css",
+    "type": "single-choice",
+    "prompt": "Why is a normal external stylesheet render-blocking?",
+    "explanation": "The browser needs the CSSOM before painting, so an applicable stylesheet blocks the first paint until it's downloaded and parsed — a big part of LCP's render-delay phase.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because CSS files are always huge"
+      },
+      {
+        "id": "b",
+        "text": "Because the browser won't paint content until it has built the CSSOM from all applicable CSS"
+      },
+      {
+        "id": "c",
+        "text": "Because CSS must run before JavaScript"
+      },
+      {
+        "id": "d",
+        "text": "Because stylesheets are downloaded last"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "rendering-path-08",
+    "topic": "rendering-path",
+    "lesson": "async-non-critical-css",
+    "type": "multiple-choice",
+    "prompt": "Which techniques keep resources off the critical path? Select all that apply.",
+    "explanation": "Inlining critical CSS, scoping non-matching CSS with media, and deferring scripts all unblock the first paint. Inlining all CSS bloats HTML and loses caching.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Inline critical CSS and load the rest asynchronously"
+      },
+      {
+        "id": "b",
+        "text": "Mark print styles with media=\"print\""
+      },
+      {
+        "id": "c",
+        "text": "Add defer to app scripts"
+      },
+      {
+        "id": "d",
+        "text": "Inline the entire stylesheet into every HTML page"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ]
+  },
+  {
+    "id": "rendering-path-09",
+    "topic": "rendering-path",
+    "lesson": "inlining-critical-css",
+    "type": "fill-blank",
+    "prompt": "The minimal set of above-the-fold styles you inline so the first paint doesn't wait on a request is called ____ CSS.",
+    "explanation": "Critical CSS is the small above-the-fold style set inlined in the head; the full stylesheet is then loaded asynchronously.",
+    "answer": [
+      "critical",
+      "critical css"
+    ]
+  },
+  {
+    "id": "rendering-path-10",
+    "topic": "rendering-path",
+    "lesson": "media-queries-for-stylesheets",
+    "type": "match-pair",
+    "prompt": "Match each technique to its effect.",
+    "explanation": "Inlining critical CSS and scoping non-matching CSS unblock painting; defer/async keep scripts from blocking the parser.",
+    "pairs": [
+      {
+        "left": "Inline critical CSS",
+        "right": "First paint doesn't wait on a stylesheet request"
+      },
+      {
+        "left": "media=\"print\" on a stylesheet",
+        "right": "It downloads without blocking the screen render"
+      },
+      {
+        "left": "defer on a script",
+        "right": "Runs after parsing, in document order"
+      },
+      {
+        "left": "async on a script",
+        "right": "Runs as soon as it downloads, order not guaranteed"
+      }
+    ]
+  },
+  {
+    "id": "rendering-path-11",
+    "topic": "rendering-path",
+    "lesson": "inlining-critical-css",
+    "type": "single-choice",
+    "prompt": "Why is inlining ALL of your CSS into the HTML a bad idea?",
+    "explanation": "Only the small critical set should be inlined. Inlining everything makes each HTML response large and uncacheable, hurting multi-page visits.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Inline CSS doesn't work in browsers"
+      },
+      {
+        "id": "b",
+        "text": "It bloats every HTML response, can't be cached separately, and is re-sent on every navigation"
+      },
+      {
+        "id": "c",
+        "text": "It disables JavaScript"
+      },
+      {
+        "id": "d",
+        "text": "It forces the page to use dark mode"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "rendering-path-12",
+    "topic": "rendering-path",
+    "lesson": "identifying-render-blockers",
+    "type": "ordering",
+    "prompt": "Order the timeline of an optimized, non-blocking head as the page paints.",
+    "explanation": "With critical CSS inline and the rest async plus a deferred script, the browser paints early and the non-critical resources apply/run off the critical path.",
+    "answer": [
+      "html",
+      "critical",
+      "full",
+      "defer"
+    ],
+    "items": [
+      {
+        "id": "html",
+        "text": "HTML arrives and is parsed"
+      },
+      {
+        "id": "critical",
+        "text": "Inline critical CSS lets the browser paint above-the-fold"
+      },
+      {
+        "id": "full",
+        "text": "The full stylesheet finishes loading asynchronously and applies"
+      },
+      {
+        "id": "defer",
+        "text": "The deferred script runs after parsing"
+      }
+    ]
+  },
+  {
+    "id": "javascript-performance-01",
+    "topic": "javascript-performance",
+    "lesson": "the-javascript-cost-model",
+    "type": "single-choice",
+    "prompt": "Why is 200 KB of JavaScript more expensive than 200 KB of image?",
+    "explanation": "Byte-for-byte, JS costs more because after download it is parsed, compiled, and executed on the main thread — work that blocks interactivity — whereas an image is largely decoded and painted.",
+    "options": [
+      {
+        "id": "a",
+        "text": "JavaScript can't be cached"
+      },
+      {
+        "id": "b",
+        "text": "JavaScript must be parsed, compiled, and executed on the main thread, while an image is mostly just decoded"
+      },
+      {
+        "id": "c",
+        "text": "Images are always compressed and JavaScript never is"
+      },
+      {
+        "id": "d",
+        "text": "JavaScript downloads more slowly than images"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "javascript-performance-02",
+    "topic": "javascript-performance",
+    "lesson": "the-javascript-cost-model",
+    "type": "ordering",
+    "prompt": "Order the four cost stages a script goes through.",
+    "explanation": "A script is downloaded, parsed, compiled, and executed. The last three are CPU work on the main thread — the part that's uniquely expensive about JavaScript.",
+    "answer": [
+      "download",
+      "parse",
+      "compile",
+      "execute"
+    ],
+    "items": [
+      {
+        "id": "download",
+        "text": "Download (over the network)"
+      },
+      {
+        "id": "parse",
+        "text": "Parse (read the code)"
+      },
+      {
+        "id": "compile",
+        "text": "Compile (to machine code)"
+      },
+      {
+        "id": "execute",
+        "text": "Execute (run it on the main thread)"
+      }
+    ]
+  },
+  {
+    "id": "javascript-performance-03",
+    "topic": "javascript-performance",
+    "lesson": "code-splitting-with-dynamic-import",
+    "type": "fill-blank",
+    "prompt": "To load a module on demand at runtime (enabling code splitting) you use dynamic ____().",
+    "explanation": "Dynamic import() fetches a module at runtime, so heavy or rarely-used code can be split into a separate chunk loaded only when needed.",
+    "answer": [
+      "import",
+      "import()"
+    ]
+  },
+  {
+    "id": "javascript-performance-04",
+    "topic": "javascript-performance",
+    "lesson": "auditing-bundle-dependencies",
+    "type": "multiple-choice",
+    "prompt": "Which techniques reduce the amount of JavaScript users must process? Select all that apply.",
+    "explanation": "Code splitting, tree shaking, and granular imports all ship less JS. Sending polyfills to modern browsers that don't need them adds wasted parse/execute cost.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Code-split with dynamic import() so features load on demand"
+      },
+      {
+        "id": "b",
+        "text": "Tree-shake to drop unused exports"
+      },
+      {
+        "id": "c",
+        "text": "Import only the functions you use, not whole libraries"
+      },
+      {
+        "id": "d",
+        "text": "Ship a broad polyfill bundle to every browser"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ]
+  },
+  {
+    "id": "javascript-performance-05",
+    "topic": "javascript-performance",
+    "lesson": "tree-shaking-dead-code",
+    "type": "single-choice",
+    "prompt": "What does tree shaking require in order to work?",
+    "explanation": "Tree shaking analyzes static ES module imports/exports to safely drop unused code; dynamic require() and importing whole libraries can defeat it.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Static ES module import/export (and correct sideEffects metadata)"
+      },
+      {
+        "id": "b",
+        "text": "That all code be in one file"
+      },
+      {
+        "id": "c",
+        "text": "Disabling minification"
+      },
+      {
+        "id": "d",
+        "text": "Using only CommonJS require()"
+      }
+    ],
+    "answer": "a"
+  },
+  {
+    "id": "javascript-performance-06",
+    "topic": "javascript-performance",
+    "lesson": "removing-legacy-polyfills",
+    "type": "match-pair",
+    "prompt": "Match each term to its meaning.",
+    "explanation": "Code splitting and tree shaking reduce shipped JS; polyfills add features for old browsers; hydration is main-thread work that can hurt INP.",
+    "pairs": [
+      {
+        "left": "Code splitting",
+        "right": "Break the bundle into chunks loaded on demand"
+      },
+      {
+        "left": "Tree shaking",
+        "right": "Remove unused exports at build time"
+      },
+      {
+        "left": "Polyfill",
+        "right": "Code that adds a missing feature for old browsers"
+      },
+      {
+        "left": "Hydration",
+        "right": "Re-running JS to make server-rendered HTML interactive"
+      }
+    ]
+  },
+  {
+    "id": "javascript-performance-07",
+    "topic": "javascript-performance",
+    "lesson": "the-single-threaded-event-loop",
+    "type": "single-choice",
+    "prompt": "Which of these run on the browser's single main thread?",
+    "explanation": "The main thread serializes JS execution, style/layout/paint, and event handling, so a long task on it blocks rendering and input alike.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Only JavaScript"
+      },
+      {
+        "id": "b",
+        "text": "JavaScript, style calculation, layout, paint, and event handling — all serialized"
+      },
+      {
+        "id": "c",
+        "text": "Only network requests"
+      },
+      {
+        "id": "d",
+        "text": "Only image decoding"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "javascript-performance-08",
+    "topic": "javascript-performance",
+    "lesson": "offloading-to-web-workers",
+    "type": "single-choice",
+    "prompt": "What can a Web Worker NOT do?",
+    "explanation": "Workers run JS off the main thread and communicate via postMessage, but they cannot touch the DOM — DOM updates must happen back on the main thread.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Run JavaScript on a separate thread"
+      },
+      {
+        "id": "b",
+        "text": "Access the DOM directly"
+      },
+      {
+        "id": "c",
+        "text": "Receive data via postMessage"
+      },
+      {
+        "id": "d",
+        "text": "Do heavy computation"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "javascript-performance-09",
+    "topic": "javascript-performance",
+    "lesson": "avoiding-layout-thrashing",
+    "type": "fill-blank",
+    "prompt": "Reading a layout property (like offsetHeight) immediately after a style write forces the browser to do a synchronous ____ (recompute the layout).",
+    "explanation": "That pattern is forced synchronous layout (layout thrashing); doing it in a loop causes repeated reflows and turns a quick update into a long task.",
+    "answer": [
+      "reflow",
+      "layout",
+      "forced synchronous layout"
+    ]
+  },
+  {
+    "id": "javascript-performance-10",
+    "topic": "javascript-performance",
+    "lesson": "scheduling-with-scheduler-yield",
+    "type": "match-pair",
+    "prompt": "Match each tool to its best use.",
+    "explanation": "rAF aligns with the frame, rIC uses idle time, a Web Worker offloads computation, and postMessage is how they communicate.",
+    "pairs": [
+      {
+        "left": "requestAnimationFrame",
+        "right": "Visual updates just before the next paint"
+      },
+      {
+        "left": "requestIdleCallback",
+        "right": "Low-priority background work during idle time"
+      },
+      {
+        "left": "Web Worker",
+        "right": "Heavy, DOM-free computation off the main thread"
+      },
+      {
+        "left": "postMessage",
+        "right": "Send data between the page and a worker"
+      }
+    ]
+  },
+  {
+    "id": "javascript-performance-11",
+    "topic": "javascript-performance",
+    "lesson": "identifying-long-tasks",
+    "type": "multiple-choice",
+    "prompt": "Which techniques reduce pressure on the main thread? Select all that apply.",
+    "explanation": "Chunking, offloading to workers, and batching reads/writes all free the main thread. Interleaving reads and writes causes layout thrashing.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Break up long tasks and yield between chunks"
+      },
+      {
+        "id": "b",
+        "text": "Move heavy DOM-free computation to a Web Worker"
+      },
+      {
+        "id": "c",
+        "text": "Batch DOM reads, then writes"
+      },
+      {
+        "id": "d",
+        "text": "Read and write layout properties interleaved in a loop"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ]
+  },
+  {
+    "id": "javascript-performance-12",
+    "topic": "javascript-performance",
+    "lesson": "avoiding-layout-thrashing",
+    "type": "ordering",
+    "prompt": "Order the steps to fix a resize handler that thrashes layout.",
+    "explanation": "Batch reads then writes to avoid forced reflows, align the update to the frame with rAF, and throttle so it runs at most once per frame.",
+    "answer": [
+      "reads",
+      "writes",
+      "raf",
+      "throttle"
+    ],
+    "items": [
+      {
+        "id": "reads",
+        "text": "Collect all layout reads first"
+      },
+      {
+        "id": "writes",
+        "text": "Then perform all the writes"
+      },
+      {
+        "id": "raf",
+        "text": "Run the update inside requestAnimationFrame"
+      },
+      {
+        "id": "throttle",
+        "text": "Throttle so it runs at most once per frame"
+      }
+    ]
+  },
+  {
+    "id": "loading-strategies-01",
+    "topic": "loading-strategies",
+    "lesson": "connection-hints-dns-and-preconnect",
+    "type": "match-pair",
+    "prompt": "Match each resource hint to what it does.",
+    "explanation": "preconnect warms a full connection, dns-prefetch just resolves DNS, preload pulls a current-page resource forward, and prefetch prepares a future navigation.",
+    "pairs": [
+      {
+        "left": "preconnect",
+        "right": "Do DNS + TCP + TLS to an origin in advance"
+      },
+      {
+        "left": "dns-prefetch",
+        "right": "Resolve an origin's DNS only"
+      },
+      {
+        "left": "preload",
+        "right": "Fetch a critical current-page resource early"
+      },
+      {
+        "left": "prefetch",
+        "right": "Fetch a likely future-navigation resource at low priority"
+      }
+    ]
+  },
+  {
+    "id": "loading-strategies-02",
+    "topic": "loading-strategies",
+    "lesson": "preloading-critical-assets",
+    "type": "single-choice",
+    "prompt": "What is `preload` for?",
+    "explanation": "preload pulls a critical current-page resource (LCP image, font, critical CSS/JS) forward. prefetch, by contrast, prepares a future navigation.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Fetching a resource the CURRENT page needs, earlier than the browser would discover it"
+      },
+      {
+        "id": "b",
+        "text": "Fetching a page the user will visit next"
+      },
+      {
+        "id": "c",
+        "text": "Compressing resources"
+      },
+      {
+        "id": "d",
+        "text": "Deleting cached files"
+      }
+    ],
+    "answer": "a"
+  },
+  {
+    "id": "loading-strategies-03",
+    "topic": "loading-strategies",
+    "lesson": "preloading-critical-assets",
+    "type": "fill-blank",
+    "prompt": "A font <link rel=\"preload\"> must include the ____ attribute (fonts are fetched anonymously), or it's wasted.",
+    "explanation": "Because fonts fetch in anonymous CORS mode, a preload without crossorigin doesn't match the real request and downloads the font twice. Also set the correct `as`.",
+    "answer": [
+      "crossorigin",
+      "crossOrigin"
+    ]
+  },
+  {
+    "id": "loading-strategies-04",
+    "topic": "loading-strategies",
+    "lesson": "fetchpriority-attribute",
+    "type": "multiple-choice",
+    "prompt": "Which are correct uses of hints and priorities? Select all that apply.",
+    "explanation": "Precise hints help. Marking many resources high flattens the priority order and can delay the real LCP resource — the opposite of the goal.",
+    "options": [
+      {
+        "id": "a",
+        "text": "preconnect a few critical origins you'll use immediately"
+      },
+      {
+        "id": "b",
+        "text": "preload only genuinely critical, late-discovered resources"
+      },
+      {
+        "id": "c",
+        "text": "Mark a dozen resources fetchpriority=\"high\""
+      },
+      {
+        "id": "d",
+        "text": "Use fetchpriority=\"high\" on the LCP image"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "d"
+    ]
+  },
+  {
+    "id": "loading-strategies-05",
+    "topic": "loading-strategies",
+    "lesson": "prefetch-and-speculation-rules",
+    "type": "single-choice",
+    "prompt": "What can the Speculation Rules API do that a plain prefetch cannot?",
+    "explanation": "Speculation Rules can prerender a whole next page (not just fetch resources), so clicking through is near-instant — with an eagerness setting to balance benefit against wasted work.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Compress the current page"
+      },
+      {
+        "id": "b",
+        "text": "Prerender an entire likely-next page in the background for near-instant navigation"
+      },
+      {
+        "id": "c",
+        "text": "Encrypt the connection"
+      },
+      {
+        "id": "d",
+        "text": "Remove render-blocking CSS automatically"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "loading-strategies-06",
+    "topic": "loading-strategies",
+    "lesson": "connection-hints-dns-and-preconnect",
+    "type": "ordering",
+    "prompt": "Order the steps that `preconnect` performs ahead of time.",
+    "explanation": "preconnect completes the full setup — DNS, then TCP, then TLS — so the eventual request to that origin doesn't pay for it.",
+    "answer": [
+      "dns",
+      "tcp",
+      "tls"
+    ],
+    "items": [
+      {
+        "id": "dns",
+        "text": "DNS lookup"
+      },
+      {
+        "id": "tcp",
+        "text": "TCP handshake"
+      },
+      {
+        "id": "tls",
+        "text": "TLS handshake"
+      }
+    ]
+  },
+  {
+    "id": "caching-and-compression-13",
+    "topic": "caching-and-compression",
+    "lesson": "http2-multiplexing",
+    "type": "single-choice",
+    "prompt": "What is multiplexing in HTTP/2?",
+    "explanation": "HTTP/2 interleaves many streams over one connection, so requests no longer wait one-at-a-time as they did in HTTP/1.1 — which is why sharding/concatenation matter less.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Encrypting requests twice"
+      },
+      {
+        "id": "b",
+        "text": "Sending many concurrent request/response streams over a single connection"
+      },
+      {
+        "id": "c",
+        "text": "Opening one connection per file"
+      },
+      {
+        "id": "d",
+        "text": "Compressing images automatically"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "caching-and-compression-14",
+    "topic": "caching-and-compression",
+    "lesson": "http3-and-quic",
+    "type": "single-choice",
+    "prompt": "What problem does HTTP/3 (over QUIC) solve that HTTP/2 still has?",
+    "explanation": "HTTP/2 rides on TCP, so a single lost packet stalls every stream on the connection. QUIC's independent streams (over UDP) prevent one loss from stalling the others, and set up connections faster.",
+    "options": [
+      {
+        "id": "a",
+        "text": "TCP-level head-of-line blocking, where one lost packet stalls all streams"
+      },
+      {
+        "id": "b",
+        "text": "Images being too large"
+      },
+      {
+        "id": "c",
+        "text": "CSS being render-blocking"
+      },
+      {
+        "id": "d",
+        "text": "JavaScript needing to be parsed"
+      }
+    ],
+    "answer": "a"
+  },
+  {
+    "id": "caching-and-compression-15",
+    "topic": "caching-and-compression",
+    "lesson": "http3-and-quic",
+    "type": "fill-blank",
+    "prompt": "HTTP/3 runs over a UDP-based transport protocol called ____.",
+    "explanation": "QUIC is the transport under HTTP/3; it provides independent streams, integrated TLS 1.3 (faster setup), and connection migration.",
+    "answer": [
+      "QUIC",
+      "quic"
+    ]
+  },
+  {
+    "id": "caching-and-compression-16",
+    "topic": "caching-and-compression",
+    "lesson": "cdn-edge-caching",
+    "type": "multiple-choice",
+    "prompt": "Which statements are true? Select all that apply.",
+    "explanation": "HTTP/2 multiplexes, sharding fragments that benefit, and CDNs cut latency at the edge. But HTTP/2 still has TCP-level head-of-line blocking, which HTTP/3 addresses.",
+    "options": [
+      {
+        "id": "a",
+        "text": "HTTP/2 multiplexes many streams over one connection"
+      },
+      {
+        "id": "b",
+        "text": "Domain sharding can hurt on HTTP/2 by fragmenting multiplexing"
+      },
+      {
+        "id": "c",
+        "text": "A CDN caches content on edge servers near users to cut latency"
+      },
+      {
+        "id": "d",
+        "text": "HTTP/2 removed all head-of-line blocking"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ]
+  },
+  {
+    "id": "caching-and-compression-17",
+    "topic": "caching-and-compression",
+    "lesson": "http1-limitations-and-workarounds",
+    "type": "match-pair",
+    "prompt": "Match each technology to its description.",
+    "explanation": "HTTP evolved from one-at-a-time (1.1) to multiplexed (2) to QUIC-based (3); a CDN is orthogonal, cutting distance by caching at the edge.",
+    "pairs": [
+      {
+        "left": "HTTP/1.1",
+        "right": "One in-flight request per connection"
+      },
+      {
+        "left": "HTTP/2",
+        "right": "Multiplexing plus HPACK header compression"
+      },
+      {
+        "left": "HTTP/3",
+        "right": "Runs over QUIC with independent streams"
+      },
+      {
+        "left": "CDN",
+        "right": "Edge caches near users that offload the origin"
+      }
+    ]
+  },
+  {
+    "id": "caching-and-compression-18",
+    "topic": "caching-and-compression",
+    "lesson": "http1-limitations-and-workarounds",
+    "type": "ordering",
+    "prompt": "Order the HTTP protocols by version, oldest to newest.",
+    "explanation": "The web moved from HTTP/1.1 (serial) to HTTP/2 (multiplexed over TCP) to HTTP/3 (multiplexed over QUIC/UDP).",
+    "answer": [
+      "h1",
+      "h2",
+      "h3"
+    ],
+    "items": [
+      {
+        "id": "h1",
+        "text": "HTTP/1.1"
+      },
+      {
+        "id": "h2",
+        "text": "HTTP/2"
+      },
+      {
+        "id": "h3",
+        "text": "HTTP/3"
+      }
+    ]
+  },
+  {
+    "id": "architecture-and-rendering-01",
+    "topic": "architecture-and-rendering",
+    "lesson": "choosing-a-rendering-strategy",
+    "type": "match-pair",
+    "prompt": "Match each rendering strategy to its description.",
+    "explanation": "CSR renders in the browser, SSR renders per request on the server, SSG prebuilds HTML, and streaming SSR sends HTML incrementally to paint sooner.",
+    "pairs": [
+      {
+        "left": "CSR",
+        "right": "The browser builds the UI from JavaScript"
+      },
+      {
+        "left": "SSR",
+        "right": "The server renders full HTML per request"
+      },
+      {
+        "left": "SSG / prerender",
+        "right": "HTML is generated at build time and served static"
+      },
+      {
+        "left": "Streaming SSR",
+        "right": "The server flushes HTML in chunks as it's ready"
+      }
+    ]
+  },
+  {
+    "id": "architecture-and-rendering-02",
+    "topic": "architecture-and-rendering",
+    "lesson": "the-hydration-cost",
+    "type": "single-choice",
+    "prompt": "What is hydration?",
+    "explanation": "After SSR/SSG HTML arrives, the framework hydrates it — reconstructing state and wiring up events on the existing DOM so it becomes interactive. That's main-thread work.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Compressing the HTML before sending it"
+      },
+      {
+        "id": "b",
+        "text": "Downloading JavaScript to attach state and event listeners to already-rendered HTML, making it interactive"
+      },
+      {
+        "id": "c",
+        "text": "Caching the page at the edge"
+      },
+      {
+        "id": "d",
+        "text": "Converting images to WebP"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "architecture-and-rendering-03",
+    "topic": "architecture-and-rendering",
+    "lesson": "static-site-generation",
+    "type": "fill-blank",
+    "prompt": "Generating HTML at build time and serving it as static files (ideal for blogs/docs) is called ____ (three-letter abbreviation).",
+    "explanation": "SSG (Static Site Generation) prebuilds pages at build time; served from a CDN it gives the best TTFB and FCP for content that rarely changes.",
+    "answer": [
+      "SSG",
+      "static site generation",
+      "static generation"
+    ]
+  },
+  {
+    "id": "architecture-and-rendering-04",
+    "topic": "architecture-and-rendering",
+    "lesson": "client-side-rendering",
+    "type": "multiple-choice",
+    "prompt": "Which statements about rendering strategies are true? Select all that apply.",
+    "explanation": "SSG suits static content, SSR paints earlier than CSR but must hydrate, and islands minimize JS. CSR shows nothing until its JavaScript downloads and runs.",
+    "options": [
+      {
+        "id": "a",
+        "text": "SSG is usually best for mostly-static content like blogs and docs"
+      },
+      {
+        "id": "b",
+        "text": "SSR puts content in the HTML earlier than CSR, but adds hydration cost"
+      },
+      {
+        "id": "c",
+        "text": "CSR shows content instantly with no JavaScript"
+      },
+      {
+        "id": "d",
+        "text": "Islands/partial hydration ship the least JavaScript"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "d"
+    ]
+  },
+  {
+    "id": "architecture-and-rendering-05",
+    "topic": "architecture-and-rendering",
+    "lesson": "server-side-rendering",
+    "type": "ordering",
+    "prompt": "Order what happens with server-side rendering plus hydration.",
+    "explanation": "SSR paints content early from server HTML, but the page isn't interactive until its JS downloads and hydration runs — the gap where INP can suffer.",
+    "answer": [
+      "render",
+      "paint",
+      "download",
+      "hydrate"
+    ],
+    "items": [
+      {
+        "id": "render",
+        "text": "Server renders full HTML for the request"
+      },
+      {
+        "id": "paint",
+        "text": "Browser receives the HTML and paints the content"
+      },
+      {
+        "id": "download",
+        "text": "The framework's JavaScript downloads"
+      },
+      {
+        "id": "hydrate",
+        "text": "Hydration attaches interactivity; the page becomes responsive"
+      }
+    ]
+  },
+  {
+    "id": "architecture-and-rendering-06",
+    "topic": "architecture-and-rendering",
+    "lesson": "choosing-a-rendering-strategy",
+    "type": "single-choice",
+    "prompt": "Is there a single best rendering strategy for all sites?",
+    "explanation": "There's no universal winner: static content favors SSG, per-request content favors SSR/streaming, and app-like surfaces may use CSR/islands. Different pages can use different strategies.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Yes — always use CSR"
+      },
+      {
+        "id": "b",
+        "text": "Yes — always use SSR"
+      },
+      {
+        "id": "c",
+        "text": "No — each trades off TTFB, first paint, JS cost, and interactivity, so you choose per content type"
+      },
+      {
+        "id": "d",
+        "text": "Yes — always use SSG, even for personalized data"
+      }
+    ],
+    "answer": "c"
+  },
+  {
+    "id": "loading-strategies-07",
+    "topic": "loading-strategies",
+    "lesson": "service-worker-architecture",
+    "type": "single-choice",
+    "prompt": "What is a service worker?",
+    "explanation": "A service worker runs in the background as a programmable proxy between the page and the network, handling requests via the fetch event. It requires HTTPS and has no DOM access.",
+    "options": [
+      {
+        "id": "a",
+        "text": "A background script that acts as a programmable network proxy, intercepting fetch requests"
+      },
+      {
+        "id": "b",
+        "text": "A faster kind of web server"
+      },
+      {
+        "id": "c",
+        "text": "A CSS feature for offline styling"
+      },
+      {
+        "id": "d",
+        "text": "A browser extension users install"
+      }
+    ],
+    "answer": "a"
+  },
+  {
+    "id": "loading-strategies-08",
+    "topic": "loading-strategies",
+    "lesson": "runtime-caching-strategies",
+    "type": "match-pair",
+    "prompt": "Match each caching strategy to its behaviour.",
+    "explanation": "Cache-first suits immutable assets, network-first suits fresh content, stale-while-revalidate balances the two, and cache-only serves fixed content offline.",
+    "pairs": [
+      {
+        "left": "Cache-first",
+        "right": "Serve from cache, fall back to the network"
+      },
+      {
+        "left": "Network-first",
+        "right": "Try the network, fall back to the cache"
+      },
+      {
+        "left": "Stale-while-revalidate",
+        "right": "Serve cache now, update it in the background"
+      },
+      {
+        "left": "Cache-only",
+        "right": "Never hit the network"
+      }
+    ]
+  },
+  {
+    "id": "loading-strategies-09",
+    "topic": "loading-strategies",
+    "lesson": "service-worker-architecture",
+    "type": "fill-blank",
+    "prompt": "A service worker will only register over ____ (except on localhost).",
+    "explanation": "Because a service worker can intercept all requests, it requires a secure context (HTTPS); localhost is exempted for development.",
+    "answer": [
+      "HTTPS",
+      "https"
+    ]
+  },
+  {
+    "id": "loading-strategies-10",
+    "topic": "loading-strategies",
+    "lesson": "service-worker-architecture",
+    "type": "single-choice",
+    "prompt": "Does a service worker speed up the FIRST visit to a site?",
+    "explanation": "The service worker installs during/after the first load, so the first visit sees no benefit; it speeds up repeat visits and enables offline.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Yes, it caches everything before the page loads"
+      },
+      {
+        "id": "b",
+        "text": "No — it installs during or after the first load, so it accelerates subsequent visits"
+      },
+      {
+        "id": "c",
+        "text": "Yes, but only on mobile"
+      },
+      {
+        "id": "d",
+        "text": "Only if the page uses HTTP/3"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "loading-strategies-11",
+    "topic": "loading-strategies",
+    "lesson": "service-worker-lifecycle",
+    "type": "multiple-choice",
+    "prompt": "Which statements about service workers are true? Select all that apply.",
+    "explanation": "Version and clean up caches, remember there's no DOM access, and use the Cache API for offline. It does not speed the first visit.",
+    "options": [
+      {
+        "id": "a",
+        "text": "You should version caches and delete old ones on activate"
+      },
+      {
+        "id": "b",
+        "text": "A service worker cannot access the DOM directly"
+      },
+      {
+        "id": "c",
+        "text": "A service worker makes the first visit instant"
+      },
+      {
+        "id": "d",
+        "text": "With the Cache API it can serve content offline"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "d"
+    ]
+  },
+  {
+    "id": "loading-strategies-12",
+    "topic": "loading-strategies",
+    "lesson": "cache-versioning-and-cleanup",
+    "type": "ordering",
+    "prompt": "Order the main stages of the service worker lifecycle.",
+    "explanation": "The page registers it; it installs (precaching), activates (cleaning old caches), then begins handling fetch events for the pages it controls.",
+    "answer": [
+      "register",
+      "install",
+      "activate",
+      "fetch"
+    ],
+    "items": [
+      {
+        "id": "register",
+        "text": "Register the service worker from the page"
+      },
+      {
+        "id": "install",
+        "text": "Install (precache assets)"
+      },
+      {
+        "id": "activate",
+        "text": "Activate (clean up old caches)"
+      },
+      {
+        "id": "fetch",
+        "text": "Intercept fetch events for controlled pages"
+      }
+    ]
+  },
+  {
+    "id": "monitoring-and-auditing-07",
+    "topic": "monitoring-and-auditing",
+    "lesson": "rum-with-web-vitals-library",
+    "type": "single-choice",
+    "prompt": "What does the web-vitals JavaScript library do?",
+    "explanation": "web-vitals is a field/RUM tool: it measures the vitals in real sessions and calls back with each final value so you can send it to analytics.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Runs a Lighthouse audit on the server"
+      },
+      {
+        "id": "b",
+        "text": "Measures the Core Web Vitals (LCP/INP/CLS, plus FCP/TTFB) in real user sessions and reports final values"
+      },
+      {
+        "id": "c",
+        "text": "Compresses images at build time"
+      },
+      {
+        "id": "d",
+        "text": "Blocks slow third-party scripts"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "monitoring-and-auditing-08",
+    "topic": "monitoring-and-auditing",
+    "lesson": "rum-with-web-vitals-library",
+    "type": "fill-blank",
+    "prompt": "To reliably send a metric to analytics as the page is unloading, use navigator.____().",
+    "explanation": "navigator.sendBeacon (or fetch with keepalive) reliably delivers the report even as the page unloads, when a normal request might be cancelled.",
+    "answer": [
+      "sendBeacon",
+      "sendbeacon"
+    ]
+  },
+  {
+    "id": "monitoring-and-auditing-09",
+    "topic": "monitoring-and-auditing",
+    "lesson": "chrome-ux-report-crux",
+    "type": "match-pair",
+    "prompt": "Match each monitoring concept to what it is.",
+    "explanation": "RUM is your own field data, CrUX is the public benchmark, attribution explains why, and Lighthouse CI prevents regressions from shipping.",
+    "pairs": [
+      {
+        "left": "RUM",
+        "right": "Performance measured from real users' sessions"
+      },
+      {
+        "left": "CrUX",
+        "right": "Google's public p75 field dataset"
+      },
+      {
+        "left": "Attribution",
+        "right": "The cause behind a slow metric (element, target, phase)"
+      },
+      {
+        "left": "Lighthouse CI",
+        "right": "A pipeline gate that catches regressions before shipping"
+      }
+    ]
+  },
+  {
+    "id": "monitoring-and-auditing-10",
+    "topic": "monitoring-and-auditing",
+    "lesson": "preventing-performance-regressions",
+    "type": "multiple-choice",
+    "prompt": "Which are good production-monitoring practices? Select all that apply.",
+    "explanation": "Reason in percentiles and segments, understand CrUX's limits, and use your own RUM for coverage. A one-off launch score misses the decay that follows.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Judge with percentiles (p75) and segment by device/route"
+      },
+      {
+        "id": "b",
+        "text": "Know CrUX is Chrome-only, 28-day, and traffic-gated"
+      },
+      {
+        "id": "c",
+        "text": "Treat a launch-day Lighthouse score as sufficient monitoring"
+      },
+      {
+        "id": "d",
+        "text": "Use your own RUM to cover pages and browsers CrUX misses"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "d"
+    ]
+  },
+  {
+    "id": "monitoring-and-auditing-11",
+    "topic": "monitoring-and-auditing",
+    "lesson": "segmenting-field-data",
+    "type": "single-choice",
+    "prompt": "Why segment metrics instead of looking only at the overall p75?",
+    "explanation": "Blended numbers mask trouble; slicing by device, connection, and route reveals the group that's actually suffering so you can fix the right thing.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Segmenting makes the numbers look better"
+      },
+      {
+        "id": "b",
+        "text": "A healthy overall p75 can hide a badly failing segment (e.g. low-end Android or one route)"
+      },
+      {
+        "id": "c",
+        "text": "Because p75 is not a real percentile"
+      },
+      {
+        "id": "d",
+        "text": "Segmenting is required to run Lighthouse"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "monitoring-and-auditing-12",
+    "topic": "monitoring-and-auditing",
+    "lesson": "preventing-performance-regressions",
+    "type": "ordering",
+    "prompt": "Order the continuous measure-and-fix loop.",
+    "explanation": "Field data finds the problem, attribution explains it, you fix it, CI prevents its return, and the field confirms the improvement.",
+    "answer": [
+      "find",
+      "why",
+      "fix",
+      "guard",
+      "confirm"
+    ],
+    "items": [
+      {
+        "id": "find",
+        "text": "RUM reveals a failing metric/segment in the field"
+      },
+      {
+        "id": "why",
+        "text": "Attribution names the cause"
+      },
+      {
+        "id": "fix",
+        "text": "Ship a fix"
+      },
+      {
+        "id": "guard",
+        "text": "A Lighthouse CI budget guards against the regression returning"
+      },
+      {
+        "id": "confirm",
+        "text": "Field data confirms the recovery"
+      }
+    ]
+  },
+  {
+    "id": "monitoring-and-auditing-13",
+    "topic": "monitoring-and-auditing",
+    "lesson": "the-audit-workflow-overview",
+    "type": "ordering",
+    "prompt": "Order the six steps of the performance audit workflow.",
+    "explanation": "Set goals, measure what real users hit (then diagnose in the lab), triage by impact, fix the biggest bottleneck, verify, and guard against regression.",
+    "answer": [
+      "goals",
+      "measure",
+      "triage",
+      "fix",
+      "verify",
+      "guard"
+    ],
+    "items": [
+      {
+        "id": "goals",
+        "text": "Set goals and a budget"
+      },
+      {
+        "id": "measure",
+        "text": "Measure (field first, then lab)"
+      },
+      {
+        "id": "triage",
+        "text": "Triage by user impact"
+      },
+      {
+        "id": "fix",
+        "text": "Fix the biggest bottleneck first"
+      },
+      {
+        "id": "verify",
+        "text": "Verify (before/after in lab, confirm in field)"
+      },
+      {
+        "id": "guard",
+        "text": "Guard with a CI budget and monitoring"
+      }
+    ]
+  },
+  {
+    "id": "monitoring-and-auditing-14",
+    "topic": "monitoring-and-auditing",
+    "lesson": "the-audit-workflow-overview",
+    "type": "single-choice",
+    "prompt": "Why measure field data before lab data in an audit?",
+    "explanation": "Field (p75, segmented) tells you what and how bad; lab tells you why. Judging by field keeps you honest, then lab helps you find and fix the cause.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Field data is always faster to collect"
+      },
+      {
+        "id": "b",
+        "text": "Field data shows what real users actually experience and how bad it is; lab tools are then used to reproduce and diagnose the cause"
+      },
+      {
+        "id": "c",
+        "text": "Lab data is never useful"
+      },
+      {
+        "id": "d",
+        "text": "Field data measures the server only"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "monitoring-and-auditing-15",
+    "topic": "monitoring-and-auditing",
+    "lesson": "triage-by-user-impact",
+    "type": "single-choice",
+    "prompt": "How should you decide which problem to fix first?",
+    "explanation": "Prioritize by user impact and reach, not ease. Fix the biggest bottleneck first, then re-measure because the bottleneck usually moves.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Whatever is easiest to change"
+      },
+      {
+        "id": "b",
+        "text": "By user impact × reach — the biggest bottleneck for the most users — then re-measure"
+      },
+      {
+        "id": "c",
+        "text": "Alphabetically by file name"
+      },
+      {
+        "id": "d",
+        "text": "Whatever the newest tool suggests"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "monitoring-and-auditing-16",
+    "topic": "monitoring-and-auditing",
+    "lesson": "fixing-the-critical-path-in-practice",
+    "type": "match-pair",
+    "prompt": "Match each audit finding to the fix that addresses it.",
+    "explanation": "Each finding maps to a specific technique from the course — the heart of a good audit is matching the fix to the cause.",
+    "pairs": [
+      {
+        "left": "LCP image discovered late / oversized",
+        "right": "Preload it, fetchpriority=high, AVIF/responsive"
+      },
+      {
+        "left": "Content jumps around (CLS)",
+        "right": "Set dimensions and reserve space"
+      },
+      {
+        "left": "Sluggish taps (INP)",
+        "right": "Break up long tasks and ship less JS"
+      },
+      {
+        "left": "Repeat visits re-download assets",
+        "right": "Fingerprint + immutable caching"
+      }
+    ]
+  },
+  {
+    "id": "monitoring-and-auditing-17",
+    "topic": "monitoring-and-auditing",
+    "lesson": "verifying-and-measuring-gains",
+    "type": "multiple-choice",
+    "prompt": "Which are good audit practices? Select all that apply.",
+    "explanation": "Measure, prioritize by impact, and verify. Stopping without a regression guard lets the next change quietly erase the win.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Measure before optimizing"
+      },
+      {
+        "id": "b",
+        "text": "Prioritize fixes by user impact"
+      },
+      {
+        "id": "c",
+        "text": "Verify a before/after for the metric you targeted"
+      },
+      {
+        "id": "d",
+        "text": "Stop as soon as metrics look good, with no budget or monitoring"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ]
+  },
+  {
+    "id": "monitoring-and-auditing-18",
+    "topic": "monitoring-and-auditing",
+    "lesson": "fixing-core-vitals-in-practice",
+    "type": "fill-blank",
+    "prompt": "To keep an optimization from regressing, enforce a performance ____ in CI (and keep RUM running).",
+    "explanation": "A performance budget enforced in CI fails a pull request that breaches a limit, and ongoing RUM confirms the field stays healthy — together they guard the win.",
+    "answer": [
+      "budget",
+      "budget in ci"
+    ]
+  },
+  {
+    "id": "foundations-07",
+    "topic": "foundations",
+    "lesson": "business-and-human-impact",
+    "type": "single-choice",
+    "prompt": "Why is web performance considered a crucial component of digital accessibility and equity?",
+    "explanation": "Users in emerging markets and on budget devices pay real cellular data charges and have constrained mobile CPUs; bloated sites lock them out.",
+    "options": [
+      {
+        "id": "a",
+        "text": "It only affects desktop screen reader users"
+      },
+      {
+        "id": "b",
+        "text": "Bloated pages impose heavy data costs and battery drain on budget mobile devices"
+      },
+      {
+        "id": "c",
+        "text": "Faster sites have fewer CSS styling rules"
+      },
+      {
+        "id": "d",
+        "text": "Accessibility guidelines only evaluate color contrast"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "foundations-08",
+    "topic": "foundations",
+    "lesson": "optimizing-for-real-users",
+    "type": "single-choice",
+    "prompt": "At which statistical percentile does Google assess Core Web Vitals in field data?",
+    "explanation": "Google assesses Core Web Vitals at the 75th percentile of real-world visits, split between mobile and desktop.",
+    "options": [
+      {
+        "id": "a",
+        "text": "50th percentile (median)"
+      },
+      {
+        "id": "b",
+        "text": "75th percentile (p75)"
+      },
+      {
+        "id": "c",
+        "text": "95th percentile (p95)"
+      },
+      {
+        "id": "d",
+        "text": "Arithmetic mean (average)"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "foundations-09",
+    "topic": "foundations",
+    "lesson": "perceived-performance",
+    "type": "single-choice",
+    "prompt": "According to human-computer interaction research, what is the maximum duration for an action to feel instantaneous?",
+    "explanation": "Visual feedback within approximately 100 milliseconds is perceived by the human brain as instantaneous.",
+    "options": [
+      {
+        "id": "a",
+        "text": "16 milliseconds"
+      },
+      {
+        "id": "b",
+        "text": "100 milliseconds"
+      },
+      {
+        "id": "c",
+        "text": "1 second"
+      },
+      {
+        "id": "d",
+        "text": "3 seconds"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "foundations-10",
+    "topic": "foundations",
+    "lesson": "rail-model",
+    "type": "single-choice",
+    "prompt": "In the RAIL model, what is the maximum duration recommended for individual idle background tasks?",
+    "explanation": "RAIL recommends chunking idle background tasks to 50ms or less so incoming user taps can be handled within 100ms.",
+    "options": [
+      {
+        "id": "a",
+        "text": "16 ms"
+      },
+      {
+        "id": "b",
+        "text": "50 ms"
+      },
+      {
+        "id": "c",
+        "text": "200 ms"
+      },
+      {
+        "id": "d",
+        "text": "500 ms"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "network-and-browsers-07",
+    "topic": "network-and-browsers",
+    "lesson": "tcp-and-tls-handshakes",
+    "type": "single-choice",
+    "prompt": "How many round trips (RTT) does the modern TLS 1.3 handshake require to negotiate cryptographic keys?",
+    "explanation": "TLS 1.3 requires only 1 RTT for key negotiation on initial connection, compared to 2 RTT for TLS 1.2.",
+    "options": [
+      {
+        "id": "a",
+        "text": "0 RTT on cold connection"
+      },
+      {
+        "id": "b",
+        "text": "1 RTT"
+      },
+      {
+        "id": "c",
+        "text": "2 RTT"
+      },
+      {
+        "id": "d",
+        "text": "3 RTT"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "network-and-browsers-08",
+    "topic": "network-and-browsers",
+    "lesson": "ttfb-and-first-byte",
+    "type": "single-choice",
+    "prompt": "What is the recommended maximum threshold for Time to First Byte (TTFB) according to web.dev guidance?",
+    "explanation": "Web.dev guidance recommends keeping TTFB under 0.8 seconds (800ms) at the 75th percentile.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Under 200 ms"
+      },
+      {
+        "id": "b",
+        "text": "Under 800 ms"
+      },
+      {
+        "id": "c",
+        "text": "Under 2.5 seconds"
+      },
+      {
+        "id": "d",
+        "text": "Under 5.0 seconds"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "network-and-browsers-09",
+    "topic": "network-and-browsers",
+    "lesson": "secondary-resources-waterfall",
+    "type": "single-choice",
+    "prompt": "What is the primary function of the browser speculative preload scanner?",
+    "explanation": "The preload scanner inspects raw HTML ahead of the DOM parser to discover and download stylesheets, scripts, and images in parallel.",
+    "options": [
+      {
+        "id": "a",
+        "text": "To compress JavaScript code in memory"
+      },
+      {
+        "id": "b",
+        "text": "To discover and fetch sub-resources in HTML ahead of DOM construction"
+      },
+      {
+        "id": "c",
+        "text": "To execute CSS layout calculations on the GPU"
+      },
+      {
+        "id": "d",
+        "text": "To cache API responses in IndexedDB"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "network-and-browsers-10",
+    "topic": "network-and-browsers",
+    "lesson": "dns-resolution",
+    "type": "single-choice",
+    "prompt": "Which HTML resource hint is best suited for resolving third-party domain IP addresses early with minimal overhead?",
+    "explanation": "dns-prefetch performs DNS resolution in the background without opening or maintaining TCP sockets.",
+    "options": [
+      {
+        "id": "a",
+        "text": "<link rel=\"dns-prefetch\">"
+      },
+      {
+        "id": "b",
+        "text": "<link rel=\"prerender\">"
+      },
+      {
+        "id": "c",
+        "text": "<link rel=\"modulepreload\">"
+      },
+      {
+        "id": "d",
+        "text": "<link rel=\"stylesheet\">"
+      }
+    ],
+    "answer": "a"
+  },
+  {
+    "id": "core-web-vitals-07",
+    "topic": "core-web-vitals",
+    "lesson": "diagnostic-web-vitals",
+    "type": "single-choice",
+    "prompt": "Which metric is a synthetic lab proxy for Interaction to Next Paint (INP)?",
+    "explanation": "Total Blocking Time (TBT) measures main-thread blocking in the lab and serves as the primary lab proxy for INP.",
+    "options": [
+      {
+        "id": "a",
+        "text": "First Contentful Paint (FCP)"
+      },
+      {
+        "id": "b",
+        "text": "Total Blocking Time (TBT)"
+      },
+      {
+        "id": "c",
+        "text": "Speed Index"
+      },
+      {
+        "id": "d",
+        "text": "Cumulative Layout Shift (CLS)"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "core-web-vitals-08",
+    "topic": "core-web-vitals",
+    "lesson": "cumulative-layout-shift-metric",
+    "type": "single-choice",
+    "prompt": "Under what condition is a layout shift excluded from the Cumulative Layout Shift (CLS) calculation?",
+    "explanation": "Shifts that occur within 500ms of user input set hadRecentInput to true and are excluded from CLS.",
+    "options": [
+      {
+        "id": "a",
+        "text": "If the element is an image"
+      },
+      {
+        "id": "b",
+        "text": "If the shift occurs within 500ms of a user interaction"
+      },
+      {
+        "id": "c",
+        "text": "If the browser window is wider than 1200px"
+      },
+      {
+        "id": "d",
+        "text": "If the shift happens on a mobile device"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "core-web-vitals-09",
+    "topic": "core-web-vitals",
+    "lesson": "interaction-to-next-paint-metric",
+    "type": "single-choice",
+    "prompt": "Which user interactions are observed by Interaction to Next Paint (INP)?",
+    "explanation": "INP observes clicks, taps, and keyboard presses. Continuous gestures like scrolling and hover are not directly counted.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Mouse hover and page scrolling"
+      },
+      {
+        "id": "b",
+        "text": "Mouse clicks, touchscreen taps, and keypresses"
+      },
+      {
+        "id": "c",
+        "text": "Only the very first click on a page"
+      },
+      {
+        "id": "d",
+        "text": "Window resize events"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "core-web-vitals-10",
+    "topic": "core-web-vitals",
+    "lesson": "largest-contentful-paint-metric",
+    "type": "single-choice",
+    "prompt": "Which of the following can qualify as a candidate element for Largest Contentful Paint (LCP)?",
+    "explanation": "Qualifying LCP elements are <img>, SVG <image>, video poster frames, background images via CSS url(), and block text nodes.",
+    "options": [
+      {
+        "id": "a",
+        "text": "An animated CSS border with no text"
+      },
+      {
+        "id": "b",
+        "text": "An <img> element or block-level text element in the viewport"
+      },
+      {
+        "id": "c",
+        "text": "An offscreen carousel item"
+      },
+      {
+        "id": "d",
+        "text": "A hidden <div> with display: none"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "architecture-and-rendering-07",
+    "topic": "architecture-and-rendering",
+    "lesson": "streaming-ssr-and-islands",
+    "type": "single-choice",
+    "prompt": "What is the core architectural principle of Islands Architecture?",
+    "explanation": "Islands Architecture delivers 100% static HTML by default and selectively hydrates only explicit interactive components.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Compiling all code into a single monolithic bundle"
+      },
+      {
+        "id": "b",
+        "text": "Serving static HTML by default and hydrating only isolated interactive components"
+      },
+      {
+        "id": "c",
+        "text": "Executing all JavaScript on a backend database"
+      },
+      {
+        "id": "d",
+        "text": "Storing all HTML pages in browser memory cache"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "architecture-and-rendering-08",
+    "topic": "architecture-and-rendering",
+    "lesson": "static-site-generation",
+    "type": "single-choice",
+    "prompt": "Why does Static Site Generation (SSG) deliver the fastest Time to First Byte (TTFB)?",
+    "explanation": "SSG pre-renders HTML at build time so edge CDNs can serve static HTML files directly from edge memory cache.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because it uses WebSocket streaming"
+      },
+      {
+        "id": "b",
+        "text": "Because pre-rendered HTML is served directly from edge CDN storage without origin compute"
+      },
+      {
+        "id": "c",
+        "text": "Because it requires zero CSS styling"
+      },
+      {
+        "id": "d",
+        "text": "Because it disables browser caching"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "architecture-and-rendering-09",
+    "topic": "architecture-and-rendering",
+    "lesson": "the-hydration-cost",
+    "type": "single-choice",
+    "prompt": "What performance phenomenon is commonly known as the \"Uncanny Valley\" in SSR applications?",
+    "explanation": "The UI appears visually loaded, but buttons and inputs fail to respond because client JavaScript is still hydrating.",
+    "options": [
+      {
+        "id": "a",
+        "text": "When styles fail to apply due to CSS syntax errors"
+      },
+      {
+        "id": "b",
+        "text": "When a page looks visually complete but is non-interactive while hydration finishes"
+      },
+      {
+        "id": "c",
+        "text": "When a page renders in dark mode on mobile"
+      },
+      {
+        "id": "d",
+        "text": "When images fail to load from a CDN"
+      }
+    ],
+    "answer": "b"
+  },
+  {
+    "id": "architecture-and-rendering-10",
+    "topic": "architecture-and-rendering",
+    "lesson": "client-side-rendering",
+    "type": "single-choice",
+    "prompt": "What is the primary operational advantage of Client-Side Rendering (CSR)?",
+    "explanation": "CSR allows simple, cheap hosting on static edge storage (S3, CDN) without requiring active Node/Edge server compute.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Instantaneous First Contentful Paint on cold visits"
+      },
+      {
+        "id": "b",
+        "text": "Inexpensive, highly scalable static file hosting with no server compute required"
+      },
+      {
+        "id": "c",
+        "text": "Zero JavaScript downloaded by client"
+      },
+      {
+        "id": "d",
+        "text": "Automatic elimination of all layout shifts"
+      }
+    ],
+    "answer": "b"
+  }
+]

@@ -1,0 +1,68 @@
+{
+  "$schema": "https://raw.githubusercontent.com/learn-with-will/course-shell/main/course.schema.json",
+  "id": "web-performance",
+  "name": "Web Performance Learn",
+  "subject": "Web Performance",
+  "description": "Learn web performance in five-minute bites: Core Web Vitals, critical rendering path, caching, asset optimization, JavaScript cost, and monitoring.",
+  "brand": {
+    "color": "#0a7a44",
+    "scale": {
+      "50": "#e8fcf1",
+      "100": "#c6f7dd",
+      "200": "#90edc0",
+      "300": "#55e0a1",
+      "400": "#2ee08e",
+      "500": "#0cce6b",
+      "600": "#0a7a44",
+      "700": "#0a6238",
+      "800": "#0c4f2e",
+      "900": "#0c4128",
+      "950": "#042416"
+    },
+    "gradient": [
+      "#0cce6b",
+      "#0a7a44",
+      "#0891b2"
+    ],
+    "gradientDark": [
+      "#2ee08e",
+      "#0cce6b",
+      "#22d3ee"
+    ]
+  },
+  "home": {
+    "badge": "Updated for Core Web Vitals & INP",
+    "headline": [
+      "Make web pages genuinely fast in ",
+      "five‑minute bites",
+      "."
+    ],
+    "searchExamples": [
+      "LCP",
+      "Cache-Control",
+      "INP"
+    ],
+    "featuredLesson": "what-web-performance-means",
+    "featuredCode": {
+      "lang": "html",
+      "code": "<link rel=\"preload\" href=\"/hero.avif\" as=\"image\" fetchpriority=\"high\">\n<img src=\"/hero.avif\" alt=\"Hero\" width=\"1200\" height=\"600\">"
+    },
+    "quizPreview": {
+      "topic": "foundations",
+      "prompt": "Which metric officially replaced First Input Delay (FID) as a Core Web Vital in March 2024?",
+      "options": [
+        "Interaction to Next Paint (INP)",
+        "Total Blocking Time (TBT)",
+        "Cumulative Layout Shift (CLS)"
+      ],
+      "selected": 0
+    }
+  },
+  "codeLanguages": [
+    "html",
+    "css",
+    "javascript",
+    "bash",
+    "json"
+  ]
+}

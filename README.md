@@ -1,69 +1,39 @@
-# Web Performance — Learning-Portal course
+# Web Performance
 
-A self-paced, **frontend-only** course on making web pages fast, part of the
-[Learning Portal](https://thachthanhthien.github.io/LearningPortal/) family of static course micro-apps.
-24 lessons (8 beginner · 8 intermediate · 8 advanced), each with a quiz, all rendered from Markdown and
-JSON at runtime. Progress is saved in `localStorage`; there is no backend.
+A self-paced, content-only course on making web pages fast, built on the shared [course-shell](https://github.com/learn-with-will/course-shell).
+115 micro-lessons (bite-sized, 3–5 minutes each across 12 topics) with 160 interactive practice questions.
 
 **Live:** <https://learn-with-will.github.io/web-performance/>
 
-> Scope: how the browser loads and renders a page, the Core Web Vitals (LCP, INP, CLS), the critical
-> rendering path, network & loading optimization (caching, compression, HTTP/2-3, CDNs,
-> preload/prefetch), image and font strategy, the real cost of JavaScript & CSS, rendering strategies,
-> and measuring with Lighthouse / WebPageTest / field RUM data. Every fact is verified against
-> **web.dev**, **MDN**, and the **W3C/WHATWG specs** — see [`prompts/web-performance-authoring-prompt.md`](prompts/web-performance-authoring-prompt.md).
+> Scope: how the browser loads and renders a page, Core Web Vitals (LCP, INP, CLS), the critical rendering path, network & loading optimization (caching, compression, HTTP/2-3, CDNs, preload/preconnect), image and font strategy, the real cost of JavaScript, rendering architectures (SSR, SSG, streaming, islands), and lab/field monitoring (CrUX, Lighthouse, RUM). Every fact is verified against **web.dev**, **MDN**, and the **W3C/WHATWG specs** — see [`prompts/web-performance-authoring-prompt.md`](prompts/web-performance-authoring-prompt.md).
 
-## Tech stack
+## Course layout
 
-React 19 · Vite 6 · TypeScript · React Router 7 · Tailwind CSS v4 · `marked` (Markdown) · PrismJS
-(syntax highlighting for `html`, `css`, `javascript`, `bash`).
+```text
+course.json                    course metadata, brand styling, code languages
+content/topics.json            the 12 curriculum topics
+content/lessons/*.md           115 bite-sized micro-lessons (3–5 min each)
+content/legacy.json            backward compatibility redirect map for 24 legacy lessons
+quiz/questions.json            160 practice questions (all five question types)
+prompts/                       authoring prompt and domain guidelines
+.github/workflows/deploy.yml   thin deployment workflow invoking course-shell
+```
 
-## Develop
+## Develop and validate
+
+This repository contains content only. Development and validation run through `course-shell`:
 
 ```bash
-npm install
-npm run dev        # start the dev server
-npm run build      # tsc -b && vite build  (+ postbuild writes dist/404.html)
-npm run preview    # preview the production build locally
+# Validate content strictly against bite rules and schema
+npm --prefix ../course-shell run validate -- ../web-performance --strict
+
+# Run dev server with hot reload
+npm --prefix ../course-shell run dev -- ../web-performance
+
+# Build static production bundle
+npm --prefix ../course-shell run build -- ../web-performance
 ```
-
-The production base path is set from `BASE_PATH` (CI passes `/<repo>/`); local dev and build default to
-`/`. GitHub Pages has no SPA fallback, so `scripts/copy-404.mjs` copies `dist/index.html` to
-`dist/404.html` after each build and the app boots for any deep link.
-
-## How it's structured
-
-Everything is **manifest-driven** — adding a lesson needs no code change:
-
-```
-public/
-  content/
-    course-manifest.json          # ordered list of all 24 lessons (id, slug, title, level, file, summary, tags)
-    beginner/ intermediate/ advanced/
-      <slug>.md                   # one Markdown lesson each (YAML front-matter + fixed H1 sections)
-  quizzes/
-    lesson-NN.json                # one quiz per lesson (5–6 questions across five types)
-src/
-  core/       # models, contexts (course, progress, theme), services (lesson/quiz/asset/search), prism
-  features/   # home, roadmap, dashboard, bookmarks, search, lesson, quiz pages
-  shared/     # navbar, footer, lesson content renderer, quiz UI, brand mark
-```
-
-### Add or edit a lesson
-
-1. Create `public/content/<tier>/<slug>.md` with the front-matter and H1 sections described in the
-   [authoring prompt](prompts/web-performance-authoring-prompt.md).
-2. Add `public/quizzes/lesson-NN.json` (same `lessonId`).
-3. Add an entry to `public/content/course-manifest.json` (its `summary` mirrors the lesson front-matter).
 
 ## Deploy
 
-Pushing to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which builds with
-`BASE_PATH=/<repo>/` and deploys to GitHub Pages. Enable Pages once under **Settings → Pages → Source:
-GitHub Actions**.
-
-## Credits
-
-Built on the shared Learning-Portal shell (first created for the Angular / React / Data Science
-courses). Content is educational and verified against primary sources; brand colour is the Core Web
-Vitals "good" green (`#0CCE6B`).
+Pushing to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which uses the shared [`deploy-course.yml`](https://github.com/learn-with-will/course-shell/blob/main/.github/workflows/deploy-course.yml) workflow from `course-shell` to validate, build, and deploy to GitHub Pages.
